@@ -1,93 +1,213 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
 "use client"
 import Image from "next/image";
 //import logo from '../../../public/Screenshot 2024-08-19 162502.png'
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
+import { GiHamburgerMenu } from "react-icons/gi";
+import { IoIosSearch } from "react-icons/io";
+import { CiHeart } from "react-icons/ci";
+import { IoCartOutline } from "react-icons/io5";
+import { useState } from "react";
 const Navbar = () => {
   const pathname = usePathname();
+  const [search, setSearch] = useState('')
+  const user = null;
+
+  const [toggle, setToggle] = useState(false);
+
+   const handleToggle = () => {
+          setToggle(true);
+   }
+
+   const navLinks = <>
+       
+   <li  className="mr-3  group rounded-md hover:scale-125 transition duration-300 hover-underline shop"><Link href="/shop" >Shop</Link></li>
+   <li  className="mr-3  rounded-md hover:scale-125 transition duration-300 hover-underline"><Link href="/blog" >Blog</Link></li>
+
+
+  <li  className="mr-3  rounded-md hover:scale-125 transition duration-300 hover-underline"><Link href="/contact" >Contact Us</Link></li>
+
+   
+
+
+</>
+
     return (
-        <div className="bg-[#07332f] w-full border-b-[1px] border-b-[#ffffff41] h-auto md:h-20 lg:h-auto fixed z-50">
-            <div className="navbar bg-transparent w-[98%] md:w-[90%] mx-auto items-center flex py-3">
-  <div className="flex-1">
-    {/* <a className="btn btn-ghost text-xl"><Image src={logo} alt="logo" className="lg::h-16 lg::w-44 md:h-14 md:w-40 w-32 h-12"></Image></a> */}
-  </div>
-  <div className="flex-none mt-3">
-    <ul className=" gap-6 items-center menu-horizontal  px-1 hidden lg:flex">
-      <li className="font-light text-xl bg-transparent text-white"><Link className={`link bg-transparent ${pathname === '/' ? 'active' : 'no-underline'}`} href={'/'}>Home</Link></li>
-      <li className="font-light text-xl text-white"><Link className={`link ${pathname === '/about' ? 'active' : 'no-underline'}`} href={'/about'}>About Us</Link></li>
-      <li className="font-light text-xl text-white"><Link className={`link ${pathname === '/ourService' ? 'active' : 'no-underline'}`} href={'/ourService'}>Services</Link></li>
-      <li className="font-light text-xl text-white mr-2"><Link className={`link ${pathname === '/contact' ? 'active' : 'no-underline'}`} href={'/contact'}>Contact Us</Link></li>
-      <li className="font-light text-xl text-white mr-2"><Link className={`link ${pathname === '/account' ? 'active' : 'no-underline'}`} href={'/account'}>My Account</Link></li>
-      <Link className={`link ${pathname === '/appointment' ? 'active' : 'no-underline'}`} href={'/appointment'}> <button className="relative btn bg-transparent font-semibold text-xl rounded-3xl border-2 text-[#f7a582] border-[#f7a582] hover:border-[#f7a582] group overflow-hidden">
-      <span className="absolute inset-0 w-full h-full transition-transform transform scale-x-0 bg-[#fffffff3] group-hover:scale-x-100 origin-center duration-500 ease-out"></span>
-        <span className="relative z-50 text-[#f7a582]">Book Appointment</span>
-        </button></Link>
-    </ul>
+        <>
+       
+        {/* UPPER NAVBAR */}
+        
+       <div className="flex justify-center lg:justify-between px-2 lg:px-16 bg-white text-black py-2 md:py-2 items-center w-full border-b-2 ">
+        <div>
+              <h1 className="text-base md:text-lg">OUR PHONE NUMBER : 01956230265</h1>
+        </div>
 
-    {/* menubar */}
-<div className="flex lg:hidden ">
+        <div className="flex justify-end gap-5 items-center">
+          
+        {
+                       user? <div className=" items-center justify-center gap-2 hidden lg:flex">
+                        <div className="dropdown block dropdown-end">
+                               <div className="w-10  rounded-full dropdown dropdown-end">
+                               <label tabIndex={0} className="btn w-14 bg-transparent shadow-none hover:bg-transparent border-none  text-black p-1">
+                               {/* <LuMenuSquare className="md:w-8 w-6 h-6 md:h-7"/> */}
+                              <Link href="/account"> <img className="w-10 rounded-full" src={user?.photoURL || "https://i.ibb.co/8xzVgxd/pngtree-user-icon-png-image-1796659.jpg" } /> </Link>
+                       </label> 
+                               </div>
+                      
+                           </div>
+                    
+                           
+                           </div>  
+                           :
+                           <div className="lg:flex justify-end hidden">
+                            {
+                              user ? 
+                          
+                           <Link href='/account'>
+                               {/* <button className="btn btn-sm bg-green-500 hover:bg-blue-500 text-white mr-2  btn-ghost">Login</button> */}
+                               <h1 className="flex gap-1 items-center uppercase"> <img className="w-6 rounded-full" src={ "https://i.ibb.co/8xzVgxd/pngtree-user-icon-png-image-1796659.jpg" } />  My Account</h1>
+                           </Link>
+                           :
+                           <Link href='/login'>
+                               {/* <button className="btn btn-sm bg-green-500 hover:bg-blue-500 text-white mr-2  btn-ghost">Login</button> */}
+                               <h1 className="flex gap-1 items-center uppercase"> <img className="w-6 rounded-full" src={ "https://i.ibb.co/8xzVgxd/pngtree-user-icon-png-image-1796659.jpg" } />  My Account</h1>
+                           </Link>
+                            } 
+                       </div>
+                   }
+
+{ user ? 
+                  <Link href='/wishlist'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">{message.length}</span><CiHeart className="h-8 w-8"/></h1></Link>
+                  : 
+                  <Link href='/wishlist'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge  mt-1 w-6 text-lg  bg-black text-white">0</span><CiHeart className="h-8 w-8"/></h1></Link>
+                }
+
+                { user ?
+                  <Link href='/cart'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">{massage.length}</span><IoCartOutline className="h-8 w-8"/></h1></Link>
+                  : 
+                  <Link href='/cart'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">0</span><IoCartOutline className="h-8 w-8"/></h1></Link>
+                }
 
 
-<div className="drawer drawer-end">
+
+        </div>
+
+       </div>
+       
+       {/* Some placeholder content to create scroll effect */}
+      
+
+       {/* LOWER NAVBAR */}
+       <div className="sticky top-0 z-50 shadow-sm">
+       <div  className="navbar shadow-sm bg-white  px-1 md:px-2  ">
+               <div className="w-[50%] ">
+                  
+<div className="flex justify-start gap-1 md:gap-5">
+<div className="drawer  lg:hidden justify-start p-0">
   <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
   <div className="drawer-content">
     {/* Page content here */}
-    {/* <label htmlFor="my-drawer-4" className="drawer-button btn btn-primary">Open drawer</label> */}
-
-    <label htmlFor="my-drawer-4" className="btn drawer-button p-2 bg-[#f89970] text-white hover:bg-[#f1804f] border-none swap swap-rotate">
-  {/* this hidden checkbox controls the state */}
-  <input type="checkbox" />
-
-  {/* hamburger icon */}
-  <svg
-    className="swap-off fill-current"
-    xmlns="http://www.w3.org/2000/svg"
-    width="32"
-    height="32"
-    viewBox="0 0 512 512">
-    <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
-  </svg>
-
-  {/* close icon */}
-  <svg
-    className="swap-on fill-current"
-    xmlns="http://www.w3.org/2000/svg"
-    width="32"
-    height="32"
-    viewBox="0 0 512 512">
-    <polygon
-      points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
-  </svg>
-</label>
-
-
-
+    <label htmlFor="my-drawer-4" className="drawer-button btn p-0 bg-transparent border-none text-slate-50 hover:bg-transparent text-2xl">
+    
+            <GiHamburgerMenu onClick={handleToggle} className='md:w-10 w-5 h-5 md:h-10 text-black mx-1' /> 
+             
+             
+    </label>
   </div>
-  <div className="drawer-side">
-    <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-    <ul className="menu bg-[#07332f] text-white min-h-full w-80 p-4">
+  <div className="drawer-side z-50  overflow-y-scroll">
+  <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+    <ul className=" menu bg-[#ffffff] border-2 border-sky-200 text-base-content min-h-[150vh] w-80 pb-10 pt-2 px-5 z-50 space-y-5">
       {/* Sidebar content here */}
-      <li className="mb-5"><label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay  py-1 pl-[11px] w-9  rounded-full bg-[#f89970] text-xl">X</label></li>
-      <li className="font-light text-lg bg-transparent text-white"><Link className={`link bg-transparent ${pathname === '/' ? 'active' : 'no-underline'}`} href={'/'}>Home</Link></li>
-      <li className="font-light text-lg text-white"><Link className={`link ${pathname === '/about' ? 'active' : 'no-underline'}`} href={'/about'}>About Us</Link></li>
-      <li className="font-light text-lg text-white"><Link className={`link ${pathname === '/ourService' ? 'active' : 'no-underline'}`} href={'/ourService'}>Services</Link></li>
-      <li className="font-light text-xl text-white mr-2"><Link className={`link ${pathname === '/contact' ? 'active' : 'no-underline'}`} href={'/contact'}>Contact Us</Link></li>
-      <li className="font-light text-lg text-white mr-2"><Link className={`link ${pathname === '/account' ? 'active' : 'no-underline'}`} href={'/account'}>My Account</Link></li>
-      <Link className={`link ${pathname === '/appointment' ? 'active' : 'no-underline'}`} href={'/appointment'}> <button className="relative btn bg-transparent font-semibold text-xl rounded-3xl border-2 text-[#f7a582] border-[#f7a582] hover:border-[#f7a582] group overflow-hidden">
-      <span className="absolute inset-0 w-full h-full transition-transform transform scale-x-0 bg-[#fffffff3] group-hover:scale-x-100 origin-center duration-500 ease-out"></span>
-        <span className="relative z-50 text-[#f7a582]">Book Appointment</span>
-        </button></Link>
+      {/* <h1 htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay bg-black text-white pl-3 py-1 rounded-lg text-xl w-9">X</h1> */}
+      <li className="flex flex-row "><label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay  py-1 pl-[11px] w-9  rounded-full bg-[#08b0f8] hover:bg-[#0838f8] text-white text-xl font-bold">X</label></li>
+      <div className="flex items-center p-1 mb-10 rounded-md bg-slate-300">
+      <input
+                type='text'
+                name='search'
+                
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder='Search Here'
+                className='w-full px-3 py-2  rounded-md  focus:outline-none  text-gray-900'
+                
+              />
+
+                <IoIosSearch className="h-8 w-8 " />
+          </div>
+
+          <ul className="menu lg:menu-horizontal bg-base-100 rounded-lg lg:mb-64">
+
+          <li>
+    <details >
+      <summary className="text-lg font-bold border-2 hover:bg-sky-200 ">Category</summary>
+      <ul className="p-0 m-0">
+        
+        </ul>
+
+        </details>
+        </li>
+
+          </ul>
+
+
+
+
+
+      <li  className="mr-3  rounded-md hover:scale-105 border-2 hover:bg-sky-200 transition duration-300 bg-white text-center text-xl font-medium "><Link href="/shop" >Shop</Link></li>
+                       <li  className="mr-3 border-2 hover:bg-sky-200 rounded-md hover:scale-105 transition duration-300 bg-white text-center text-xl font-medium"><Link href="/blog" >Blog</Link></li>
+
+
+                      <li  className="mr-3 border-2 hover:bg-sky-200  rounded-md hover:scale-105 transition duration-300 bg-white text-center text-xl font-medium"><Link href="/contact" className="text-center">Contact Us</Link></li>
     </ul>
   </div>
 </div>
 
-    
-</div>
 
-  </div>
-</div>
-        </div>
+                   <Link href='/' className="btn hover:bg-transparent border-none bg-transparent text-black p-0 font-bold normal-case text-xl md:text-2xl lg:text-5xl" >
+                      {/* <img src={img} className="h-12 w-32 rounded-md" alt="" /> */}
+                      {/* <h1>Bostro</h1> */}
+                      </Link>
+                 </div>   
+               </div>
+
+
+               <div data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300" className="navbar-center hidden lg:flex">
+                   <ul className="menu-horizontal px-1 text-lg font-normal flex gap-10">
+                   {navLinks}
+                   </ul>
+               </div>
+
+
+
+               <div className="navbar-end ">
+               
+               
+                <div className="flex items-center justify-center gap-5 mr-5">
+                <div className="flex items-center p-1 rounded-md ">
+                <IoIosSearch className="h-8 w-8 text-black mr-1" />
+      <input
+                type='text'
+                
+                placeholder='Search Here . . . '
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className='w-full px-3 py-2 border-b-2 border-b-black  rounded-sm  focus:outline-none  text-gray-900'
+                
+              />
+
+               
+          </div>
+                 
+                </div>
+
+
+               </div>
+           </div>
+           </div>
+            
+       </>
     );
 };
 
