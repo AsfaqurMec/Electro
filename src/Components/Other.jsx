@@ -1,12 +1,20 @@
+"use client"
 import React from 'react';
 import Image from "next/image";
 import lofo from '../../images/Screenshot 2024-09-09 192439.png'
 import lofo1 from '../../images/Samsung-S24-Ultra-Titanium-Grey-removebg-preview.png'
 import drone from '../../images/Screenshot 2024-09-11 015109.png'
 import pc from '../../images/Screenshot 2024-09-11 015123.png'
-
+import { useState } from "react";
 const Other = () => {
+    const colors = ["#EC4899", "#8B5CF6", "#3B82F6", "#22C55E", "#FACC15"]; // Example color array
+  const [selectedColor, setSelectedColor] = useState("");
+
+  const handleChange = (color) => {
+    setSelectedColor(color);
+  };
     return (
+        <>
         <div className='my-10 px-5'>
             <div className='flex flex-col lg:flex-row'>
                 <div className='w-full lg:w-1/2'>
@@ -50,6 +58,27 @@ const Other = () => {
       </div>
 
         </div>
+
+<div className="flex space-x-4">
+{colors.map((color, index) => (
+  <label key={index} className="cursor-pointer">
+    <input
+      type="radio"
+      name="color"
+      value={color}
+      onChange={() => handleChange(color)}
+      className="hidden"
+    />
+    <div
+      className={`w-10 h-10 rounded-full border-4 transition-transform ${
+        selectedColor === color ? "scale-105 border-gray-200" : "border-white"
+      }`}
+      style={{ backgroundColor: color }}
+    ></div>
+  </label>
+))}
+</div>
+</>
     );
 };
 
