@@ -65,15 +65,33 @@ const Banner = () => {
         
       </Swiper>
 
-      <div className='bg-slate-200 w-full flex flex-col lg:flex-row gap-10 justify-evenlyitems-center py-8 px-6'>
-        <div className='w-full lg:w-2/3'>
-          <h1 className='font-semibold text-3xl mb-3'>WE ARE HELPING PEOPLE FROM 50 YEARS</h1>
-          <p className='text-slate-600 font-medium text-lg'>You can give blood at any of our blood donation venues all over the world. We have total sixty thousands donor centers and visit thousands of other venues on various occasions.</p>
+      <div className='w-full flex flex-col lg:flex-row gap-10  py-10'>
+      <div className='w-full lg:w-1/3 flex flex-col md:flex-row bg-white justify-center items-center gap-1 md:gap-5 px-5 py-8  rounded-md'>
+        <div className='space-y-3'>
+           <h1 className='text-cyan-500 tracking-widest font-medium'>New Arrival</h1>
+           <h1 className='text-xl font-semibold'>Galaxy S24 Series</h1>
+           <h1 className='pt-3 font-bold'>Shop Now ?</h1>
+           </div>
+           <Image src={samsung} className='h-52 w-56' alt='image'></Image>
+         </div>
 
-        </div>
-        <div className='w-full lg:w-1/3 flex items-center justify-center'>
-       
-        </div>
+         <div className='w-full lg:w-1/3  flex flex-col md:flex-row bg-white justify-center items-center gap-1 md:gap-5 px-5 py-8  rounded-md'>
+        <div className='space-y-3'>
+           <h1 className='text-cyan-500 tracking-widest font-medium'>New Arrival</h1>
+           <h1 className='text-xl font-semibold'>iPhone 15 Series</h1>
+           <h1 className='pt-3 font-bold'>Shop Now ?</h1>
+           </div>
+           <Image src={iphone} className='h-52 w-56' alt='image'></Image>
+         </div>
+
+         <div className='w-full lg:w-1/3  flex flex-col md:flex-row bg-white justify-center items-center gap-1 md:gap-5 px-5 py-8  rounded-md'>
+        <div className='space-y-3'>
+           <h1 className='text-cyan-500 tracking-widest font-medium'>New Arrival</h1>
+           <h1 className='text-xl font-semibold'>EarBuds</h1>
+           <h1 className='pt-3 font-bold'>Shop Now ?</h1>
+           </div>
+           <Image src={ear} className='h-52 w-56' alt='image'></Image>
+         </div>
       </div>
 
 
