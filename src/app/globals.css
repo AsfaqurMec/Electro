@@ -38,7 +38,10 @@
 
 
 .banner1 {
-  background: url("../../images//Blue-Banner-Background-HD.png");
+  background: url("../../images//pngtree-banner-web-template-abstract-blue-and-golden-curved-lines-overlapping-layer-image_1480853.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .banner2 {
   background: url("../../images//360_F_461470323_6TMQSkCCs9XQoTtyer8VCsFypxwRiDGU.jpg");
