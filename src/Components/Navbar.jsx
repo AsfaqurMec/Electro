@@ -10,6 +10,9 @@ import { IoIosSearch } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 import { IoCartOutline } from "react-icons/io5";
 import { useState } from "react";
+import logo from '../../images/Screenshot 2024-09-09 192325.png'
+
+
 const Navbar = () => {
   const pathname = usePathname();
   const [search, setSearch] = useState('')
@@ -166,8 +169,8 @@ const Navbar = () => {
 
 
                    <Link href='/' className="btn hover:bg-transparent border-none bg-transparent text-black p-0 font-bold normal-case text-xl md:text-2xl lg:text-5xl" >
-                      {/* <img src={img} className="h-12 w-32 rounded-md" alt="" /> */}
-                      {/* <h1>Bostro</h1> */}
+                      
+                      <Image className="w-32 h-10" src={logo} alt="logo"></Image>
                       </Link>
                  </div>   
                </div>

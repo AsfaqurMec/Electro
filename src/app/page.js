@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
     <div>
-      <div className='bg-gradient-to-l from-sky-200 to-emerald-100 pt-10 px-5'>
+      <div className='bg-gradient-to-l from-sky-400 to-emerald-100 pt-10 px-5'>
       <Category></Category>
       <Banner></Banner>
       </div>

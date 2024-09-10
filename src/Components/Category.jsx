@@ -47,37 +47,37 @@ const Category = () => {
            className="mySwiper  "
          >
           <SwiperSlide className=''>
-         <div className='flex  bg-white justify-center items-center px-5 py-3 gap-1 md:gap-5 mb-10 rounded-md'>
+         <div className='flex shadow-xl bg-white justify-center items-center px-5 py-3 gap-1 md:gap-5 mb-10 rounded-md'>
            <Image src={iphone} className='h-16 w-16' alt='image'></Image>
            <h1>Phone</h1>
          </div>
           </SwiperSlide>
           <SwiperSlide className=''>
-         <div className='flex  bg-white justify-center items-center px-5 gap-1 md:gap-5 py-3 mb-10 rounded-md'>
+         <div className='flex shadow-xl bg-white justify-center items-center px-5 gap-1 md:gap-5 py-3 mb-10 rounded-md'>
            <Image src={tablet} className='h-16 w-16' alt='image'></Image>
            <h1>Tablet</h1>
          </div>
           </SwiperSlide>
           <SwiperSlide className=''>
-         <div className='flex  bg-white justify-center items-center gap-1 md:gap-5 px-5 py-3 mb-10 rounded-md'>
+         <div className='flex shadow-xl bg-white justify-center items-center gap-1 md:gap-5 px-5 py-3 mb-10 rounded-md'>
            <Image src={watch} className='h-16 w-16' alt='image'></Image>
            <h1>SmartWatch</h1>
          </div>
           </SwiperSlide>
           <SwiperSlide className=''>
-         <div className='flex  bg-white justify-center items-center gap-1 md:gap-5 px-5 py-3 mb-10 rounded-md'>
+         <div className='flex shadow-xl bg-white justify-center items-center gap-1 md:gap-5 px-5 py-3 mb-10 rounded-md'>
            <Image src={ear} className='h-16 w-16' alt='image'></Image>
            <h1>EarBuds</h1>
          </div>
           </SwiperSlide>
           <SwiperSlide className=''>
-         <div className='flex  bg-white justify-center items-center gap-1 md:gap-5 px-0 py-3 mb-10 rounded-md'>
+         <div className='flex shadow-xl bg-white justify-center items-center gap-1 md:gap-5 px-0 py-3 mb-10 rounded-md'>
            <Image src={head} className='h-16 w-16' alt='image'></Image>
            <h1>HeadPhone</h1>
          </div>
           </SwiperSlide>
           <SwiperSlide className=''>
-         <div className='flex  bg-white justify-center items-center gap-1 md:gap-5 px-0 py-3 mb-10 rounded-md'>
+         <div className='flex shadow-xl bg-white justify-center items-center gap-1 md:gap-5 px-0 py-3 mb-10 rounded-md'>
            <Image src={head} className='h-16 w-16' alt='image'></Image>
            <h1>HeadPhone</h1>
          </div>

@@ -66,7 +66,7 @@ const Banner = () => {
       </Swiper>
 
       <div className='w-full flex flex-col lg:flex-row gap-10  py-10'>
-      <div className='w-full lg:w-1/3 flex flex-col md:flex-row bg-white justify-center items-center gap-1 md:gap-5 px-5 py-8  rounded-md'>
+      <div className='w-full lg:w-1/3 shadow-2xl flex flex-col md:flex-row bg-white justify-center items-center gap-1 md:gap-5 px-5 py-8  rounded-md'>
         <div className='space-y-3'>
            <h1 className='text-cyan-500 tracking-widest font-medium'>New Arrival</h1>
            <h1 className='text-xl font-semibold'>Galaxy S24 Series</h1>
@@ -75,7 +75,7 @@ const Banner = () => {
            <Image src={samsung} className='h-52 w-56' alt='image'></Image>
          </div>
 
-         <div className='w-full lg:w-1/3  flex flex-col md:flex-row bg-white justify-center items-center gap-1 md:gap-5 px-5 py-8  rounded-md'>
+         <div className='w-full lg:w-1/3 shadow-2xl flex flex-col md:flex-row bg-white justify-center items-center gap-1 md:gap-5 px-5 py-8  rounded-md'>
         <div className='space-y-3'>
            <h1 className='text-cyan-500 tracking-widest font-medium'>New Arrival</h1>
            <h1 className='text-xl font-semibold'>iPhone 15 Series</h1>
@@ -84,7 +84,7 @@ const Banner = () => {
            <Image src={iphone} className='h-52 w-56' alt='image'></Image>
          </div>
 
-         <div className='w-full lg:w-1/3  flex flex-col md:flex-row bg-white justify-center items-center gap-1 md:gap-5 px-5 py-8  rounded-md'>
+         <div className='w-full lg:w-1/3 shadow-2xl  flex flex-col md:flex-row bg-white justify-center items-center gap-1 md:gap-5 px-5 py-8  rounded-md'>
         <div className='space-y-3'>
            <h1 className='text-cyan-500 tracking-widest font-medium'>New Arrival</h1>
            <h1 className='text-xl font-semibold'>EarBuds</h1>
