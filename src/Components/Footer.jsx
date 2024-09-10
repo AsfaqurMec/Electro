@@ -5,46 +5,21 @@ import React from 'react';
 const Footer = () => {
     return (
         <div className=' bg-[#07332f] '>
-           <footer className="w-[90%] mx-auto lg:grid-flow-col grid-flow-row footer bg-[#07332f]  text-white p-10">
-  <aside>
-    <svg
-      width="50"
-      height="50"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-      fillRule="evenodd"
-      clipRule="evenodd"
-      className="fill-current">
-      <path
-        d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z"></path>
-    </svg>
-    {/* <Image src={logo} alt='logo'></Image> */}
-    <p className='mt-3 text-base text-slate-300'>
-    Our family-centered approach to healthcare <br /> ensures that each member of your family <br /> receives
-      
-      personalized attention.
-    </p>
-  </aside>
+          <footer className="w-full justify-between mx-auto lg:grid-flow-col grid-flow-row footer bg-[#07332f]  text-white p-10">
+  
   <nav className='space-y-3'>
-    <h6 className="footer-title text-xl mb-3 text-[#eb966e] opacity-100">Quick Links</h6>
-    <a className="link link-hover text-base font-semibold">Home</a>
-    <a className="link link-hover text-base font-semibold">About Us</a>
-    <a className="link link-hover text-base font-semibold">Doctors</a>
-    <a className="link link-hover text-base font-semibold">Services</a>
+    <h6 className="footer-title text-xl mb-3 text-[#eb966e] opacity-100">Follow Us:</h6>
+    
   </nav>
   <nav className='space-y-3'>
-    <h6 className="footer-title text-xl mb-3 text-[#eb966e] opacity-100">Contact Details</h6>
-    <a className="link link-hover text-base font-semibold">Dhanmondi Road No.7, Dhaka</a>
-    <a className="link link-hover text-base font-semibold">Healthcare@gmail.com</a>
-    <a className="link link-hover text-base font-semibold">+01956230265</a>
-    <a className="link link-hover text-base font-semibold">8 AM - 5 PM , Monday - Saturday</a>
+    <h6 className="footer-title text-xl mb-3 text-[#eb966e] opacity-100">We Accept:</h6>
+    
   </nav>
   
   <form className='hidden md:block'>
     <h6 className="footer-title text-xl mb-3 text-[#eb966e] opacity-100">Newsletter</h6>
-    <h1 className='text-lg font-semibold'>Subscribe To Our Newsletter</h1>
-    <p className='text-base text-slate-300 my-1'>Stay informed and never miss out on the <br /> latest news, health tips.</p>
-    <fieldset className="form-control w-80 ">
+   
+    <fieldset className="form-control w-64 md:w-80 ">
     
       <div className="join">
         <input
@@ -55,12 +30,63 @@ const Footer = () => {
       </div>
     </fieldset>
   </form>
-</footer> 
-<footer className="footer footer-center text-white p-4">
-  <aside>
-    <p className='text-xl mb-7'>Copyright © {new Date().getFullYear()} - All right reserved by <strong className='text-[#eb966e]'>MediPro</strong> Ltd</p>
-  </aside>
 </footer>
+           <footer className="w-full mx-auto lg:grid-flow-col grid-flow-row footer bg-[#07332f]  text-white p-10 border-t-2 border-t-gray-400">
+  
+  <nav className='space-y-3'>
+    <h6 className="footer-title text-xl mb-3 text-[#eb966e] opacity-100">CUSTOMER CARE</h6>
+    <a className="link link-hover text-base font-semibold">FAQs</a>
+    <a className="link link-hover text-base font-semibold">Terms of Service</a>
+    <a className="link link-hover text-base font-semibold">Privacy Policy</a>
+    <a className="link link-hover text-base font-semibold">Contact Us</a>
+    <a className="link link-hover text-base font-semibold">Gift Card</a>
+  </nav>                                                                                        
+
+
+  <nav className='space-y-3'>
+    <h6 className="footer-title text-xl mb-3 text-[#eb966e] opacity-100">HELP & SUPPORT</h6>
+    <a className="link link-hover text-base font-semibold">Shipping Info</a>
+    <a className="link link-hover text-base font-semibold">Returns</a>
+    <a className="link link-hover text-base font-semibold">How To Order</a>
+    <a className="link link-hover text-base font-semibold">How To Track</a>
+    <a className="link link-hover text-base font-semibold">Size Guide</a>
+  </nav>
+  
+
+  <nav className='space-y-3'>
+    <h6 className="footer-title text-xl mb-3 text-[#eb966e] opacity-100">COMPANY INFO</h6>
+    <a className="link link-hover text-base font-semibold">About Us</a>
+    <a className="link link-hover text-base font-semibold">Our Blog</a>
+    <a className="link link-hover text-base font-semibold">Careers</a>
+    <a className="link link-hover text-base font-semibold">Store Locations</a>
+    <a className="link link-hover text-base font-semibold">Testimonial</a>
+  </nav>
+  <nav className='space-y-3'>
+    <h6 className="footer-title text-xl mb-3 text-[#eb966e] opacity-100">Our Shop</h6>
+    <a className="link link-hover text-base font-semibold">Gaming Gear</a>
+    <a className="link link-hover text-base font-semibold">Electronics</a>
+    <a className="link link-hover text-base font-semibold">Home Appliance</a>
+    <a className="link link-hover text-base font-semibold">Audio</a>
+    <a className="link link-hover text-base font-semibold">Smartphone</a>
+  </nav>
+</footer> 
+<footer className="w-full justify-between mx-auto lg:grid-flow-col grid-flow-row footer bg-[#07332f]  text-white p-10 border-t-2 border-t-gray-400">
+  
+  <nav className='space-y-3'>
+  <p className='text-xl mb-0'>Copyright © {new Date().getFullYear()} - by <strong className='text-[#eb966e]'>MediPro</strong> Ltd</p>
+    <p>All right reserved</p>
+  </nav>
+  <nav className='space-y-3'>
+    <h6 className="footer-title text-xl mb-3 text-[#eb966e] opacity-100">Store Location : <br />
+    15 West 21th Street, Miami FL, USA</h6>
+    
+  </nav>
+  
+  <h6 className="footer-title text-xl mb-3 text-[#eb966e] opacity-100">  Call Us Now +123-456-789 <br />
+Email: info@example.com</h6>
+  
+</footer>
+
         </div>
     );
 };
