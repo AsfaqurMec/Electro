@@ -1,10 +1,13 @@
+import Banner from "@/Components/Banner";
+//import Category from "@/Components/Category";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <>
     <div>
-      <h1 className="py-10">Electro</h1>
+      {/* <Category></Category> */}
+      <Banner></Banner>
     </div>
     </>
   );
