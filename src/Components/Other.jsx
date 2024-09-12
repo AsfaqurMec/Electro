@@ -9,7 +9,7 @@ import { useState } from "react";
 const Other = () => {
     const colors = ["#EC4899", "#8B5CF6", "#3B82F6", "#22C55E", "#FACC15"]; // Example color array
   const [selectedColor, setSelectedColor] = useState("");
-
+const image ='/uploads/iPhone-15-Plus-_4_-7443-removebg-preview.png'
   const handleChange = (color) => {
     setSelectedColor(color);
   };
@@ -77,6 +77,7 @@ const Other = () => {
     ></div>
   </label>
 ))}
+<Image src={image} alt='ww' width={100} height={100}></Image>
 </div>
 </>
     );
