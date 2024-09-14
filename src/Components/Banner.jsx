@@ -17,15 +17,15 @@ const Banner = () => {
           delay: 5500,
           disableOnInteraction: false,
         }}  modules={[Autoplay]} className="mySwiper">
-        <SwiperSlide className='rounded-sm w-full h-[120vh] md:h-[90vh] bg-cover bg-center bg-no-repeat banner1'>
+        <SwiperSlide className='rounded-sm w-full h-[100vh] md:h-[90vh] bg-cover bg-center bg-no-repeat banner1'>
            
-            <div className='w-full gap-4 h-[120vh] md:h-[90vh] flex flex-col lg:flex-row justify-around items-center pl-8 bg-[#02020200]'>
+            <div className='w-full gap-4 h-[100vh] md:h-[90vh] flex flex-col lg:flex-row justify-around items-center pl-0 md:pl-8 bg-[#02020200]'>
           <div className='space-y-5'>  
-            <h1 className='  text-white font-medium tracking-[.12em] text-4xl'>Wireless</h1>
-            <h1 className='  text-white font-medium tracking-[.12em] text-7xl'>Earbuds </h1>
+            <h1 className='text-center md:text-left  text-white font-medium tracking-[.12em] text-2xl md:text-4xl'>Wireless</h1>
+            <h1 className='text-center md:text-left  text-white font-medium tracking-[.12em] text-4xl md:text-7xl'>Earbuds </h1>
             <div className='flex flex-col gap-3 md:flex-row'>
             
-            <button className='btn bg-black text-white px-8 text-xl'>Shop Now</button>
+            <button className='btn bg-black text-white px-8 text-xl w-52'>Shop Now</button>
             </div>
             </div>
 
@@ -33,14 +33,14 @@ const Banner = () => {
             </div>
         </SwiperSlide>
         
-        <SwiperSlide className='rounded-sm w-full h-[120vh] md:h-[90vh] bg-cover bg-center bg-no-repeat banner2'>
-        <div className='w-full gap-4 h-[120vh] md:h-[90vh] flex flex-col lg:flex-row justify-around items-center pl-8 bg-[#02020200]'>
+        <SwiperSlide className='rounded-sm w-full h-[100vh] md:h-[90vh] bg-cover bg-center bg-no-repeat banner2'>
+        <div className='w-full gap-4 h-[100vh] md:h-[90vh] flex flex-col lg:flex-row justify-around items-center pl-0 md:pl-8 bg-[#02020200]'>
           <div className='space-y-5'>  
-            <h1 className='  text-white font-medium tracking-[.12em] text-6xl'>Galaxy S24 Series</h1>
-            <h1 className='  text-white font-medium tracking-[.12em] text-3xl'>Galaxy Ai Is Here</h1>
-            <div className='flex flex-col gap-3 md:flex-row'>
+            <h1 className='text-center md:text-left  text-white font-medium tracking-[.12em] text-3xl md:text-6xl'>Galaxy S24 Series</h1>
+            <h1 className='text-center md:text-left  text-white font-medium tracking-[.12em] text-xl md:text-3xl'>Galaxy Ai Is Here</h1>
+            <div className='flex flex-col  items-center gap-3 md:flex-row'>
             
-            <button className='btn bg-black text-white px-8 text-xl'>Shop Now</button>
+            <button className='btn bg-black text-white px-8 text-xl w-52'>Shop Now</button>
             </div>
             </div>
 
@@ -48,14 +48,14 @@ const Banner = () => {
             </div>
         </SwiperSlide>
         
-        <SwiperSlide className='rounded-sm w-full h-[120vh] md:h-[90vh] bg-cover bg-center bg-no-repeat banner3'>
-        <div className='w-full gap-4 h-[120vh] md:h-[90vh] flex flex-col lg:flex-row justify-around items-center pl-8 bg-[#02020200]'>
+        <SwiperSlide className='rounded-sm w-full h-[100vh] md:h-[90vh] bg-cover bg-center bg-no-repeat banner3'>
+        <div className='w-full gap-4 h-[100vh] md:h-[90vh] flex flex-col lg:flex-row justify-around items-center pl-0 md:pl-8 bg-[#02020200]'>
           <div className='space-y-5'>  
-            <h1 className='  text-white font-medium tracking-[.12em] text-6xl'>iPhone 15 Series</h1>
-            <h1 className='  text-white font-medium tracking-[.12em] text-3xl'>Everything You Need To Know </h1>
-            <div className='flex flex-col gap-3 md:flex-row'>
+            <h1 className='text-center md:text-left  text-white font-medium tracking-[.12em] text-3xl md:text-6xl'>iPhone 15 Series</h1>
+            <h1 className='text-center md:text-left  text-white font-medium tracking-[.12em] text-xl md:text-3xl'>Everything You Need To Know </h1>
+            <div className='flex flex-col items-center gap-3 md:flex-row'>
             
-            <button className='btn bg-black text-white px-8 text-xl'>Shop Now</button>
+            <button className='btn bg-black text-white px-8 text-xl w-52'>Shop Now</button>
             </div>
             </div>
 

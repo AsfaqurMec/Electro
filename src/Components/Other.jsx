@@ -1,20 +1,28 @@
-"use client"
+
 import React from 'react';
 import Image from "next/image";
 import lofo from '../../images/Screenshot 2024-09-09 192439.png'
 import lofo1 from '../../images/Samsung-S24-Ultra-Titanium-Grey-removebg-preview.png'
 import drone from '../../images/Screenshot 2024-09-11 015109.png'
 import pc from '../../images/Screenshot 2024-09-11 015123.png'
-import { useState } from "react";
-const Other = () => {
-    const colors = ["#EC4899", "#8B5CF6", "#3B82F6", "#22C55E", "#FACC15"]; // Example color array
-  const [selectedColor, setSelectedColor] = useState("");
-const image ='/uploads/iPhone-15-Plus-_4_-7443-removebg-preview.png'
-  const handleChange = (color) => {
-    setSelectedColor(color);
-  };
+import { getServices } from '../../services/getItems';
+//import { useState } from "react";
+
+const Other = async () => {
+//     const colors = ["#EC4899", "#8B5CF6", "#3B82F6", "#22C55E", "#FACC15"]; // Example color array
+//   const [selectedColor, setSelectedColor] = useState("");
+// const image ='/uploads/iPhone-15-Plus-_4_-7443-removebg-preview.png'
+//   const handleChange = (color) => {
+//     setSelectedColor(color);
+//   };
+
+  const { services } = await getServices();
+  console.log(services);
+  
+
     return (
         <>
+        <h1>{services.length}</h1>
         <div className='my-10 px-5'>
             <div className='flex flex-col lg:flex-row'>
                 <div className='w-full lg:w-1/2'>
@@ -24,7 +32,7 @@ const image ='/uploads/iPhone-15-Plus-_4_-7443-removebg-preview.png'
                     <h3>Trending now</h3>
                     <h1>Speakers Of The House</h1>
                     <p className='text-center'>With HomePod or HomePod mini, amplify all the listening experiences you love. And enjoy an effortlessly connected smart home — with Siri built in — thats private and secure.</p>
-                    <div className='w-[90%] lg:w-[70%] mt-6 flex justify-around items-center shadow-slate-300 shadow-lg bg-white rounded-md p-3'>
+                    <div className='w-[98%] lg:w-[70%] mt-6 flex justify-around items-center shadow-slate-300 shadow-lg bg-white rounded-md p-3'>
                         <Image className='h-20 w-20' src={lofo1} alt='lofo1'></Image>
                         <div>
                             <h2>Galaxy S24 Ultra</h2>
@@ -58,7 +66,7 @@ const image ='/uploads/iPhone-15-Plus-_4_-7443-removebg-preview.png'
       </div>
 
         </div>
-
+{/* 
 <div className="flex space-x-4">
 {colors.map((color, index) => (
   <label key={index} className="cursor-pointer">
@@ -78,7 +86,7 @@ const image ='/uploads/iPhone-15-Plus-_4_-7443-removebg-preview.png'
   </label>
 ))}
 <Image src={image} alt='ww' width={100} height={100}></Image>
-</div>
+</div> */}
 </>
     );
 };

@@ -39,7 +39,7 @@ const Category = () => {
             spaceBetween: 20,
           },
           1024: {
-            slidesPerView: 6,  // 3 slides for devices ≥ 1024px
+            slidesPerView: 5,  // 3 slides for devices ≥ 1024px
             spaceBetween: 20,
           },
         }}
@@ -76,12 +76,7 @@ const Category = () => {
            <h1>HeadPhone</h1>
          </div>
           </SwiperSlide>
-          <SwiperSlide className=''>
-         <div className='flex shadow-xl bg-white justify-center items-center gap-1 md:gap-5 px-0 py-3 mb-10 rounded-md'>
-           <Image src={head} className='h-16 w-16' alt='image'></Image>
-           <h1>HeadPhone</h1>
-         </div>
-          </SwiperSlide>
+          
           
 
         </Swiper>

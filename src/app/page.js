@@ -1,5 +1,6 @@
 import Banner from "@/Components/Banner";
 import Category from "@/Components/Category";
+
 import Other from "@/Components/Other";
 
 
@@ -14,7 +15,7 @@ export default function Home() {
       <Banner></Banner>
 
       </div>
-
+      
       <Other></Other>
     </div>
     </>
