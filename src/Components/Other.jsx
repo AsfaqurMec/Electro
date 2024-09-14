@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 
-import React from 'react';
 import Image from "next/image";
 import lofo from '../../images/Screenshot 2024-09-09 192439.png'
 import lofo1 from '../../images/Samsung-S24-Ultra-Titanium-Grey-removebg-preview.png'
@@ -17,12 +17,59 @@ const Other = async () => {
 //   };
 
   const { services } = await getServices();
-  console.log(services);
-  
+//  console.log(services);
+  const flagship = services.filter(item=> item.type == 'flagship');
+console.log(flagship);
 
     return (
         <>
-        <h1>{services.length}</h1>
+        {/* <h1>{flagship.length}</h1> */}
+        <section className='pt-14'>
+            <h2 className='text-center font-semibold text-2xl '>Best Selers</h2>
+            <h1 className='text-center font-semibold text-4xl mb-5'>Top Best sellers of This Week</h1>
+
+            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 px-5 py-10'>
+            {/* { flagship?.map(latest => 
+             <div key={latest._id} className="card shadow-2xl rounded-md group">
+              <figure className='relative'>
+                <img className='transition-transform duration-300 ease-in-out transform hover:scale-125 h-60 md:h-full'
+                  src={latest.image1}
+                  alt="Shoes" />
+              
+              </figure>
+              <div className="card-body p-3 md:p-5">
+                <h2 className="card-title text-base">{latest.title}</h2>
+                <p>${latest.price}</p>
+                
+              </div>
+            </div>  
+          )
+          } */}
+          {flagship?.map(latest => (
+        <div
+          key={latest._id}
+          className="relative card shadow-2xl rounded-md group overflow-hidden"
+        >
+          <div className="relative w-full h-60 md:h-60">
+            <img
+              className="absolute inset-0 w-full h-full object-cover transition-transform delay-1000 duration-1000 ease-in-out transform group-hover:opacity-0"
+              src={latest.image1}
+              alt="Shoes"
+            />
+            <img
+              className="absolute inset-0 w-full h-full object-cover transition-transform delay-1000 duration-1000 ease-in-out transform opacity-0 group-hover:opacity-100"
+              src={latest.image2}
+              alt="Shoes"
+            />
+          </div>
+          <div className="card-body p-3 md:p-5">
+            <h2 className="card-title text-base">{latest.title}</h2>
+            <p>${latest.price}</p>
+          </div>
+        </div>
+      ))}
+            </div>
+        </section>
         <div className='my-10 px-5'>
             <div className='flex flex-col lg:flex-row'>
                 <div className='w-full lg:w-1/2'>
