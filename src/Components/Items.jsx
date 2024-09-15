@@ -118,7 +118,7 @@ const Items =  ()  => {
                   <Link href={`/services/${latest._id}`}>
         <div
           
-          className="relative card border rounded-md group overflow-hidden"
+          className="relative card border-2 rounded-md group overflow-hidden"
         >
           <div className="relative w-full h-64 md:h-64">
             <img

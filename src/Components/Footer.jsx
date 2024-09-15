@@ -70,6 +70,16 @@ const Footer = () => {
     <a className="link link-hover text-base font-semibold">Audio</a>
     <a className="link link-hover text-base font-semibold">Smartphone</a>
   </nav>
+
+  <nav className='space-y-3'>
+    <h6 className="footer-title text-xl mb-3 text-[#5e8cf8] opacity-100">MY ACCOUNT</h6>
+    <a className="link link-hover text-base font-semibold">Login</a>
+    <a className="link link-hover text-base font-semibold">Register</a>
+    <a className="link link-hover text-base font-semibold">Wishlist</a>
+    <a className="link link-hover text-base font-semibold">Track Your Orders</a>
+    <a className="link link-hover text-base font-semibold">Checkout</a>
+  </nav>
+
 </footer> 
 <footer className="w-full justify-between mx-auto lg:grid-flow-col grid-flow-row footer bg-[#0c0a1b]  text-white py-10 px-5 border-t-[.5px] border-t-gray-600">
   
