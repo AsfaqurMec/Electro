@@ -122,8 +122,8 @@ const Other = async () => {
         </div>
 
 
-{/* 
-<div className="flex space-x-4">
+
+{/* <div className="flex space-x-4">
 {colors.map((color, index) => (
   <label key={index} className="cursor-pointer">
     <input

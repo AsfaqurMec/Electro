@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/alt-text */
 "use client"
+import Image from 'next/image';
 import React, { useState } from 'react';
 
 const Detail = ({ latest, paramsId }) => {
@@ -24,7 +25,11 @@ const Detail = ({ latest, paramsId }) => {
       setQuantity(prevQuantity => (prevQuantity > 1 ? prevQuantity - 1 : 1));
     };
 
+  const [selectedColor, setSelectedColor] = useState("");
 
+  const handleChange = (color) => {
+    setSelectedColor(color);
+  };
 
 
     return (
@@ -35,7 +40,7 @@ const Detail = ({ latest, paramsId }) => {
  
 
 
-<div className="carousel w-[70%]  relative">
+<div className="carousel w-[90%] rounded-md shadow-xl border-2 relative">
 {
 !toggle ?
 <div id="item1" className="carousel-item w-full ">
@@ -69,22 +74,57 @@ className="h-20 w-20" /></a>
 
 
  </div> 
-<div data-aos="fade-left" data-aos-delay="500" data-aos-duration="1000" className="flex flex-col w-full md:w-1/2 gap-5">
+<div data-aos="fade-left" data-aos-delay="500" data-aos-duration="1000" className="flex flex-col w-full md:w-1/2 gap-5 pl-5 md:pl-0">
  <h2 className="text-4xl font-bold primary-font">{title}</h2>
  <h3 className='text-4xl ml-1 font-medium'><span className=" ml-1"> ${price}</span></h3>
- <h1>#{type}</h1>
- <h1>{latest.service.processor}</h1>
- <h1>{latest.service.screen_size || latest.service.display}</h1>
- <h1>{latest.service.camera}</h1>
- <h1>{latest.service.battery}</h1>
+ <h1 className='text-2xl font-semibold text-slate-600'>#{type}</h1>
+ <h1 className='text-2xl font-semibold text-slate-600'> {latest.service.processor}</h1>
+ <h1 className='text-2xl font-semibold text-slate-600'>{latest.service.screen_size || latest.service.display}</h1>
+ <h1 className='text-2xl font-semibold text-slate-600'> {latest.service.camera}</h1>
+ <h1 className='text-2xl font-semibold text-slate-600'>{latest.service.battery}</h1>
+
+
+
+<section>
+    <div className="flex space-x-4 mb-5">
+    <h1 className='text-lg font-semibold'>Color :</h1>
+    <div
+      className={`w-8 h-8 rounded-full  transition-transform`}
+      style={{ backgroundColor: selectedColor }}
+    ></div>
+    </div>
+<div className="flex space-x-4">
+{latest.service.color_options.map((color, index) => (
+  <label key={index} className="cursor-pointer">
+    <input
+      type="radio"
+      name="color"
+      value={color}
+      onChange={() => handleChange(color)}
+      className="hidden"
+    />
+    <div
+      className={`w-10 h-10 rounded-full border-4 transition-transform ${
+        selectedColor === color ? "scale-105 border-gray-700" : "border-white"
+      }`}
+      style={{ backgroundColor: color }}
+    ></div>
+  </label>
+))}
+
+</div>
+</section>
+
+
+
 
 <div className='flex flex-col md:flex-row gap-3'>
  <label className="form-control w-full md:w-1/2">
   <div className="label">
-    <span className="label-text">Select Storage :</span>
+    <span className="label-text text-lg font-medium">Select Storage :</span>
    
   </div>
-  <select className="select select-bordered">
+  <select className="select select-bordered text-lg font-medium shadow-xl focus:outline-dashed">
 
 
 
@@ -99,10 +139,10 @@ className="h-20 w-20" /></a>
 
 <label className="form-control w-full md:w-1/2">
   <div className="label">
-    <span className="label-text">Select RAM :</span>
+    <span className="label-text text-lg font-medium">Select RAM :</span>
    
   </div>
-  <select className="select select-bordered">
+  <select className="select select-bordered text-lg font-medium shadow-xl focus:outline-dashed">
 
 
 
@@ -118,70 +158,18 @@ className="h-20 w-20" /></a>
 
 </div>
 
- 
-{/* 
-<div className="flex gap-3 items-center">
-<h2 className="text-2xl font-semibold">Color :</h2>
-{
-color1 ?   
-<div className="flex items-center gap-2">
-<input 
-  type="radio" name="radio-7" className="radio w-3 h-3 radio-info" 
-  
-  value={color1} 
-  // checked={selectedValue =={size1}} 
-  onChange={handleChanges} 
-/>
-<div className="w-8 h-8 rounded-full" style={{ backgroundColor: color1 }}></div> 
-  
-
-</div>
-: ''
-}
-{
-color2 ?
-<div className="flex items-center gap-2">
-<input 
-  type="radio" name="radio-7" className="radio w-3 h-3 radio-info"
- 
-  value={color2} 
-  // checked={selectedValue == {size2}} 
-  onChange={handleChanges} 
-/>
-<div className="w-8 h-8 rounded-full" style={{ backgroundColor: color2 }}></div>
-</div>
-: ''
-}
-{
-color3 ?
-<div className="flex items-center gap-2">
-<input 
-  type="radio" name="radio-7" className="radio w-3 h-3 radio-info"  
-  value={color3} 
-  // checked={selectedValue =={size3}} 
-  onChange={handleChanges} 
-/>
-<div className="w-8 h-8 rounded-full" style={{ backgroundColor: color3 }}></div>
-</div>
-: ''
-}
-<div>
-<p className="ml-1 text-xl">Selected color: {selectedValues}</p>
-</div>
-</div> */}
 
 
-
-  <div className="flex justify-between items-center  w-28 border-2 ml-5 lg:ml-0 text-2xl font-semibold">
+  <div className="flex justify-between items-center  w-36 border-2 ml-5 lg:ml-0 text-2xl font-semibold">
    
-    <button className=" w-8 rounded-sm text-black flex items-center justify-center bg-gray-300" onClick={decreaseQuantity}>-</button>
-    <span className="mx-2 text-2xl">{quantity}</span>
-     <button className="w-8 rounded-sm text-black flex items-center justify-center bg-gray-300" onClick={increaseQuantity}>+</button>
+    <button className=" w-9 h-full text-3xl rounded-sm text-black flex items-center justify-center bg-gray-200" onClick={decreaseQuantity}>-</button>
+    <span className="mx-2 text-3xl">{quantity}</span>
+     <button className="w-9 h-full text-3xl rounded-sm text-black flex items-center justify-center bg-gray-200" onClick={increaseQuantity}>+</button>
      </div>
  
 <div className="flex flex-row justify-between">
 
-<h3 className='text-3xl font-medium'>Cost : <span className="text-sky-600 ml-1"> ${price}</span></h3>
+<h3 className='text-3xl font-medium'>Price : <span className="text-sky-600 ml-1"> ${price}</span></h3>
 
 </div>
 <div className="flex flex-col mx-5 lg:mx-0 gap-5">
