@@ -188,7 +188,7 @@ const Navbar = () => {
                
                
                 <div className="flex items-center justify-center gap-5 mr-5">
-                <div className="flex items-center p-1 rounded-md shadow-2xl border-sky-200 border-2">
+                <div className="flex items-center p-1 rounded-md shadow-lg border-sky-200 border-2">
                 
       <input
                 type='text'
