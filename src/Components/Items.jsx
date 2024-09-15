@@ -9,6 +9,7 @@ import { Autoplay} from 'swiper/modules';
 import { getServices } from '../../services/getItems';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
 
 
 
@@ -65,12 +66,7 @@ const Items =  ()  => {
 
     return (
         <>
-        <h1>{bg.length}</h1>
-        {/* <h1>{phone.length}</h1> */}
-      {/* <h1>{load.length}</h1>
-        <h1>{phone.length}</h1>
-        <h1>{watch.length}</h1>
-        <h1>{earbuds.length}</h1>  */}
+       
         <h1 className='text-center text-5xl font-semibold my-14 text-blue-500'>New Arrivals</h1>
           <div className='flex gap-2 md:gap-3 w-full px-1 md:px-5 mb-5'>
              <button onClick={handle}  className={`${
@@ -118,12 +114,13 @@ const Items =  ()  => {
          modules={[Autoplay]}  className=" py-10 px-5">
             
             {bg?.map(latest => (
-                <SwiperSlide key={latest._id} className=' relative card border rounded-md group overflow-hidden'>
-        {/* <div
+                <SwiperSlide key={latest._id} >
+                  <Link href={`/services/${latest._id}`}>
+        <div
           
-          className="relative card  rounded-md group overflow-hidden"
-        > */}
-          <div className="relative w-full h-60 md:h-64">
+          className="relative card border rounded-md group overflow-hidden"
+        >
+          <div className="relative w-full h-64 md:h-64">
             <img
               className="absolute inset-0 w-full h-full object-cover  transition-transform delay-1000 duration-1000 ease-in-out transform group-hover:opacity-0"
               src={latest.image1}
@@ -139,7 +136,8 @@ const Items =  ()  => {
             <h2 className="card-title text-base">{latest.title}</h2>
             <p>${latest.price}</p>
           </div>
-        {/* </div> */}
+          </div>
+          </Link>
         </SwiperSlide>
       ))}
       
