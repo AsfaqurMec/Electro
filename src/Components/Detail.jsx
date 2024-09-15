@@ -76,14 +76,7 @@ className="h-20 w-20" /></a>
  </div> 
 <div data-aos="fade-left" data-aos-delay="500" data-aos-duration="1000" className="flex flex-col w-full md:w-1/2 gap-5 pl-5 md:pl-0">
  <h2 className="text-4xl font-bold primary-font">{title}</h2>
- <h3 className='text-4xl ml-1 font-medium'><span className=" ml-1"> ${price}</span></h3>
- <h1 className='text-2xl font-semibold text-slate-600'>#{type}</h1>
- <h1 className='text-2xl font-semibold text-slate-600'> {latest.service.processor}</h1>
- <h1 className='text-2xl font-semibold text-slate-600'>{latest.service.screen_size || latest.service.display}</h1>
- <h1 className='text-2xl font-semibold text-slate-600'> {latest.service.camera}</h1>
- <h1 className='text-2xl font-semibold text-slate-600'>{latest.service.battery}</h1>
-
-
+ <h3 className='text-4xl ml-1 font-medium'><span className="font-normal ml-1"> ${price}</span></h3>
 
 <section>
     <div className="flex space-x-4 mb-5">
@@ -130,7 +123,7 @@ className="h-20 w-20" /></a>
 
     <option disabled selected>Pick one</option>
     {
-        latest.service.storage.map(item => <option key={item}>{item}</option>)
+        latest.service?.storage?.map(item => <option key={item}>{item}</option>)
     }
    
   </select>
@@ -148,7 +141,7 @@ className="h-20 w-20" /></a>
 
     <option disabled selected>Pick one</option>
     {
-        latest.service.ram.map(item => <option key={item}>{item}</option>)
+        latest.service?.ram?.map(item => <option key={item}>{item}</option>)
     }
    
   </select>
@@ -176,8 +169,13 @@ className="h-20 w-20" /></a>
 <div><button  className="btn w-full bg-emerald-600 hover:bg-green-800 text-white text-xl">Add to Cart</button></div>
 <div><button className="btn text-white text-xl w-full bg-cyan-400 hover:bg-cyan-700">Buy Now</button></div>
 </div>
-<div className="ml-6 lg:ml-0 space-y-5">
-
+<div className="ml-2 lg:ml-0 space-y-5">
+    <h1  className='text-3xl font-semibold border-b-4 border-b-slate-500 pb-2'>Additional Information :</h1>
+<h1 className='text-2xl font-semibold text-slate-600'>#{type}</h1>
+ <h1 className='text-2xl font-semibold text-slate-600'> {latest.service.processor}</h1>
+ <h1 className='text-2xl font-semibold text-slate-600'>{latest.service.screen_size || latest.service.display}</h1>
+ <h1 className='text-2xl font-semibold text-slate-600'> {latest.service.camera}</h1>
+ <h1 className='text-2xl font-semibold text-slate-600'>{latest.service.battery}</h1>
 
 <h1 className="text-xl font-semibold">SKU : <span className="text-xl text-gray-500">N/A</span></h1>
 <h1 className="text-xl font-semibold">Category : <span className="text-xl text-gray-500">{category}</span></h1>
