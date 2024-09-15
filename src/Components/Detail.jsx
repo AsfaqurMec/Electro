@@ -2,18 +2,39 @@
 /* eslint-disable jsx-a11y/alt-text */
 "use client"
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
 
+// Import Swiper styles
+import 'swiper/css';
+import { Autoplay} from 'swiper/modules';
+import { getServices } from '../../services/getItems';
+import Link from 'next/link';
 const Detail = ({ latest, paramsId }) => {
 
     const [toggle, setToggle] = useState(false);
     const handleToggle = () => setToggle(false);
     const handleToggles = () => setToggle(true);
-    console.log("dataaa",latest);
+   // console.log("dataaa",latest);
     
+   const [lat, setLat] = useState([]);
+ 
+   useEffect(() => {
+       const getData = async () => {
+           const { services } = await getServices();
+         setLat(services);
+       }
+       getData()
+     }, [])
+
+    
+
 
     const {_id, title, image1, image2, price,type, category} = latest.service;
 
+
+    const related = lat.filter(item=> item.category == category);
 
     const [quantity, setQuantity] = useState(1);
 
@@ -221,6 +242,83 @@ className="h-20 w-20" /></a>
 </div> 
 
 </div> 
+
+
+
+<h1 className='text-5xl font-medium text-center my-10'>Related Products</h1>
+<div className='py-10 px-2 md:px-5'>
+      <Swiper   autoplay={{
+          delay: 1500,
+          disableOnInteraction: false,
+          slidesPerView:2
+        }} 
+        breakpoints={{
+          320: {
+            slidesPerView: 2,  // 1 slide for devices ≥ 640px
+            spaceBetween: 10,
+          },
+            380: {
+              slidesPerView: 2,  // 1 slide for devices ≥ 640px
+              spaceBetween: 10,
+            },
+            640: {
+              slidesPerView: 3,  // 1 slide for devices ≥ 640px
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 4,  // 2 slides for devices ≥ 768px
+              spaceBetween: 20,
+            },
+            1024: {
+              slidesPerView: 4,  // 3 slides for devices ≥ 1024px
+              spaceBetween: 20,
+            },
+          }}
+         modules={[Autoplay]}  className=" py-10 px-5">
+            
+            {related?.map(latest => (
+                <SwiperSlide key={latest._id} >
+                  <Link href={`/services/${latest._id}`}>
+        <div
+          
+          className="relative card border-2 shadow-2xl rounded-md group overflow-hidden"
+        >
+          <div className="relative w-full h-72 md:h-80 ">
+            <img
+              className="absolute inset-0 w-full h-full object-cover transition-transform delay-1000 duration-1000 ease-in-out transform group-hover:opacity-0"
+              src={latest.image1}
+              alt="Shoes"
+            />
+            <img
+              className="absolute inset-0 w-full h-full object-cover transition-transform delay-1000 duration-1000 ease-in-out transform opacity-0 group-hover:opacity-100"
+              src={latest.image2}
+              alt="Shoes"
+            />
+          </div>
+          <div className="card-body p-3 md:p-5">
+            <h2 className="card-title text-base">{latest.title}</h2>
+            <p>${latest.price}</p>
+          </div>
+          </div>
+          </Link>
+        </SwiperSlide>
+      ))}
+      
+        
+      </Swiper>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
     );
 };
