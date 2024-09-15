@@ -7,7 +7,7 @@ export const getServices = async () => {
     const res = await axios.get(
       `http://localhost:3000/services/api/get-all`
     );
-    console.log(res.data);
+    //console.log(res.data);
     
     return res.data;
   } catch (error) {
@@ -22,6 +22,20 @@ export const getServicesDetails = async (id) => {
     const res = await axios.get(
       `${process.env.NEXT_PUBLIC_BASE_URL}/services/api/${id}`
     );
+    return res.data;
+  } catch (error) {
+    return {};
+  }
+};
+
+export const getServicesCategory = async (id) => {
+ console.log(id);
+  
+  try {
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/product/api/${id}`
+    );
+    //console.log(res.data);
     return res.data;
   } catch (error) {
     return {};
