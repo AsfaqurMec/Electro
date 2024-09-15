@@ -114,7 +114,7 @@ const Navbar = () => {
     {/* Page content here */}
     <label htmlFor="my-drawer-4" className="drawer-button btn p-0 bg-transparent border-none text-slate-50 hover:bg-transparent text-2xl">
     
-            <GiHamburgerMenu onClick={handleToggle} className='md:w-10 w-5 h-5 md:h-10 text-black mx-1' /> 
+            <GiHamburgerMenu onClick={handleToggle} className='md:w-10 w-7 h-7 md:h-10 text-black mx-1' /> 
              
              
     </label>
@@ -170,7 +170,7 @@ const Navbar = () => {
 
                    <Link href='/' className="btn hover:bg-transparent border-none bg-transparent text-black p-0 font-bold normal-case text-xl md:text-2xl lg:text-5xl" >
                       
-                      <Image className="w-32 h-10" src={logo} alt="logo"></Image>
+                      <Image className="w-32 h-10 ml-0 lg:ml-10" src={logo} alt="logo"></Image>
                       </Link>
                  </div>   
                </div>
@@ -188,18 +188,18 @@ const Navbar = () => {
                
                
                 <div className="flex items-center justify-center gap-5 mr-5">
-                <div className="flex items-center p-1 rounded-md ">
-                <IoIosSearch className="h-8 w-8 text-black mr-1" />
+                <div className="flex items-center p-1 rounded-md shadow-2xl border-sky-200 border-2">
+                
       <input
                 type='text'
                 
                 placeholder='Search Here . . . '
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className='w-full px-3 py-2 border-b-2 border-b-black  rounded-sm  focus:outline-none  text-gray-900'
+                className='w-full px-3 py-2  rounded-sm  focus:outline-none  text-gray-900'
                 
               />
-
+<IoIosSearch className="h-8 w-8 text-black mr-1" />
                
           </div>
                  
