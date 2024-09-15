@@ -1,5 +1,6 @@
 import Banner from "@/Components/Banner";
 import Category from "@/Components/Category";
+import Items from "@/Components/Items";
 
 import Other from "@/Components/Other";
 
@@ -17,6 +18,7 @@ export default function Home() {
       </div>
       
       <Other></Other>
+      <Items></Items>
     </div>
     </>
   );

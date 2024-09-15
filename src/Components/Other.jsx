@@ -6,7 +6,7 @@ import lofo1 from '../../images/Samsung-S24-Ultra-Titanium-Grey-removebg-preview
 import drone from '../../images/Screenshot 2024-09-11 015109.png'
 import pc from '../../images/Screenshot 2024-09-11 015123.png'
 import { getServices } from '../../services/getItems';
-//import { useState } from "react";
+
 
 const Other = async () => {
 //     const colors = ["#EC4899", "#8B5CF6", "#3B82F6", "#22C55E", "#FACC15"]; // Example color array
@@ -19,10 +19,17 @@ const Other = async () => {
   const { services } = await getServices();
 //  console.log(services);
   const flagship = services.filter(item=> item.type == 'flagship');
-console.log(flagship);
+
+ 
+
+//console.log(flagship);
 
     return (
         <>
+        {/* <h1>{phone.length}</h1>
+        <h1>{watch.length}</h1>
+        <h1>{earbuds.length}</h1>
+        <h1>{headphone.length}</h1> */}
         {/* <h1>{flagship.length}</h1> */}
         <section className='pt-14'>
             <h2 className='text-center font-semibold text-2xl '>Best Selers</h2>
@@ -113,6 +120,8 @@ console.log(flagship);
       </div>
 
         </div>
+
+
 {/* 
 <div className="flex space-x-4">
 {colors.map((color, index) => (
