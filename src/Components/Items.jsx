@@ -14,13 +14,14 @@ import Link from 'next/link';
 
 
 const Items =  ()  => {
-    
+  const [loading, setLoading] = useState(true);
     const [latest, setLatest] = useState([]);
     const [bg, setBg]= useState([]);
     useEffect(() => {
         const getData = async () => {
             const { services } = await getServices();
           setLatest(services);
+          setLoading(false);
         }
         getData()
       }, [])
@@ -112,7 +113,13 @@ const Items =  ()  => {
             },
           }}
          modules={[Autoplay]}  className=" py-10 px-5">
-            
+            {
+            loading ? <div >
+              <h1  class="loader w-28 h-28 mx-auto my-10"></h1>
+            </div> 
+
+            :
+             <>
             {bg?.map(latest => (
                 <SwiperSlide key={latest._id} >
                   <Link href={`/services/${latest._id}`}>
@@ -140,7 +147,9 @@ const Items =  ()  => {
           </Link>
         </SwiperSlide>
       ))}
-      
+      </>
+
+          }
         
       </Swiper>
       </div>

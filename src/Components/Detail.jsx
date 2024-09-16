@@ -19,11 +19,12 @@ const Detail = ({ latest, paramsId }) => {
    // console.log("dataaa",latest);
     
    const [lat, setLat] = useState([]);
- 
+   const [loading, setLoading] = useState(true);
    useEffect(() => {
        const getData = async () => {
            const { services } = await getServices();
          setLat(services);
+         setLoading(false);
        }
        getData()
      }, [])
@@ -275,34 +276,45 @@ className="h-20 w-20" /></a>
             },
           }}
          modules={[Autoplay]}  className=" py-10 px-5">
-            
+          {
+            loading ? <div >
+              <h1  class="loader w-28 h-28 mx-auto my-10"></h1>
+            </div> 
+
+            :
+             <>
             {related?.map(latest => (
-                <SwiperSlide key={latest._id} >
-                  <Link href={`/services/${latest._id}`}>
-        <div
-          
-          className="relative card border-2 shadow-2xl rounded-md group overflow-hidden"
-        >
-          <div className="relative w-full h-72 md:h-80 ">
-            <img
-              className="absolute inset-0 w-full h-full object-cover transition-transform delay-1000 duration-1000 ease-in-out transform group-hover:opacity-0"
-              src={latest.image1}
-              alt="Shoes"
-            />
-            <img
-              className="absolute inset-0 w-full h-full object-cover transition-transform delay-1000 duration-1000 ease-in-out transform opacity-0 group-hover:opacity-100"
-              src={latest.image2}
-              alt="Shoes"
-            />
-          </div>
-          <div className="card-body p-3 md:p-5">
-            <h2 className="card-title text-base">{latest.title}</h2>
-            <p>${latest.price}</p>
-          </div>
-          </div>
-          </Link>
-        </SwiperSlide>
-      ))}
+              <SwiperSlide key={latest._id} >
+                <Link href={`/services/${latest._id}`}>
+      <div
+        
+        className="relative card border-2 shadow-2xl rounded-md group overflow-hidden"
+      >
+        <div className="relative w-full h-72 md:h-80 ">
+          <img
+            className="absolute inset-0 w-full h-full object-cover transition-transform delay-1000 duration-1000 ease-in-out transform group-hover:opacity-0"
+            src={latest.image1}
+            alt="Shoes"
+          />
+          <img
+            className="absolute inset-0 w-full h-full object-cover transition-transform delay-1000 duration-1000 ease-in-out transform opacity-0 group-hover:opacity-100"
+            src={latest.image2}
+            alt="Shoes"
+          />
+        </div>
+        <div className="card-body p-3 md:p-5">
+          <h2 className="card-title text-base">{latest.title}</h2>
+          <p>${latest.price}</p>
+        </div>
+        </div>
+        </Link>
+      </SwiperSlide>
+    ))}
+</>
+
+          }
+            
+            
       
         
       </Swiper>
