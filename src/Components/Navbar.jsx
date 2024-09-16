@@ -42,7 +42,7 @@ const Navbar = () => {
        
         {/* UPPER NAVBAR */}
         
-       <div className="flex justify-center lg:justify-between px-2 lg:px-16 bg-white text-black py-2 md:py-2 items-center w-full border-b-2 ">
+       <div className="flex justify-center lg:justify-between px-2 lg:px-16 bg-white text-black py-2 md:py-4 items-center w-full border-b-2 ">
         <div>
               <h1 className="text-base md:text-lg">OUR PHONE NUMBER : 01956230265</h1>
         </div>
@@ -104,7 +104,7 @@ const Navbar = () => {
 
        {/* LOWER NAVBAR */}
        <div className="sticky top-0 z-50 shadow-sm">
-       <div  className="navbar shadow-sm bg-white  px-1 md:px-2  ">
+       <div  className="navbar shadow-sm bg-slate-50 px-1 md:px-2  ">
                <div className="w-[50%] ">
                   
 <div className="flex justify-start gap-1 md:gap-5">
@@ -112,7 +112,7 @@ const Navbar = () => {
   <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
   <div className="drawer-content">
     {/* Page content here */}
-    <label htmlFor="my-drawer-4" className="drawer-button btn p-0 bg-transparent border-none text-slate-50 hover:bg-transparent text-2xl">
+    <label htmlFor="my-drawer-4" className="drawer-button btn p-0 bg-transparent border-none shadow-none text-slate-50 hover:bg-transparent text-2xl">
     
             <GiHamburgerMenu onClick={handleToggle} className='md:w-10 w-7 h-7 md:h-10 text-black mx-1' /> 
              
@@ -168,7 +168,7 @@ const Navbar = () => {
 </div>
 
 
-                   <Link href='/' className="btn hover:bg-transparent border-none bg-transparent text-black p-0 font-bold normal-case text-xl md:text-2xl lg:text-5xl" >
+                   <Link href='/' className="btn hover:bg-transparent border-none bg-transparent shadow-none text-black p-0 font-bold normal-case text-xl md:text-2xl lg:text-5xl" >
                       
                       <Image className="w-32 h-10 ml-0 lg:ml-10" src={logo} alt="logo"></Image>
                       </Link>
@@ -187,8 +187,8 @@ const Navbar = () => {
                <div className="navbar-end ">
                
                
-                <div className="flex items-center justify-center gap-5 mr-5">
-                <div className="flex items-center p-1 rounded-md shadow-lg border-sky-200 border-2">
+                <div className="flex w-full lg:w-[70%] items-center justify-center gap-5 ">
+                <div className="flex w-full items-center  rounded-md shadow-lg border-sky-400 border-2">
                 
       <input
                 type='text'
@@ -196,10 +196,10 @@ const Navbar = () => {
                 placeholder='Search Here . . . '
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className='w-full px-3 py-2  rounded-sm  focus:outline-none  text-gray-900'
+                className='w-full px-3 py-2  rounded-md  focus:outline-none  text-gray-900'
                 
               />
-<IoIosSearch className="h-8 w-8 text-black mr-1" />
+<IoIosSearch className="h-10 w-10 text-white bg-sky-400 " />
                
           </div>
                  

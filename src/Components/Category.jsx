@@ -54,7 +54,7 @@ const Category = () => {
           
           <SwiperSlide className=''>
           <Link href={`/product/${Smartphone}`}>
-         <div className='flex shadow-xl bg-white hover:bg-sky-400 hover:text-white text-lg hover:border-2 hover:border-black justify-center items-center px-5 py-3 gap-1 md:gap-5 mb-10 rounded-md'>
+         <div className='flex drop-shadow-xl bg-white hover:bg-sky-400 hover:text-white text-lg hover:border-2 hover:border-black justify-center items-center px-5 py-3 gap-1 md:gap-5 mb-10 rounded-md'>
            <Image src={iphone} className='h-16 w-16' alt='image'></Image>
            <h1>Phone</h1>
          </div>
