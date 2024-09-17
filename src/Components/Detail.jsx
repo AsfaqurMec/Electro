@@ -53,6 +53,44 @@ const Detail = ({ latest, paramsId }) => {
     setSelectedColor(color);
   };
 
+  const [loadin, setLoadin] = useState(false);
+
+  const handleBuyClick = async () => {
+    setLoadin(true);
+    
+    try {
+      const response = await fetch('/email/api', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          to: "hamimhamim044@gmail.com",
+          productDetails: {
+            name: title,
+            price: price,
+            description: category,
+          },
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert('Product details sent successfully!');
+      } else {
+        alert('Failed to send product details.');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred.');
+    } finally {
+      setLoadin(false);
+    }
+  };
+
+
+
 
     return (
                 <div>
@@ -189,7 +227,7 @@ className="h-20 w-20" /></a>
 </div>
 <div className="flex flex-col mx-5 lg:mx-0 gap-5">
 <div><button  className="btn w-full bg-emerald-600 hover:bg-green-800 text-white text-xl">Add to Cart</button></div>
-<div><button className="btn text-white text-xl w-full bg-cyan-400 hover:bg-cyan-700">Buy Now</button></div>
+<div><button onClick={handleBuyClick} disabled={loading} className="btn text-white text-xl w-full bg-cyan-400 hover:bg-cyan-700">Buy Now</button></div>
 </div>
 <div className="ml-2 lg:ml-0 space-y-5">
     <h1  className='text-3xl font-semibold border-b-4 border-b-slate-500 pb-2'>Additional Information :</h1>
@@ -313,23 +351,9 @@ className="h-20 w-20" /></a>
 </>
 
           }
-            
-            
-      
-        
+       
       </Swiper>
       </div>
-
-
-
-
-
-
-
-
-
-
-
 
         </div>
     );
