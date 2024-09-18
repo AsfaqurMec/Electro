@@ -12,7 +12,7 @@ import { Autoplay} from 'swiper/modules';
 import { getServices } from '../../services/getItems';
 import Link from 'next/link';
 const Detail = ({ latest, paramsId }) => {
-
+  const [storage, setStorage] = useState('64GB');
     const [toggle, setToggle] = useState(false);
     const handleToggle = () => setToggle(false);
     const handleToggles = () => setToggle(true);
@@ -52,6 +52,13 @@ const Detail = ({ latest, paramsId }) => {
   const handleChange = (color) => {
     setSelectedColor(color);
   };
+
+  const handleStorage = (item) => {
+    setStorage(item);
+    console.log(item);
+    
+  };
+
 
   // const [loadin, setLoadin] = useState(false);
 
@@ -145,10 +152,23 @@ const Detail = ({ latest, paramsId }) => {
  
 
 
-<div className="carousel w-[90%] rounded-md shadow-xl border-2 relative">
+<div className="carousel w-[95%] md:w-[90%] flex">
+<div className="flex w-[25%] md:w-[15%] flex-col gap-2 py-1">
+<a  className=""><img onClick={handleToggle} 
+src={image1}
+className="h-20 w-20 rounded-md shadow-lg border-2" /></a>
+{
+image2 ? <a  className=""><img onClick={handleToggles}
+src={image2}
+className="h-20 w-20 rounded-md shadow-lg border-2" /></a>
+: ""
+}
+
+</div>
+  <div className='w-[80%] rounded-md shadow-xl border-2'>
 {
 !toggle ?
-<div id="item1" className="carousel-item w-full ">
+<div id="item1" className="carousel-item w-full">
 <img
 src={image1}
 className="w-full " />
@@ -160,20 +180,9 @@ src={image2}
 className="w-full" />
 </div>
 }
-
-
-<div className="flex w-full absolute flex-col gap-2 py-1">
-<a  className=""><img onClick={handleToggle} 
-src={image1}
-className="h-20 w-20" /></a>
-{
-image2 ? <a  className=""><img onClick={handleToggles}
-src={image2}
-className="h-20 w-20" /></a>
-: ""
-}
-
 </div>
+
+
 </div>
 
 
@@ -222,13 +231,13 @@ className="h-20 w-20" /></a>
     <span className="label-text text-lg font-medium">Select Storage :</span>
    
   </div>
-  <select className="select select-bordered text-lg font-medium shadow-xl focus:outline-dashed">
+  <select className="select select-bordered text-lg font-medium shadow-lg focus:outline-dashed">
 
 
 
     <option disabled selected>Pick one</option>
     {
-        latest.service?.storage?.map(item => <option key={item}>{item}</option>)
+        latest.service?.storage?.map(item => <option  key={item}>{item}</option>)
     }
    
   </select>
@@ -240,7 +249,7 @@ className="h-20 w-20" /></a>
     <span className="label-text text-lg font-medium">Select RAM :</span>
    
   </div>
-  <select className="select select-bordered text-lg font-medium shadow-xl focus:outline-dashed">
+  <select className="select select-bordered text-lg font-medium shadow-lg focus:outline-dashed">
 
 
 
@@ -275,13 +284,13 @@ className="h-20 w-20" /></a>
 <div><button onClick={sendEmail} className="btn text-white text-xl w-full bg-cyan-400 hover:bg-cyan-700">Buy Now</button></div>
 </div>
 {/* onClick={handleBuyClick} disabled={loading} */}
-<div className="ml-2 lg:ml-0 space-y-5">
-    <h1  className='text-3xl font-semibold border-b-4 border-b-slate-500 pb-2'>Additional Information :</h1>
-<h1 className='text-2xl font-semibold text-slate-600'>#{type}</h1>
- <h1 className='text-2xl font-semibold text-slate-600'> {latest.service.processor}</h1>
- <h1 className='text-2xl font-semibold text-slate-600'>{latest.service.screen_size || latest.service.display}</h1>
- <h1 className='text-2xl font-semibold text-slate-600'> {latest.service.camera}</h1>
- <h1 className='text-2xl font-semibold text-slate-600'>{latest.service.battery}</h1>
+<div className="ml-2 lg:ml-0 space-y-5 mt-10">
+    <h1  className='text-3xl font-semibold border-b-2 border-b-slate-500 pb-2'>Additional Information :</h1>
+<h1 className='text-2xl font-semibold text-slate-500'>#{type}</h1>
+ <h1 className='text-2xl font-semibold text-slate-500'> {latest.service.processor}</h1>
+ <h1 className='text-2xl font-semibold text-slate-500'>{latest.service.screen_size || latest.service.display}</h1>
+ <h1 className='text-2xl font-semibold text-slate-500'> {latest.service.camera}</h1>
+ <h1 className='text-2xl font-semibold text-slate-500'>{latest.service.battery}</h1>
 
 <h1 className="text-xl font-semibold">SKU : <span className="text-xl text-gray-500">N/A</span></h1>
 <h1 className="text-xl font-semibold">Category : <span className="text-xl text-gray-500">{category}</span></h1>
