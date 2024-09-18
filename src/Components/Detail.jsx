@@ -53,30 +53,70 @@ const Detail = ({ latest, paramsId }) => {
     setSelectedColor(color);
   };
 
-  const [loadin, setLoadin] = useState(false);
+  // const [loadin, setLoadin] = useState(false);
 
-  const handleBuyClick = async () => {
-    setLoadin(true);
+  // const handleBuyClick = async () => {
+  //   setLoadin(true);
+    
+  //   try {
+  //     const response = await fetch('/email/api', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({
+  //         to: "hamimhamim044@gmail.com",
+  //         productDetails: {
+  //           name: title,
+  //           price: price,
+  //           category: category,
+  //           quantity: quantity,
+  //         },
+  //       }),
+  //     });
+
+  //     const data = await response.json();
+
+  //     if (data.success) {
+  //       alert('Product details sent successfully!');
+  //     } else {
+  //       alert('Failed to send product details.');
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //     alert('An error occurred.');
+  //   } finally {
+  //     setLoadin(false);
+  //   }
+  // };
+
+  const [recipientEmail, setRecipientEmail] = useState('hamimhamim044@gmail.com');
+  const [subject, setSubject] = useState('Product Purchase');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState('');
+
+  const sendEmail = async (e) => {
+    e.preventDefault();
+    setStatus('Sending...');
     
     try {
-      const response = await fetch('/email/api', {
+      const res = await fetch('/email/api', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          to: "hamimhamim044@gmail.com",
-          productDetails: {
-            name: title,
-            price: price,
-            description: category,
-          },
+          recipientEmail,
+          subject,
+          title,
+          quantity,
+          price,
+          category,
         }),
+      
       });
 
-      const data = await response.json();
-
-      if (data.success) {
+      if (res.ok) {
         alert('Product details sent successfully!');
       } else {
         alert('Failed to send product details.');
@@ -84,12 +124,8 @@ const Detail = ({ latest, paramsId }) => {
     } catch (error) {
       console.error(error);
       alert('An error occurred.');
-    } finally {
-      setLoadin(false);
     }
   };
-
-
 
 
     return (
@@ -224,11 +260,12 @@ className="h-20 w-20" /></a>
 
 <h3 className='text-3xl font-medium'>Price : <span className="text-sky-600 ml-1"> ${price}</span></h3>
 
-</div>
+</div> 
 <div className="flex flex-col mx-5 lg:mx-0 gap-5">
 <div><button  className="btn w-full bg-emerald-600 hover:bg-green-800 text-white text-xl">Add to Cart</button></div>
-<div><button onClick={handleBuyClick} disabled={loading} className="btn text-white text-xl w-full bg-cyan-400 hover:bg-cyan-700">Buy Now</button></div>
+<div><button onClick={sendEmail} className="btn text-white text-xl w-full bg-cyan-400 hover:bg-cyan-700">Buy Now</button></div>
 </div>
+{/* onClick={handleBuyClick} disabled={loading} */}
 <div className="ml-2 lg:ml-0 space-y-5">
     <h1  className='text-3xl font-semibold border-b-4 border-b-slate-500 pb-2'>Additional Information :</h1>
 <h1 className='text-2xl font-semibold text-slate-600'>#{type}</h1>
