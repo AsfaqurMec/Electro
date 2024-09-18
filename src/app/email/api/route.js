@@ -53,14 +53,28 @@ export async function POST(req) {
     from: 'Electro <process.env.EMAIL_USER>' , // Sender address
     to: recipientEmail, // Recipient address
     subject: subject, // Subject line
-    text: `
-    Product Information:
-
-    Title: ${title}
-    Quantity: ${quantity}
-    Price: $${price}
-    Category: ${category}
-  `, // Email body
+    html: `
+      <h1>Product Information</h1>
+      <table border="1" cellpadding="10" cellspacing="0">
+        <tr>
+          <th>Title</th>
+          <td>${title}</td>
+        </tr>
+        <tr>
+          <th>Quantity</th>
+          <td>${quantity}</td>
+        </tr>
+        <tr>
+          <th>Price</th>
+          <td>$${price}</td>
+        </tr>
+        <tr>
+          <th>Category</th>
+          <td>${category}</td>
+        </tr>
+      </table>
+    `, 
+   // Email body
   };
 
   try {
