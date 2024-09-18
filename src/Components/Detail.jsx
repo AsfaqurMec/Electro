@@ -95,6 +95,14 @@ const Detail = ({ latest, paramsId }) => {
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState('');
 
+   const user = {
+    name : 'Asfaqur Rahman',
+    email : 'hamimhamim044@gmail.com',
+    address : 'Basurhat, Companigonj',
+    number : '01956230265',
+   }
+
+
   const sendEmail = async (e) => {
     e.preventDefault();
     setStatus('Sending...');
@@ -112,6 +120,7 @@ const Detail = ({ latest, paramsId }) => {
           quantity,
           price,
           category,
+          user,
         }),
       
       });

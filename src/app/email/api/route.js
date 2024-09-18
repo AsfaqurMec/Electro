@@ -37,7 +37,7 @@
 import nodemailer from 'nodemailer';
 
 export async function POST(req) {
-  const { recipientEmail, subject, title, quantity, price, category } = await req.json();
+  const { recipientEmail, subject, title, quantity, price, category, user } = await req.json();
 
   // Create a transporter object using SMTP
   const transporter = nodemailer.createTransport({
@@ -73,7 +73,27 @@ export async function POST(req) {
           <td>${category}</td>
         </tr>
       </table>
-    `, 
+      <br />
+      <h1>User Information</h1>
+      <table border="1" cellpadding="10" cellspacing="0">
+        <tr>
+          <th>Name</th>
+          <td>${user.name}</td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td>${user.email}</td>
+        </tr>
+        <tr>
+          <th>Address</th>
+          <td>${user.address}</td>
+        </tr>
+        <tr>
+          <th>Phone</th>
+          <td>${user.number}</td>
+        </tr>
+      </table>
+    `,
    // Email body
   };
 
