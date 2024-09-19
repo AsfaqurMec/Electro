@@ -27,28 +27,28 @@ const Page = () => {
   };
 
   return (
-      <div className="container bg-[#f7ede9] px-5 lg:px-24 mx-auto py-24">
-        <div className="grid grid-cols-1 gap-12 items-center">
-          
-          <div className="border-2 bg-[#07332f] p-12">
-            <h6 className="text-3xl font-semibold text-[#f29269] text-center mb-12">
+      <div className=" w-full bg-gradient-to-r from-indigo-300 via-purple-500 to-pink-300 px-5 lg:px-24 mx-auto py-24">
+        <div className="grid grid-cols-1 gap-12 items-center px-0 md:px-28 border rounded-md border-[#2e2e2e65]">
+        {/* bg-[#07332f] */}
+          <div className=" glass p-12 shadow-2xl rounded-md ">
+            <h6 className="text-4xl font-semibold text-[#2908a0] text-center mb-12">
               Sign In
             </h6>
             <form onSubmit={handleLogin} action="">
-              <label className="text-white" htmlFor="email">Email</label> <br />
+              <label className="text-[#1e0676]" htmlFor="email">Email</label> <br />
               <input
                 type="text"
                 name="email"
                 placeholder="your email"
-                className="w-full px-3 py-2 border-b-[#e2b29d] rounded-md border-b-2 focus:border-b-2 focus:border-b-[#e2b29d] focus:outline-none bg-transparent text-gray-400"
+                className="w-full px-3 py-2 border-b-[#172dba] rounded-md border-b-2 focus:border-b-2 focus:border-b-[#e2b29d] focus:outline-none bg-transparent text-white"
               />
               <br /> <br />
-              <label className="text-white" htmlFor="password">Password</label> <br />
+              <label className="text-[#2908a0]" htmlFor="password">Password</label> <br />
               <input
                 type="password"
                 name="password"
                 placeholder="your password"
-                className="w-full px-3 py-2 border-b-[#e2b29d] rounded-md border-b-2 focus:border-b-2 focus:border-b-[#e2b29d] focus:outline-none bg-transparent text-gray-400"
+                className="w-full px-3 py-2 border-b-[#182f92] rounded-md border-b-2 focus:border-b-2 focus:border-b-[#e2b29d] focus:outline-none bg-transparent text-white"
               />
               <br />
               <button
@@ -63,7 +63,7 @@ const Page = () => {
              
               <h6 className="my-12 text-center text-white">
                 not have account ?{" "}
-                <Link className="text-[#f29269] font-semibold" href={"/signup"}>
+                <Link className="text-[#47cbe5] font-semibold" href={"/signup"}>
                   Sign Up
                 </Link>
               </h6>
