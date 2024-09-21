@@ -103,7 +103,7 @@ const Navbar = () => {
       
 
        {/* LOWER NAVBAR */}
-       <div className="sticky top-0 z-50 shadow-sm">
+       <div className="sticky top-0 z-50 shadow-sm backdrop-blur-xl">
        <div  className="navbar shadow-sm bg-slate-50 px-1 md:px-2  ">
                <div className="w-[50%] ">
                   

@@ -32,7 +32,7 @@ const Detail = ({ latest, paramsId }) => {
     
 
 
-    const {_id, title, image1, image2, price,type, category} = latest.service;
+    const { title, image1, image2, price,type, category} = latest.service;
 
 
     const related = lat.filter(item=> item.category == category);
@@ -284,17 +284,8 @@ className="w-full" />
 <div><button onClick={sendEmail} className="btn text-white text-xl w-full bg-cyan-400 hover:bg-cyan-700">Buy Now</button></div>
 </div>
 {/* onClick={handleBuyClick} disabled={loading} */}
-<div className="ml-2 lg:ml-0 space-y-5 mt-10">
-    <h1  className='text-3xl font-semibold border-b-2 border-b-slate-500 pb-2'>Additional Information :</h1>
-<h1 className='text-2xl font-semibold text-slate-500'>#{type}</h1>
- <h1 className='text-2xl font-semibold text-slate-500'> {latest.service.processor}</h1>
- <h1 className='text-2xl font-semibold text-slate-500'>{latest.service.screen_size || latest.service.display}</h1>
- <h1 className='text-2xl font-semibold text-slate-500'> {latest.service.camera}</h1>
- <h1 className='text-2xl font-semibold text-slate-500'>{latest.service.battery}</h1>
-
-<h1 className="text-xl font-semibold">SKU : <span className="text-xl text-gray-500">N/A</span></h1>
-<h1 className="text-xl font-semibold">Category : <span className="text-xl text-gray-500">{category}</span></h1>
-
+<div className="ml-2 lg:ml-0 space-y-5 mt-5">
+ 
 <h1 className="text-xl font-semibold flex gap-5">Share : <div className="flex  gap-4 ">
 
 <a>
@@ -337,7 +328,54 @@ className="w-full" />
 
 </div> 
 
+{/* product details */}
+<div className='w-full lg:w-2/3 mx-0 md:mx-5 lg:mx-auto my-5'>
+<div role="tablist" className="tabs tabs-lifted ">
 
+  <input type="radio" name="my_tabs_2" role="tab" className="tab text-2xl font-medium" aria-label="Specification" defaultChecked />
+  <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-lg p-6">
+
+{
+  latest.service.processor ? 
+  <h1 className='text-2xl font-semibold flex justify-between items-center pb-2 border-b-2 pt-2'> <span>Processor :</span> <span  className="text-xl text-gray-500">{latest.service.processor}</span></h1>
+  : ""
+}
+{
+  latest.service.display || latest.service.screen_size ?
+ <h1 className='text-2xl font-semibold flex justify-between items-center pb-2 border-b-2 pt-2'> <span>Display :  </span> <span  className="text-xl text-gray-500">{latest.service.screen_size || latest.service.display}</span></h1>
+ : ""}
+ {
+  latest.service.camera ? 
+ <h1 className='text-2xl font-semibold flex justify-between items-center pb-2 border-b-2 pt-2'> <span>Camera :   </span> <span  className="text-xl text-gray-500">{latest.service.camera}</span></h1>
+ :""}
+ <h1 className='text-2xl font-semibold flex justify-between items-center pb-2 border-b-2 pt-2'> <span>Battery :  </span> <span  className="text-xl text-gray-500">{latest.service.battery || latest.service.battery_life}</span></h1>
+ {
+  latest.service.features ? 
+ <h1 className='text-2xl font-semibold flex flex-col lg:flex-row justify-start lg:justify-between items-start lg:items-center pb-2 border-b-2 pt-2'> <span>Features :  </span> <span  className="text-xl text-gray-500">{latest.service.features}</span></h1>
+ :""}
+ <h1 className='text-2xl font-semibold flex justify-between items-center pb-2 border-b-2 pt-2'> <span>Type :  </span> <span  className="text-xl text-gray-500">{latest.service.type}</span></h1>
+ <h1 className="text-xl font-semibold pt-3">Category : <span className="text-xl text-gray-500">{category}</span></h1>
+<h1 className="text-xl font-semibold mt-2">SKU : <span className="text-xl text-gray-500">N/A</span></h1>
+
+
+  </div>
+
+
+
+  <input
+    type="radio"
+    name="my_tabs_2"
+    role="tab"
+    className="tab text-2xl font-medium"
+    aria-label="Reviews"
+     />
+  <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-lg p-6">
+    No Review
+  </div>
+
+  
+</div>
+</div>
 
 <h1 className='text-5xl font-medium text-center my-10'>Related Products</h1>
 <div className='py-10 px-2 md:px-5'>
