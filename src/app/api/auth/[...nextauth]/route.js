@@ -69,7 +69,7 @@ const handler = NextAuth({
            email: token.email,
            
          };
-       //  console.log(session);
+         console.log(session);
          
          return session;
        },

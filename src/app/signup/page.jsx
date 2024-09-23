@@ -4,9 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { Suspense } from "react";
 import toast, { Toaster } from "react-hot-toast";
-// import { BsGithub, BsGoogle } from "react-icons/bs";
+import { useUser } from "../../../context/UserContext";
+
+
 
 const SignUpPage = () => {
+  const { user } = useUser(); // Access user data from context
+  const { setUser } = useUser(); // Access setUser from context
+ 
+console.log(user?.email);
+
   const handleSignUp = async (event) => {
     event.preventDefault();
     const newUser = {
@@ -14,15 +21,19 @@ const SignUpPage = () => {
       email: event.target.email.value,
       password: event.target.password.value,
     };
-    const resp = await fetch("https://hospital-mu-six.vercel.app/signup/api", {
+    const resp = await fetch("http://localhost:3000/signup/api", {
       method: "POST",
       body: JSON.stringify(newUser),
       headers: {
         "content-type": "application/json",
       },
     });
+
     if (resp.status === 200) {
+      setUser(newUser); // Save the user details in context
       toast.success("SignUp Successfully");
+      //console.log(newUser);
+      
       event.target.reset();
     }else {
       toast.error("Something went Wrong");

@@ -11,12 +11,20 @@ import { CiHeart } from "react-icons/ci";
 import { IoCartOutline } from "react-icons/io5";
 import { useState } from "react";
 import logo from '../../images/Screenshot 2024-09-09 192325.png'
+import { useUser } from "../../context/UserContext";
+import { useSession } from "next-auth/react";
 
 
 const Navbar = () => {
+  const  session  = useSession();
+  console.log('session : ',session?.data?.user);
+  
+  const { user } = useUser(); // Access user data from context
+console.log('USER : ',user);
+
   const pathname = usePathname();
   const [search, setSearch] = useState('')
-  const user = null;
+  
 
   const [toggle, setToggle] = useState(false);
 
@@ -55,7 +63,7 @@ const Navbar = () => {
                                <div className="w-10  rounded-full dropdown dropdown-end">
                                <label tabIndex={0} className="btn w-14 bg-transparent shadow-none hover:bg-transparent border-none  text-black p-1">
                                {/* <LuMenuSquare className="md:w-8 w-6 h-6 md:h-7"/> */}
-                              <Link href="/account"> <img className="w-10 rounded-full" src={user?.photoURL || "https://i.ibb.co/8xzVgxd/pngtree-user-icon-png-image-1796659.jpg" } /> </Link>
+                              <Link href="/user"> <img className="w-10 rounded-full" src={user?.photoURL || "https://i.ibb.co/8xzVgxd/pngtree-user-icon-png-image-1796659.jpg" } /> </Link>
                        </label> 
                                </div>
                       
@@ -68,7 +76,7 @@ const Navbar = () => {
                             {
                               user ? 
                           
-                           <Link href='/account'>
+                           <Link href='/user'>
                                {/* <button className="btn btn-sm bg-green-500 hover:bg-blue-500 text-white mr-2  btn-ghost">Login</button> */}
                                <h1 className="flex gap-1 items-center uppercase"> <img className="w-6 rounded-full" src={ "https://i.ibb.co/8xzVgxd/pngtree-user-icon-png-image-1796659.jpg" } />  My Account</h1>
                            </Link>

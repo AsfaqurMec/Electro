@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const getServices = async () => {
-    console.log('uthbvjteghtk');
+    //console.log('uthbvjteghtk');
     
   try {
     const res = await axios.get(
@@ -11,7 +11,7 @@ export const getServices = async () => {
     
     return res.data;
   } catch (error) {
-    console.log('errpe');
+   // console.log('errpe');
         
     return [];
   }
