@@ -56,6 +56,20 @@
   background-position: center;
 }
 
+.banner4 {
+  background: url("../../images//pngtree-blue-background-with-3d-rendering-of-headset-or-headphones-with-microphone-image_3633111.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.banner5 {
+  background: url("../../images//red-smartwatch-mockup_23-2147862193.avif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+}
+
 .loader {
   width: 80px;
   height: 80px;

@@ -90,13 +90,13 @@ console.log('USER : ',user);
                    {/* } */}
 
 { user || session?.data?.user? 
-                  <Link href='/wishlist'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">{}</span><CiHeart className="h-8 w-8"/></h1></Link>
+                  <Link href='/wishlist'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">{0}</span><CiHeart className="h-8 w-8"/></h1></Link>
                   : 
                   <Link href='/wishlist'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge  mt-1 w-6 text-lg  bg-black text-white">0</span><CiHeart className="h-8 w-8"/></h1></Link>
                 }
 
                 { user || session?.data?.user?
-                  <Link href='/cart'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">{}</span><IoCartOutline className="h-8 w-8"/></h1></Link>
+                  <Link href='/cart'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">{0}</span><IoCartOutline className="h-8 w-8"/></h1></Link>
                   : 
                   <Link href='/cart'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">0</span><IoCartOutline className="h-8 w-8"/></h1></Link>
                 }
