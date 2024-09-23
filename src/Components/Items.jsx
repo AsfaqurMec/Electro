@@ -1,161 +1,106 @@
-/* eslint-disable @next/next/no-img-element */
- "use client" 
+/* eslint-disable @next/next/no-img-element */ 
+"use client"; 
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
-import { Autoplay} from 'swiper/modules';
-import { getServices } from '../../services/getItems';
+import { Autoplay } from 'swiper/modules';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import Link from 'next/link';
+import { getServices } from '../../services/getItems'; // Ensure this returns a promise
 
-
-
-const Items =  ()  => {
+const Items = () => {
   const [loading, setLoading] = useState(true);
-    const [latest, setLatest] = useState([]);
-    const [bg, setBg]= useState([]);
-    useEffect(() => {
-        const getData = async () => {
-            const { services } = await getServices();
-          setLatest(services);
-          setLoading(false);
-        }
-        getData()
-      }, [])
-      //console.log("datasss",latest);
+  const [latest, setLatest] = useState([]);
+  const [bg, setBg] = useState([]);
+  const [bgs, setBgs] = useState('phone');
 
-      const phones = latest.filter(item=> item.category == 'Smartphone');
-      
-      useEffect(() => {
-        // Filter the latest array for smartphones when latest updates
-        const phone = latest.filter(item => item.category === 'Smartphone');
-        setBg(phone);  // Set bg state to the filtered phones
-      }, [latest]);  // Re-run when `latest` changes
-     
-      const [bgs, setBgs]= useState('phone');
  
-      const handle=()=> {
-        setBg(phones);
-        
-        setBgs('phone');
-   }
 
-     const handle1=()=> {
-        const watch = latest.filter(item=> item.category == 'Smartwatch');
-          setBg(watch);
-          
-          setBgs('watch');
-     }
+  useEffect(() => {
+    // Define the async function inside useEffect
+    const getData = async () => {
+      try {
+        const { services } = await getServices(); // Ensure getServices is async and returns a promise
+        setLatest(services);
+        setBg(services.filter(item => item.category === 'Smartphone')); // Initialize bg with smartphones
+        setLoading(false);
+      } catch (error) {
+        console.error("Failed to fetch services:", error);
+        setLoading(false);
+      }
+    };
 
-     const handle2=()=> {
-        const headphone = latest.filter(item=> item.category == 'Headphones');
-        setBg(headphone);
-        
-        setBgs('headphone');
-   }
+    getData(); // Call the async function
+  }, []);
 
-   const handle3=()=> {
-    const earbuds = latest.filter(item=> item.category == 'Earbuds');
-    setBg(earbuds);
-   
-    setBgs('earbuds');
-}
+  const handleCategoryChange = (category) => {
+    const filteredItems = latest.filter(item => item.category === category);
+    setBg(filteredItems);
+    setBgs(category);
+  };
 
-
-    return (
-        <>
-       
-        <h1 className='text-center text-5xl font-semibold my-14 text-blue-500'>New Arrivals</h1>
-          <div className='flex gap-2 md:gap-3 w-full px-1 md:px-5 mb-5'>
-             <button onClick={handle}  className={`${
-        bgs === 'phone' ? 'bg-blue-500 text-white ' : ''
-      } w-44 border shadow-xl py-3 rounded-md font-semibold`}>Phone</button>
-             <button onClick={handle1} className={`${
-        bgs === 'watch' ? 'bg-blue-500 text-white ' : ''
-      } w-44 border shadow-xl py-3 rounded-md font-semibold`}>SmartWatch</button>
-             <button onClick={handle2} className={`${
-        bgs === 'headphone' ? 'bg-blue-500 text-white ' : ''
-      } w-44 border shadow-xl py-3 rounded-md font-semibold`}>HeadPhone</button>
-             <button onClick={handle3} className={`${
-        bgs === 'earbuds' ? 'bg-blue-500 text-white ' : ''
-      } w-44 border shadow-xl py-3 rounded-md font-semibold`}>EarBuds</button>
-
-          </div>
-        <div className='py-10 px-2 md:px-5'>
-      <Swiper   autoplay={{
-          delay: 2000,
-          disableOnInteraction: false,
-          slidesPerView:2
-        }} 
-        breakpoints={{
-          320: {
-            slidesPerView: 2,  // 1 slide for devices ≥ 640px
-            spaceBetween: 10,
-          },
-            380: {
-              slidesPerView: 2,  // 1 slide for devices ≥ 640px
-              spaceBetween: 10,
-            },
-            640: {
-              slidesPerView: 3,  // 1 slide for devices ≥ 640px
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 4,  // 2 slides for devices ≥ 768px
-              spaceBetween: 20,
-            },
-            1024: {
-              slidesPerView: 5,  // 3 slides for devices ≥ 1024px
-              spaceBetween: 20,
-            },
-          }}
-         modules={[Autoplay]}  className=" py-10 px-5">
-            {
-            loading ? <div >
-              <h1  class="loader w-28 h-28 mx-auto my-10"></h1>
-            </div> 
-
-            :
-             <>
-            {bg?.map(latest => (
-                <SwiperSlide key={latest._id} >
-                  <Link href={`/services/${latest._id}`}>
-        <div
-          
-          className="relative card border-2 rounded-md group overflow-hidden"
-        >
-          <div className="relative w-full h-64 md:h-64">
-            <img
-              className="absolute inset-0 w-full h-full object-cover  transition-transform delay-1000 duration-1000 ease-in-out transform group-hover:opacity-0"
-              src={latest.image1}
-              alt="Shoes"
-            />
-            <img
-              className="absolute inset-0 w-full h-full object-cover transition-transform delay-1000 duration-1000 ease-in-out transform opacity-0 group-hover:opacity-100"
-              src={latest.image2}
-              alt="Shoes"
-            />
-          </div>
-          <div className="card-body p-3 md:p-5">
-            <h2 className="card-title text-base">{latest.title}</h2>
-            <p>${latest.price}</p>
-          </div>
-          </div>
-          </Link>
-        </SwiperSlide>
-      ))}
-      </>
-
-          }
-        
-      </Swiper>
+  return (
+    <>
+      <h1 className='text-center text-5xl font-semibold my-14 text-blue-500'>New Arrivals</h1>
+      <div className='flex gap-2 md:gap-3 w-full px-1 md:px-5 mb-5'>
+        <button onClick={() => handleCategoryChange('Smartphone')} className={`${
+          bgs === 'Smartphone' ? 'bg-blue-500 text-white' : ''
+        } w-44 border shadow-xl py-3 rounded-md font-semibold`}>Phone</button>
+        <button onClick={() => handleCategoryChange('Smartwatch')} className={`${
+          bgs === 'Smartwatch' ? 'bg-blue-500 text-white' : ''
+        } w-44 border shadow-xl py-3 rounded-md font-semibold`}>SmartWatch</button>
+        <button onClick={() => handleCategoryChange('Headphones')} className={`${
+          bgs === 'Headphones' ? 'bg-blue-500 text-white' : ''
+        } w-44 border shadow-xl py-3 rounded-md font-semibold`}>HeadPhone</button>
+        <button onClick={() => handleCategoryChange('Earbuds')} className={`${
+          bgs === 'Earbuds' ? 'bg-blue-500 text-white' : ''
+        } w-44 border shadow-xl py-3 rounded-md font-semibold`}>EarBuds</button>
       </div>
 
+      <div className='py-10 px-2 md:px-5'>
+        <Swiper autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+          slidesPerView: 2
+        }} breakpoints={{
+          320: { slidesPerView: 2, spaceBetween: 10 },
+          640: { slidesPerView: 3, spaceBetween: 20 },
+          768: { slidesPerView: 4, spaceBetween: 20 },
+          1024: { slidesPerView: 5, spaceBetween: 20 },
+        }} modules={[Autoplay]} className="py-10 px-5">
+          {loading ? (
+            <div className="loader w-28 h-28 mx-auto my-10"></div>
+          ) : (
+            bg.map(item => (
+              <SwiperSlide key={item._id}>
+                <Link href={`/services/${item._id}`}>
+                  <div className="relative card border-2 rounded-md group overflow-hidden">
+                    <div className="relative w-full h-64">
+                      <img
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:opacity-0"
+                        src={item.image1}
+                        alt={item.title}
+                      />
+                      <img
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-in-out opacity-0 group-hover:opacity-100"
+                        src={item.image2}
+                        alt={item.title}
+                      />
+                    </div>
+                    <div className="card-body p-3 md:p-5">
+                      <h2 className="card-title text-base">{item.title}</h2>
+                      <p>${item.price}</p>
+                    </div>
+                  </div>
+                </Link>
+              </SwiperSlide>
+            ))
+          )}
+        </Swiper>
+      </div>
     </>
-    );
+  );
 };
 
 export default Items;

@@ -1,9 +1,15 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
+
 import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "@/Components/Footer";
 import Navbar from "@/Components/Navbar";
-import { UserProvider } from "../../context/UserContext";
+import { UserProvider} from "../../context/UserContext";
 import AuthProvider from "../../services/AuthProvider";
+import Link from "next/link";
+import { CiHeart } from "react-icons/ci";
+import { IoCartOutline } from "react-icons/io5";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,6 +28,9 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+    
+  
+
   return (
     <html lang="en" data-theme="light">
       <AuthProvider>
@@ -31,6 +40,25 @@ export default function RootLayout({ children }) {
         <UserProvider>
         <Navbar></Navbar>
         {children}
+        <div className="w-[100%] md:w-[90%] mx-auto flex justify-around items-center lg:hidden bottom-0 bg-slate-100 fixed py-2 md:py-4 z-50">
+        <Link href="/wishlist">
+          <h1 className="indicator">
+            
+            <CiHeart className="h-6 md:h-8 w-6 md:w-8"/>
+          </h1>
+        </Link>
+
+        <Link href="/cart">
+          <h1 className="indicator">
+           
+            <IoCartOutline className="h-6 md:h-8 w-6 md:w-8"/>
+          </h1>
+        </Link>
+
+        <Link href="/account">
+          <img className="w-7 md:w-10 rounded-full" src={"https://i.ibb.co/8mshvVT/666201.png"} />
+        </Link>
+      </div>
         <Footer></Footer>
         </UserProvider>
       </body>

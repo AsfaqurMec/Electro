@@ -57,12 +57,12 @@ console.log('USER : ',user);
 
         <div className="flex justify-end gap-5 items-center">
           
-        {
-                       user? <div className=" items-center justify-center gap-2 hidden lg:flex">
+        {/* {
+                       user || session?.data?.user ? <div className=" items-center justify-center gap-2 hidden lg:flex">
                         <div className="dropdown block dropdown-end">
                                <div className="w-10  rounded-full dropdown dropdown-end">
                                <label tabIndex={0} className="btn w-14 bg-transparent shadow-none hover:bg-transparent border-none  text-black p-1">
-                               {/* <LuMenuSquare className="md:w-8 w-6 h-6 md:h-7"/> */}
+                             
                               <Link href="/user"> <img className="w-10 rounded-full" src={user?.photoURL || "https://i.ibb.co/8xzVgxd/pngtree-user-icon-png-image-1796659.jpg" } /> </Link>
                        </label> 
                                </div>
@@ -71,10 +71,10 @@ console.log('USER : ',user);
                     
                            
                            </div>  
-                           :
+                           : */}
                            <div className="lg:flex justify-end hidden">
                             {
-                              user ? 
+                              user || session?.data?.user? 
                           
                            <Link href='/user'>
                                {/* <button className="btn btn-sm bg-green-500 hover:bg-blue-500 text-white mr-2  btn-ghost">Login</button> */}
@@ -87,16 +87,16 @@ console.log('USER : ',user);
                            </Link>
                             } 
                        </div>
-                   }
+                   {/* } */}
 
-{ user ? 
-                  <Link href='/wishlist'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">{message.length}</span><CiHeart className="h-8 w-8"/></h1></Link>
+{ user || session?.data?.user? 
+                  <Link href='/wishlist'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">{}</span><CiHeart className="h-8 w-8"/></h1></Link>
                   : 
                   <Link href='/wishlist'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge  mt-1 w-6 text-lg  bg-black text-white">0</span><CiHeart className="h-8 w-8"/></h1></Link>
                 }
 
-                { user ?
-                  <Link href='/cart'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">{massage.length}</span><IoCartOutline className="h-8 w-8"/></h1></Link>
+                { user || session?.data?.user?
+                  <Link href='/cart'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">{}</span><IoCartOutline className="h-8 w-8"/></h1></Link>
                   : 
                   <Link href='/cart'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">0</span><IoCartOutline className="h-8 w-8"/></h1></Link>
                 }
