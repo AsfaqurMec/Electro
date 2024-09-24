@@ -194,67 +194,97 @@ console.log('USER : ',user);
 
             {/* lower NAVBAR */}
         
-       <div className="hidden lg:flex justify-center lg:justify-between px-2 lg:px-16 bg-black  py-2 md:py-4 items-center w-full border-b-2 ">
+       <div className="hidden lg:flex justify-center lg:justify-between px-2 lg:px-16 bg-black  py-2 md:py-1 items-center w-full border-b-2 ">
         <div className="flex gap-3 items-center">
 
         <div className="dropdown dropdown-hover">
   <div tabIndex={0} role="button" className="text-white m-1 pr-3 border-r-2 border-r-white"><GiHamburgerMenu className='w-5 h-5' /> </div>
-  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
-    <li><a>Item 1</a></li>
-    <li><a>Item 2</a></li>
+  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52  p-2 shadow z-50">
+    <li className="text-base font-medium hover:text-orange-500"><a>Phones</a></li>
+    <li className="text-base font-medium hover:text-orange-500"><a>Earbuds</a></li>
+    <li className="text-base font-medium hover:text-orange-500"><a>SmartWatch</a></li>
+    <li className="text-base font-medium hover:text-orange-500"><a>HeadPhone</a></li>
+    <li className="text-base font-medium hover:text-orange-500"><a>Speaker</a></li>
+    <li className="text-base font-medium hover:text-orange-500"><a>Tab</a></li>
   </ul>
 </div>
 
 <div className="dropdown dropdown-hover">
   <div tabIndex={0} role="button" className="text-white m-1">Phones</div>
   <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
-    <li><a>Item 1</a></li>
-    <li><a>Item 2</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>IPhone</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Xiomi</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Google</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Vivo</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>OnePlus</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Realme</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Honor</a></li>
   </ul>
 </div>
 
 <div className="dropdown dropdown-hover">
   <div tabIndex={0} role="button" className="text-white m-1">EarBuds</div>
   <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
-    <li><a>Item 1</a></li>
-    <li><a>Item 2</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>IPhone</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Xiomi</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Google</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Vivo</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>OnePlus</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Realme</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Honor</a></li>
   </ul>
 </div>
 
 <div className="dropdown dropdown-hover">
   <div tabIndex={0} role="button" className="text-white m-1">SmartWatch</div>
   <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
-    <li><a>Item 1</a></li>
-    <li><a>Item 2</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>IPhone</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Xiomi</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Google</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Vivo</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>OnePlus</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Realme</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Honor</a></li>
   </ul>
 </div>
 
 <div className="dropdown dropdown-hover">
   <div tabIndex={0} role="button" className="text-white m-1">HeadPhones</div>
   <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
-    <li><a>Item 1</a></li>
-    <li><a>Item 2</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>IPhone</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Xiomi</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Google</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Vivo</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>OnePlus</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Realme</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Honor</a></li>
   </ul>
 </div>
 
 <div className="dropdown dropdown-hover">
   <div tabIndex={0} role="button" className="text-white m-1">Accessories</div>
   <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
-    <li><a>Item 1</a></li>
-    <li><a>Item 2</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Screen Protector</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Charger & Adapter</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Router</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Flash Drive</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Phone Cases</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Power Bank</a></li>
+  
   </ul>
 </div>
 
 <div className="dropdown dropdown-hover">
-  <div tabIndex={0} role="button" className="text-white font-medium m-1 bg-gradient-to-r from-blue-600 via-violet-600 to-orange-600 bg-clip-text text-transparent animate-bounce">Online Exclusive</div>
-  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
-    <li><a>Item 1</a></li>
-    <li><a>Item 2</a></li>
-  </ul>
+  <div tabIndex={0} role="button" className="text-white font-medium m-1 bg-gradient-to-r from-blue-600 via-violet-600 to-orange-600 bg-clip-text text-transparent animate-bounce mt-2">Online Exclusive</div>
+  
 </div>
         </div>
         <div>
-              <h1 className="text-base text-white md:text-lg">01956230265</h1>
+              <h1 className="text-base text-white md:text-lg tracking-wider">01956230265</h1>
         </div>
 
       

@@ -69,12 +69,12 @@ const Banner = () => {
       </Swiper>
 
       <div className='w-full lg:w-[40%] flex flex-col gap-3'>
-        <div className='h-[70vh] md:h-[45vh] banner4 rounded-md w-full flex flex-col justify-center pl-10 text-white'>
+        <div className='h-[40vh] md:h-[45vh] banner4 rounded-md w-full flex flex-col justify-center pl-10 text-white'>
            <h1 className='text-5xl font-semibold'>HeadPhones</h1>
            <p className='text-2xl my-2 font-semibold'>starting from $100</p>
            <div className='mt-3'><button className='btn hover:bg-white hover:text-black text-white bg-black font-semibold border-none text-lg'>Shop Now</button></div>
         </div>
-        <div className='h-[70vh] md:h-[45vh] banner5 rounded-md w-full flex flex-col justify-center pl-10 text-white'>
+        <div className='h-[40vh] md:h-[45vh] banner5 rounded-md w-full flex flex-col justify-center pl-10 text-white'>
            <h1 className='text-5xl font-semibold'>Smart Watch</h1>
            <p className='text-2xl my-2 font-semibold'>starting from $150</p>
            <div className='mt-3'><button className='btn hover:bg-black hover:text-white font-semibold border-none text-lg'>Shop Now</button></div>
