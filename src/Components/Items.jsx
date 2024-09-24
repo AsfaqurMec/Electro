@@ -13,7 +13,7 @@ const Items = () => {
   const [loading, setLoading] = useState(true);
   const [latest, setLatest] = useState([]);
   const [bg, setBg] = useState([]);
-  const [bgs, setBgs] = useState('phone');
+  const [bgs, setBgs] = useState('Smartphone');
 
  
 

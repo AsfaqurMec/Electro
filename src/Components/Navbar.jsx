@@ -76,7 +76,7 @@ console.log('USER : ',user);
                             {
                               user || session?.data?.user? 
                           
-                           <Link href='/user'>
+                           <Link href='/account'>
                                {/* <button className="btn btn-sm bg-green-500 hover:bg-blue-500 text-white mr-2  btn-ghost">Login</button> */}
                                <h1 className="flex gap-1 items-center uppercase"> <img className="w-6 rounded-full" src={ "https://i.ibb.co/8xzVgxd/pngtree-user-icon-png-image-1796659.jpg" } />  My Account</h1>
                            </Link>
