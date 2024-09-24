@@ -9,10 +9,11 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoIosSearch } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 import { IoCartOutline } from "react-icons/io5";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from '../../images/Screenshot_2024-09-09_192325-removebg-preview.png'
 import { useUser } from "../../context/UserContext";
 import { useSession } from "next-auth/react";
+import axios from "axios";
 
 
 const Navbar = () => {
@@ -24,13 +25,42 @@ console.log('USER : ',user);
 
   const pathname = usePathname();
   const [search, setSearch] = useState('')
-  
+  const [items, setItems] = useState([]);
 
   const [toggle, setToggle] = useState(false);
 
    const handleToggle = () => {
           setToggle(true);
    }
+
+   const handle = () => {
+    setItems([]);
+    setSearch('');
+  }
+
+  useEffect(() => {
+    if (search) {
+      
+    
+    const fetchData = async () => {
+      try {
+        const { data } = await axios.get(`http://localhost:3000/search/api?search=${search}`);
+        setItems(data);
+        console.log('dataaaas :',items.service);
+        
+      } catch (error) {
+        console.error('Error fetching data:', error.message);
+      }
+      
+    };
+    fetchData();
+  } else {
+    setItems([]);
+  }
+
+  
+  
+  }, [items.service, search]);
 
    const navLinks = <>
        
@@ -290,6 +320,33 @@ console.log('USER : ',user);
       
 
        </div> 
+       {
+            items?.service?.length>0 ?
+           <div className="flex justify-center w-full ">
+            
+            
+            <div className="absolute mt-2 p-10 flex flex-col items-start justify-start gap-5 max-h-[600px] overflow-y-scroll z-50 bg-white md:w-[40%] rounded-md border-2 mx-auto">
+              <h1>Search Result for <span className="text-2xl text-cyan-500 font-medium">{search}</span></h1>
+              { items?.service?.map(latest => 
+             <Link href={`/services/${latest._id}`} onClick={handle} key={latest._id}><div  className=" flex items-center justify-center w-full">
+              <figure className='relative'>
+                <img className='transition-transform duration-300 ease-in-out transform hover:scale-125 h-24'
+                  src={latest.image1}
+                  alt="Shoes" />
+               
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title">{latest.title}</h2>
+                <p>${latest.price}</p>
+                
+              </div>
+            </div> </Link> 
+          )
+          } 
+            </div>  
+         </div>
+          : ""
+        } 
        </>
     );
 };
