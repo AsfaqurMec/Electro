@@ -67,9 +67,10 @@ export default function Home() {
     <div>
       
 
-      <div className='bg-gradient-to-l from-sky-400 to-emerald-100 pt-10 px-5'>
-        <Category />
+      <div className='bg-gradient-to-l from-gray-100 to-slate-100 pt-10 px-5'>
+        
         <Banner />
+        <Category />
       </div>
 
       <Other />
