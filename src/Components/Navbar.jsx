@@ -52,18 +52,18 @@ console.log('USER : ',user);
        {/* upper NAVBAR */}
        <div className="sticky top-0 z-50 shadow-sm backdrop-blur-xl ">
        <div  className="navbar shadow-sm bg-violet-200 px-1 md:px-2 flex w-full">
-               <div className="w-[40%] lg:w-[20%]">
-                  
+               <div className="w-[40%] lg:w-[20%] ">
+
 <div className="flex justify-start gap-1 md:gap-5">
 <div className="drawer  lg:hidden justify-start p-0">
   <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
   <div className="drawer-content">
     {/* Page content here */}
     <label htmlFor="my-drawer-4" className="drawer-button btn p-0 bg-transparent border-none shadow-none text-slate-50 hover:bg-transparent text-2xl">
-    
-            <GiHamburgerMenu onClick={handleToggle} className='md:w-10 w-5 h-5 md:h-10 text-black mx-1' /> 
-             
-             
+
+            <GiHamburgerMenu onClick={handleToggle} className='md:w-8 w-5 h-5 md:h-8 text-black mx-1' /> 
+
+
     </label>
   </div>
   <div className="drawer-side z-50  overflow-y-scroll">
@@ -76,15 +76,15 @@ console.log('USER : ',user);
       <input
                 type='text'
                 name='search'
-                
+
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder='Search Here'
                 className='w-full px-3 py-2  rounded-md  focus:outline-none  text-gray-900'
-                
+
               />
 
-                <IoIosSearch className="h-8 w-8  " />
+                <IoIosSearch className="h-8 w-8 " />
           </div>
 
           <ul className="menu lg:menu-horizontal bg-base-100 rounded-lg lg:mb-64">
@@ -93,7 +93,7 @@ console.log('USER : ',user);
     <details >
       <summary className="text-lg font-bold border-2 hover:bg-sky-200 ">Category</summary>
       <ul className="p-0 m-0">
-        
+
         </ul>
 
         </details>
@@ -116,10 +116,11 @@ console.log('USER : ',user);
 
 
                    <Link href='/' className="btn hover:bg-transparent border-none bg-transparent shadow-none text-black p-0 font-bold normal-case text-xl md:text-2xl lg:text-5xl" >
-                      
+
                       <Image className="w-24 md:w-32 h-8 md:h-10 ml-0 lg:ml-10" src={logo} alt="logo"></Image>
                       </Link>
                  </div>   
+
                </div>
 
 
@@ -157,13 +158,13 @@ console.log('USER : ',user);
                               user || session?.data?.user? 
                           
                            <Link href='/account'>
-                               {/* <button className="btn btn-sm bg-green-500 hover:bg-blue-500 text-white mr-2  btn-ghost">Login</button> */}
-                               <h1 className="flex gap-1 items-center uppercase"> <img className="w-6 rounded-full" src={ "https://i.ibb.co/8xzVgxd/pngtree-user-icon-png-image-1796659.jpg" } />  My Account</h1>
+                               {/* <button className="text-white text-white-sm bg-green-500 hover:bg-blue-500 text-white mr-2  text-white-ghost">Login</button> */}
+                               <h1 className="flex gap-1 items-center uppercase font-medium"> <img className="w-6 rounded-full" src={ "https://i.ibb.co/8xzVgxd/pngtree-user-icon-png-image-1796659.jpg" } />  My Account</h1>
                            </Link>
                            :
                            <Link href='/login'>
-                               {/* <button className="btn btn-sm bg-green-500 hover:bg-blue-500 text-white mr-2  btn-ghost">Login</button> */}
-                               <h1 className="flex gap-1 items-center uppercase"> <img className="w-6 rounded-full" src={ "https://i.ibb.co/8xzVgxd/pngtree-user-icon-png-image-1796659.jpg" } />  My Account</h1>
+                               {/* <button className="text-white text-white-sm bg-green-500 hover:bg-blue-500 text-white mr-2  text-white-ghost">Login</button> */}
+                               <h1 className="flex gap-1 items-center uppercase font-medium"> <img className="w-6 rounded-full" src={ "https://i.ibb.co/8xzVgxd/pngtree-user-icon-png-image-1796659.jpg" } />  My Account</h1>
                            </Link>
                             } 
                        </div>
@@ -193,9 +194,67 @@ console.log('USER : ',user);
 
             {/* lower NAVBAR */}
         
-       <div className="flex justify-center lg:justify-between px-2 lg:px-16 bg-white text-black py-2 md:py-4 items-center w-full border-b-2 ">
+       <div className="hidden lg:flex justify-center lg:justify-between px-2 lg:px-16 bg-black  py-2 md:py-4 items-center w-full border-b-2 ">
+        <div className="flex gap-3 items-center">
+
+        <div className="dropdown dropdown-hover">
+  <div tabIndex={0} role="button" className="text-white m-1 pr-3 border-r-2 border-r-white"><GiHamburgerMenu className='w-5 h-5' /> </div>
+  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
+    <li><a>Item 1</a></li>
+    <li><a>Item 2</a></li>
+  </ul>
+</div>
+
+<div className="dropdown dropdown-hover">
+  <div tabIndex={0} role="button" className="text-white m-1">Phones</div>
+  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
+    <li><a>Item 1</a></li>
+    <li><a>Item 2</a></li>
+  </ul>
+</div>
+
+<div className="dropdown dropdown-hover">
+  <div tabIndex={0} role="button" className="text-white m-1">EarBuds</div>
+  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
+    <li><a>Item 1</a></li>
+    <li><a>Item 2</a></li>
+  </ul>
+</div>
+
+<div className="dropdown dropdown-hover">
+  <div tabIndex={0} role="button" className="text-white m-1">SmartWatch</div>
+  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
+    <li><a>Item 1</a></li>
+    <li><a>Item 2</a></li>
+  </ul>
+</div>
+
+<div className="dropdown dropdown-hover">
+  <div tabIndex={0} role="button" className="text-white m-1">HeadPhones</div>
+  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
+    <li><a>Item 1</a></li>
+    <li><a>Item 2</a></li>
+  </ul>
+</div>
+
+<div className="dropdown dropdown-hover">
+  <div tabIndex={0} role="button" className="text-white m-1">Accessories</div>
+  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
+    <li><a>Item 1</a></li>
+    <li><a>Item 2</a></li>
+  </ul>
+</div>
+
+<div className="dropdown dropdown-hover">
+  <div tabIndex={0} role="button" className="text-white font-medium m-1 bg-gradient-to-r from-blue-600 via-violet-600 to-orange-600 bg-clip-text text-transparent animate-bounce">Online Exclusive</div>
+  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
+    <li><a>Item 1</a></li>
+    <li><a>Item 2</a></li>
+  </ul>
+</div>
+        </div>
         <div>
-              <h1 className="text-base md:text-lg">OUR PHONE NUMBER : 01956230265</h1>
+              <h1 className="text-base text-white md:text-lg">01956230265</h1>
         </div>
 
       
