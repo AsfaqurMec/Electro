@@ -6,7 +6,7 @@ import Image from 'next/image';
 const Footer = () => {
     return (
         <div className=' bg-[#0b0719] px-5'>
-          <footer className="w-full justify-between mx-auto lg:grid-flow-col grid-flow-row footer bg-[#0c0a1b]  text-white p-10">
+          <footer className="w-full justify-between mx-auto lg:grid-flow-col grid-flow-row footer bg-[#0c0a1b]  text-white px-5 md:px-10 py-10">
   
   <nav className='space-y-3'>
     <h6 className="footer-title text-xl mb-3 text-[#5e8cf8] opacity-100">Follow Us:</h6>
@@ -17,10 +17,10 @@ const Footer = () => {
     <Image className='w-full h-12' src={logo1} alt='photo'></Image>
   </nav>
   
-  <form className='block'>
+  <form className='hidden md:block'>
     <h6 className="footer-title text-xl mb-3 text-[#5e8cf8] opacity-100">Newsletter</h6>
    
-    <fieldset className="form-control w-64 md:w-80 ">
+    <fieldset className="form-control md:w-80 ">
     
       <div className="join">
         <input

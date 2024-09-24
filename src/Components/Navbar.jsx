@@ -195,7 +195,7 @@ console.log('USER : ',user);
             {/* lower NAVBAR */}
         
        <div className="hidden lg:flex justify-center lg:justify-between px-2 lg:px-16 bg-black  py-2 md:py-1 items-center w-full border-b-2 ">
-        <div className="flex gap-3 items-center">
+        <div className="flex gap-5 items-center">
 
         <div className="dropdown dropdown-hover">
   <div tabIndex={0} role="button" className="text-white m-1 pr-3 border-r-2 border-r-white"><GiHamburgerMenu className='w-5 h-5' /> </div>
