@@ -43,19 +43,19 @@ const Items = () => {
   return (
     <>
       <h1 className='text-center text-5xl font-semibold my-14 text-blue-500'>New Arrivals</h1>
-      <div className='flex gap-2 md:gap-3 w-full px-1 md:px-5 mb-5'>
+      <div className='flex gap-1 md:gap-3 w-full px-1 md:px-5 mb-5'>
         <button onClick={() => handleCategoryChange('Smartphone')} className={`${
           bgs === 'Smartphone' ? 'bg-blue-500 text-white' : ''
-        } w-44 border shadow-xl py-3 rounded-md font-semibold`}>Phone</button>
+        } w-32 md:w-44 text-sm md:text-lg border shadow-xl py-3 rounded-md font-semibold`}>Phone</button>
         <button onClick={() => handleCategoryChange('Smartwatch')} className={`${
           bgs === 'Smartwatch' ? 'bg-blue-500 text-white' : ''
-        } w-44 border shadow-xl py-3 rounded-md font-semibold`}>SmartWatch</button>
+        } w-32 md:w-44 border text-sm md:text-lg shadow-xl py-3 rounded-md font-semibold`}>SmartWatch</button>
         <button onClick={() => handleCategoryChange('Headphones')} className={`${
           bgs === 'Headphones' ? 'bg-blue-500 text-white' : ''
-        } w-44 border shadow-xl py-3 rounded-md font-semibold`}>HeadPhone</button>
+        } w-32 md:w-44 border text-sm md:text-lg shadow-xl py-3 rounded-md font-semibold`}>HeadPhone</button>
         <button onClick={() => handleCategoryChange('Earbuds')} className={`${
           bgs === 'Earbuds' ? 'bg-blue-500 text-white' : ''
-        } w-44 border shadow-xl py-3 rounded-md font-semibold`}>EarBuds</button>
+        } w-32 md:w-44 border text-sm md:text-lg shadow-xl py-3 rounded-md font-semibold`}>EarBuds</button>
       </div>
 
       <div className='py-10 px-2 md:px-5'>

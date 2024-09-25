@@ -100,46 +100,104 @@ console.log('USER : ',user);
   <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
     <ul className=" menu bg-[#ffffff] border-2 border-sky-200 text-base-content min-h-[150vh] w-80 pb-10 pt-2 px-5 z-50 space-y-5">
       {/* Sidebar content here */}
-      {/* <h1 htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay bg-black text-white pl-3 py-1 rounded-lg text-xl w-9">X</h1> */}
-      <li className="flex flex-row "><label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay  py-1 pl-[11px] w-9  rounded-full bg-[#08b0f8] hover:bg-[#0838f8] text-white text-xl font-bold">X</label></li>
-      <div className="flex items-center p-1 mb-10 rounded-md bg-slate-300">
-      <input
-                type='text'
-                name='search'
+      <li className="flex flex-row w-full justify-end"><label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay  py-1 pl-[11px] w-9  rounded-full bg-[#08b0f8] hover:bg-[#061245] text-white text-xl font-bold">X</label></li>
+      
+      <div className="dropdown dropdown-hover">
+  <div 
+    tabIndex={0} 
+    role="button" 
+    className="text-transparent bg-clip-text font-medium m-1 animate-bounce mt-2 text-xl" 
+    style={{ backgroundImage: 'linear-gradient(to right, #2563eb, #8b5cf6, #fb923c)' }}>
+    Online Exclusive
+  </div>
+</div>
 
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder='Search Here'
-                className='w-full px-3 py-2  rounded-md  focus:outline-none  text-gray-900'
+      <div className="collapse collapse-plus shadow-md rounded-sm">
+      <input type="checkbox" />   
+  <div className="collapse-title text-xl font-medium"><h1>Phones</h1></div>
+  <div className="collapse-content shadow-md">
+    <ul className="shadow-xl border-2">
+    <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>IPhone</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Xiomi</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Google</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Vivo</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>OnePlus</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Realme</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Honor</a></li>
+    </ul>
+  </div>
+</div>
 
-              />
+<div className="collapse collapse-plus shadow-md rounded-sm">
+      <input type="checkbox" />   
+  <div className="collapse-title text-xl font-medium"><h1>Tablet</h1></div>
+  <div className="collapse-content shadow-md">
+    <ul className="shadow-xl border-2">
+    <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>IPhone</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Xiomi</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Google</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Vivo</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>OnePlus</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Realme</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Honor</a></li>
+    </ul>
+  </div>
+</div>
 
-                <IoIosSearch className="h-8 w-8 " />
-          </div>
+<div className="collapse collapse-plus shadow-md rounded-sm">
+      <input type="checkbox" />   
+  <div className="collapse-title text-xl font-medium"><h1>EarBuds</h1></div>
+  <div className="collapse-content shadow-md">
+    <ul className="shadow-xl border-2">
+    <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>IPhone</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Xiomi</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Google</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Vivo</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>OnePlus</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Realme</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Honor</a></li>
+    </ul>
+  </div>
+</div>
 
-          <ul className="menu lg:menu-horizontal bg-base-100 rounded-lg lg:mb-64">
+<div className="collapse collapse-plus shadow-md rounded-sm">
+      <input type="checkbox" />   
+  <div className="collapse-title text-xl font-medium"><h1>SmartWatch</h1></div>
+  <div className="collapse-content shadow-md">
+    <ul className="shadow-xl border-2">
+    <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>IPhone</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Xiomi</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Google</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Vivo</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>OnePlus</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Realme</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Honor</a></li>
+    </ul>
+  </div>
+</div>
 
-          <li>
-    <details >
-      <summary className="text-lg font-bold border-2 hover:bg-sky-200 ">Category</summary>
-      <ul className="p-0 m-0">
-
-        </ul>
-
-        </details>
-        </li>
-
-          </ul>
-
-
-
-
-
-      <li  className="mr-3  rounded-md hover:scale-105 border-2 hover:bg-sky-200 transition duration-300 bg-white text-center text-xl font-medium "><Link href="/shop" >Shop</Link></li>
-                       <li  className="mr-3 border-2 hover:bg-sky-200 rounded-md hover:scale-105 transition duration-300 bg-white text-center text-xl font-medium"><Link href="/blog" >Blog</Link></li>
+<div className="collapse collapse-plus shadow-md rounded-sm">
+      <input type="checkbox" />   
+  <div className="collapse-title text-xl font-medium"><h1>HeadPhones</h1></div>
+  <div className="collapse-content shadow-md">
+    <ul className="shadow-xl border-2">
+    <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>IPhone</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Xiomi</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Google</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Vivo</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>OnePlus</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Realme</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Honor</a></li>
+    </ul>
+  </div>
+</div>
 
 
-                      <li  className="mr-3 border-2 hover:bg-sky-200  rounded-md hover:scale-105 transition duration-300 bg-white text-center text-xl font-medium"><Link href="/contact" className="text-center">Contact Us</Link></li>
     </ul>
   </div>
 </div>
@@ -309,9 +367,15 @@ console.log('USER : ',user);
 </div>
 
 <div className="dropdown dropdown-hover">
-  <div tabIndex={0} role="button" className="text-white font-medium m-1 bg-gradient-to-r from-blue-600 via-violet-600 to-orange-600 bg-clip-text text-transparent animate-bounce mt-2">Online Exclusive</div>
-  
+  <div 
+    tabIndex={0} 
+    role="button" 
+    className="text-transparent bg-clip-text font-medium m-1 animate-bounce mt-2" 
+    style={{ backgroundImage: 'linear-gradient(to right, #2563eb, #8b5cf6, #fb923c)' }}>
+    Online Exclusive
+  </div>
 </div>
+
         </div>
         <div>
               <h1 className="text-base text-white md:text-lg tracking-wider">01956230265</h1>
@@ -328,7 +392,7 @@ console.log('USER : ',user);
             <div className="absolute mt-2 p-10 flex flex-col items-start justify-start gap-5 max-h-[600px] overflow-y-scroll z-50 bg-white md:w-[40%] rounded-md border-2 mx-auto">
               <h1>Search Result for <span className="text-2xl text-cyan-500 font-medium">{search}</span></h1>
               { items?.service?.map(latest => 
-             <Link href={`/services/${latest._id}`} onClick={handle} key={latest._id}><div  className=" flex items-center justify-center w-full">
+             <Link href={`/services/${latest._id}`} onClick={handle} key={latest._id} className="w-full border-b-2"><div  className=" flex items-center justify-center w-full">
               <figure className='relative'>
                 <img className='transition-transform duration-300 ease-in-out transform hover:scale-125 h-24'
                   src={latest.image1}
@@ -346,6 +410,7 @@ console.log('USER : ',user);
             </div>  
          </div>
           : ""
+         
         } 
        </>
     );
