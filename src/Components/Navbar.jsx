@@ -14,14 +14,14 @@ import logo from '../../images/Screenshot_2024-09-09_192325-removebg-preview.png
 import { useUser } from "../../context/UserContext";
 import { useSession } from "next-auth/react";
 import axios from "axios";
-
+import { MdCall } from "react-icons/md";
 
 const Navbar = () => {
   const  session  = useSession();
-  console.log('session : ',session?.data?.user);
+ // console.log('session : ',session?.data?.user);
   
   const { user } = useUser(); // Access user data from context
-console.log('USER : ',user);
+//console.log('USER : ',user);
 
   const pathname = usePathname();
   const [search, setSearch] = useState('')
@@ -37,6 +37,28 @@ console.log('USER : ',user);
     setItems([]);
     setSearch('');
   }
+
+  const [latest, setLatest] = useState([]);
+     
+   
+useEffect(() => {
+  const getData = async () => {
+    const { data } = await axios.get(
+      `http://localhost:3000/mycart/api?email=${session?.data?.user?.email || user?.email}`
+    )
+    
+    setLatest(data.service)
+   // console.log(data);
+   // console.log(latest);
+  }
+  getData();
+  
+
+
+
+}, [latest, session?.data?.user?.email, user?.email])
+
+//console.log(latest);
 
   useEffect(() => {
     if (search) {
@@ -258,16 +280,16 @@ console.log('USER : ',user);
                        </div>
                  
 
-{ user || session?.data?.user? 
+{/* { user || session?.data?.user? 
                   <Link href='/wishlist'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">{0}</span><CiHeart className="h-8 w-8"/></h1></Link>
                   : 
                   <Link href='/wishlist'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge  mt-1 w-6 text-lg  bg-black text-white">0</span><CiHeart className="h-8 w-8"/></h1></Link>
-                }
+                } */}
 
                 { user || session?.data?.user?
-                  <Link href='/cart'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">{0}</span><IoCartOutline className="h-8 w-8"/></h1></Link>
+                  <Link href='/mycart'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">{latest.length}</span><IoCartOutline className="h-8 w-8"/></h1></Link>
                   : 
-                  <Link href='/cart'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">0</span><IoCartOutline className="h-8 w-8"/></h1></Link>
+                  <Link href='/mycart'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">0</span><IoCartOutline className="h-8 w-8"/></h1></Link>
                 }
 
 
@@ -377,7 +399,8 @@ console.log('USER : ',user);
 </div>
 
         </div>
-        <div>
+        <div className="flex gap-2 items-center">
+        <MdCall className="text-white h-5 w-5"/>
               <h1 className="text-base text-white md:text-lg tracking-wider">01956230265</h1>
         </div>
 

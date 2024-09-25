@@ -11,8 +11,18 @@ import 'swiper/css';
 import { Autoplay} from 'swiper/modules';
 import { getServices } from '../../services/getItems';
 import Link from 'next/link';
+import toast, { Toaster } from 'react-hot-toast';
 const Detail = ({ latest, paramsId }) => {
-  const [storage, setStorage] = useState('64GB');
+  const [selectedStorage, setSelectedStorage] = useState('');
+  const [selectedRam, setSelectedRam] = useState('');
+
+  const handleStorageChange = (e) => {
+    setSelectedStorage(e.target.value);
+  };
+
+  const handleRamChange = (e) => {
+    setSelectedRam(e.target.value);
+  };
     const [toggle, setToggle] = useState(false);
     const handleToggle = () => setToggle(false);
     const handleToggles = () => setToggle(true);
@@ -58,6 +68,50 @@ const Detail = ({ latest, paramsId }) => {
     console.log(item);
     
   };
+
+
+  const handleCart = async  () => {
+       
+    const email = user.email;
+
+    const info = {
+
+      title : title,
+     image : image1,
+      price : price,
+      email : email,
+      quantity : quantity,
+      ram : selectedRam,
+      rom : selectedStorage,
+      color : selectedColor,
+      category : category
+    }
+  // console.log(info);
+
+
+
+  const resp = await fetch('http://localhost:3000/cart/api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(info),
+      
+      
+    })
+    
+    if (resp.status === 200) {
+      //alert('added');
+      toast.success("Added To Cart Successfully");
+      
+    }else {
+      toast.error("Something went Wrong");
+    }
+
+
+   } 
+
+
 
 
   // const [loadin, setLoadin] = useState(false);
@@ -223,10 +277,12 @@ className="w-full" />
 </section>
 
 
+{
+  latest.service?.storage ? 
 
 
 <div className='flex flex-col md:flex-row gap-3'>
- <label className="form-control w-full md:w-1/2">
+ {/* <label className="form-control w-full md:w-1/2">
   <div className="label">
     <span className="label-text text-lg font-medium">Select Storage :</span>
    
@@ -260,11 +316,53 @@ className="w-full" />
    
   </select>
   
-</label>
+</label> */}
+
+{/* Storage Select */}
+<label className="form-control w-full md:w-1/2">
+        <div className="label">
+          <span className="label-text text-lg font-medium">Select Storage :</span>
+        </div>
+        <select 
+          className="select select-bordered text-lg font-medium shadow-lg focus:outline-dashed"
+          value={selectedStorage}
+          onChange={handleStorageChange}
+        >
+          <option disabled value="">
+            Pick one
+          </option>
+          {latest.service?.storage?.map(item => (
+            <option key={item} value={item}>
+              {item}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      {/* RAM Select */}
+      <label className="form-control w-full md:w-1/2">
+        <div className="label">
+          <span className="label-text text-lg font-medium">Select RAM :</span>
+        </div>
+        <select 
+          className="select select-bordered text-lg font-medium shadow-lg focus:outline-dashed"
+          value={selectedRam}
+          onChange={handleRamChange}
+        >
+          <option disabled value="">
+            Pick one
+          </option>
+          {latest.service?.ram?.map(item => (
+            <option key={item} value={item}>
+              {item}
+            </option>
+          ))}
+        </select>
+      </label>
 
 
 </div>
-
+: ""}
 
 
   <div className="flex justify-between items-center  w-36 border-2 ml-5 lg:ml-0 text-2xl font-semibold">
@@ -280,7 +378,7 @@ className="w-full" />
 
 </div> 
 <div className="flex flex-col mx-5 lg:mx-0 gap-5">
-<div><button  className="btn w-full bg-emerald-600 hover:bg-green-800 text-white text-xl">Add to Cart</button></div>
+<div><button onClick={handleCart}  className="btn w-full bg-emerald-600 hover:bg-green-800 text-white text-xl">Add to Cart</button></div>
 <div><button onClick={sendEmail} className="btn text-white text-xl w-full bg-cyan-400 hover:bg-cyan-700">Buy Now</button></div>
 </div>
 {/* onClick={handleBuyClick} disabled={loading} */}
@@ -447,7 +545,7 @@ className="w-full" />
        
       </Swiper>
       </div>
-
+         <Toaster></Toaster>
         </div>
     );
 };
