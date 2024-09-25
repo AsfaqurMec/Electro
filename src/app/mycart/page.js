@@ -121,18 +121,29 @@ const sendEmail = async (e) => {
     
     });
 
-    // if (res.ok) {
-    //   alert('Product details sent successfully!');
-    // } else {
-    //   alert('Failed to send product details.');
-    // }
+    if (res.ok) {
+      setSelectedUsers([]);
+      handleDelete();
+    } else {
+      alert('Failed to send product details.');
+    }
   } catch (error) {
     console.error(error);
     alert('An error occurred.');
   }
 };
 
+const handleDelete = async () => {
+    try {
+      const response = await axios.delete('/delete/api', {
+        data: { selectedUsers }, // Sending the product IDs in the request body
+      });
 
+      setMessage(response.data.message);
+    } catch (error) {
+      setMessage('Error deleting products');
+    }
+  };
 
 
     return (
