@@ -9,10 +9,20 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import Swal from "sweetalert2";
 const page = () => {
-    const  session  = useSession();
- // console.log('session : ',session?.data?.user);
+  // let session;
+  // setTimeout(() => {
+  //    session  = useSession();
+  // }, 1000);
   
-  const { user } = useUser(); // Access user data from context
+    const  session  = useSession();
+  
+    
+ // console.log('session : ',session?.data?.user);
+//  let user;
+//  setTimeout(() => {
+//     user  = useUser();
+//  }, 1000);
+ const { user } = useUser(); // Access user data from context
 //console.log('USER : ',user);
 
 const [latest, setLatest] = useState([]);
@@ -21,7 +31,7 @@ const [latest, setLatest] = useState([]);
 useEffect(() => {
   const getData = async () => {
     const { data } = await axios.get(
-      `http://localhost:3000/mycart/api?email=${session?.data?.user?.email || user?.email}`
+      `https://electro-brown.vercel.app/mycart/api?email=${session?.data?.user?.email || user?.email}`
     )
     
     setLatest(data.service)

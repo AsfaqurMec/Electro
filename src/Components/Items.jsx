@@ -8,6 +8,7 @@ import { Autoplay } from 'swiper/modules';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { getServices } from '../../services/getItems'; // Ensure this returns a promise
+import axios from 'axios';
 
 const Items = () => {
   const [loading, setLoading] = useState(true);
@@ -20,22 +21,24 @@ const Items = () => {
   useEffect(() => {
     // Define the async function inside useEffect
     const getData = async () => {
-      try {
-        const { services } = await getServices(); // Ensure getServices is async and returns a promise
-        setLatest(services);
-        setBg(services.filter(item => item.category === 'Smartphone')); // Initialize bg with smartphones
+      const { data } = await axios.get(
+        `https://electro-brown.vercel.app/services/api/get-all`
+      )
+       // const { services } = await getServices(); // Ensure getServices is async and returns a promise
+        setLatest(data.services);
+        const phones = latest.filter(item => item.category === 'Smartphone');
+        setBg(phones); // Initialize bg with smartphones
         setLoading(false);
-      } catch (error) {
-        console.error("Failed to fetch services:", error);
-        setLoading(false);
-      }
+       
     };
-
-    getData(); // Call the async function
-  }, []);
+    // setTimeout(() => {
+      getData(); // Call the async function
+    // }, 1000);
+    
+  }, [latest]);
 
   const handleCategoryChange = (category) => {
-    const filteredItems = latest.filter(item => item.category === category);
+    const filteredItems =  latest.filter(item => item.category === category);
     setBg(filteredItems);
     setBgs(category);
   };

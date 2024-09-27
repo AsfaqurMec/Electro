@@ -70,22 +70,31 @@ const handleLogout = async () => {
                 <span className="mr-2">&#128712;</span> FAQ
               </a>
             </li>
-            <li onClick={handleLogout}>
-             <button className="flex items-center text-gray-600 hover:text-orange-500">
-                <span className="mr-2">&#128682;</span> Logout
-              </button>
-            </li>
+            {
+              session?.data?.user.email || user?.email ?  <li onClick={handleLogout}>
+              <button className="flex items-center text-gray-600 hover:text-orange-500">
+                 <span className="mr-2">&#128682;</span> Logout
+               </button>
+             </li>
+             :
+             <li>
+             <Link href={'/login'}><button className="flex items-center text-gray-600 hover:text-orange-500">
+             <span className="mr-2">&#128682;</span> Login
+           </button></Link>
+         </li>
+            
+            }
           </ul>
         </div>
   
         {/* Main Content */}
-        <div className="flex-1 p-10">
+        <div className="flex-1 p-5 md:p-10">
           <div className="mb-8">
             <h2 className="text-2xl font-semibold">Hello <span className='text-xl font-medium text-orange-600 '>{session?.data?.user.name || user?.name}</span></h2>
           </div>
   
           {/* Account Details Form */}
-          <div className="bg-white p-8 shadow-lg rounded-lg max-w-4xl">
+          <div className="bg-white p-2 md:p-8 shadow-lg rounded-lg max-w-4xl">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-bold">Account Details</h3>
               <button

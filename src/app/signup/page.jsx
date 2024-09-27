@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 // import SocialSignin from "@/components/shared/SocialSignin";
 import Image from "next/image";
@@ -9,6 +10,10 @@ import { useUser } from "../../../context/UserContext";
 
 
 const SignUpPage = () => {
+  // let user;
+  // setTimeout(() => {
+  //    user  = useUser();
+  // }, 1000);
   const { user } = useUser(); // Access user data from context
   const { setUser } = useUser(); // Access setUser from context
  
@@ -21,7 +26,7 @@ console.log(user?.email);
       email: event.target.email.value,
       password: event.target.password.value,
     };
-    const resp = await fetch("http://localhost:3000/signup/api", {
+    const resp = await fetch("https://electro-brown.vercel.app/signup/api", {
       method: "POST",
       body: JSON.stringify(newUser),
       headers: {

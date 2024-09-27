@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-
+"use client"
 import Image from "next/image";
 import lofo from '../../images/Screenshot 2024-09-09 192439.png'
 import lofo1 from '../../images/Samsung-S24-Ultra-Titanium-Grey-removebg-preview.png'
@@ -7,13 +7,28 @@ import drone from '../../images/Screenshot 2024-09-11 015109.png'
 import pc from '../../images/Screenshot 2024-09-11 015123.png'
 import { getServices } from '../../services/getItems';
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
-const Other = async () => {
+const Other = () => {
 
-  const { services } = await getServices();
+  //const { services } = await getServices();
 //  console.log(services);
-  const flagship = services.filter(item=> item.type == 'flagship');
+const [latest, setLatest] = useState([]);
+useEffect(() => {
+  const getData = async () => {
+    const { data } = await axios.get(
+      `https://electro-brown.vercel.app/services/api/get-all`
+    )
+    
+    setLatest(data.services)
+   
+  }
+  getData();
+  
+}, []);
+  const flagship = latest.filter(item=> item.type == 'flagship');
 
 
     return (

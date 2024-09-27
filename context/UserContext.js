@@ -19,5 +19,9 @@ export const UserProvider = ({ children }) => {
 
 // Create a custom hook to use the context
 export const useUser = () => {
-  return useContext(UserContext);
+  const context = useContext(UserContext);
+  if (!context) {
+    throw new Error("useUser must be used within a UserProvider");
+  }
+  return context;
 };
