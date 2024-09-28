@@ -13,6 +13,8 @@ import { getServices } from '../../services/getItems';
 import Link from 'next/link';
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
+import { useUser } from '../../context/UserContext';
+import { useSession } from 'next-auth/react';
 const Detail = ({ latest, paramsId }) => {
   const [selectedStorage, setSelectedStorage] = useState('');
   const [selectedRam, setSelectedRam] = useState('');
@@ -73,18 +75,18 @@ console.log('latest',latest);
     console.log(item);
 
   };
-
-
+  const  session  = useSession();
+  const { user } = useUser(); 
   const handleCart = async () => {
 
-    const email = user.email;
+   // const email = user.email;
 
     const info = {
 
       title: title,
       image: image1,
       price: price,
-      email: email,
+      email: session?.data?.user?.email || user?.email,
       quantity: quantity,
       ram: selectedRam,
       rom: selectedStorage,
@@ -156,21 +158,21 @@ console.log('latest',latest);
   //   }
   // };
 
-  const [recipientEmail, setRecipientEmail] = useState('hamimhamim044@gmail.com');
+  const [recipientEmail, setRecipientEmail] = useState('');
   const [subject, setSubject] = useState('Product Purchase');
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState('');
 
-  const user = {
-    name: 'Asfaqur Rahman',
-    email: 'hamimhamim044@gmail.com',
-    address: 'Basurhat, Companigonj',
-    number: '01956230265',
-  }
+  // const user = {
+  //   name: 'Asfaqur Rahman',
+  //   email: 'hamimhamim044@gmail.com',
+  //   address: 'Basurhat, Companigonj',
+  //   number: '01956230265',
+  // }
 
 
   const sendEmail = async (e) => {
-    e.preventDefault();
+    setRecipientEmail(user?.email || session?.data?.user?.email)
     setStatus('Sending...');
 
     try {
@@ -187,6 +189,7 @@ console.log('latest',latest);
           price,
           category,
           user,
+          session,
         }),
 
       });
