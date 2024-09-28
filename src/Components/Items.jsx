@@ -13,7 +13,7 @@ import axios from 'axios';
 const Items = () => {
   const [loading, setLoading] = useState(true);
   const [latest, setLatest] = useState([]);
-  const [bg, setBg] = useState([]);
+  
   const [bgs, setBgs] = useState('Smartphone');
 
  
@@ -26,17 +26,23 @@ const Items = () => {
       )
        // const { services } = await getServices(); // Ensure getServices is async and returns a promise
         setLatest(data.services);
-        const phones = latest.filter(item => item.category === 'Smartphone');
-        setBg(phones); // Initialize bg with smartphones
+        
         setLoading(false);
        
     };
     // setTimeout(() => {
       getData(); // Call the async function
     // }, 1000);
-    
+   
+        // setBg(phones); // Initialize bg with smartphones
+
   }, [latest]);
 
+  const phones = latest.filter(item => item.category === 'Smartphone');
+  const [bg, setBg] = useState([]);
+  // if (bgs === 'Smartphone') {
+  //     setBg(phones);
+  // }
   const handleCategoryChange = (category) => {
     const filteredItems =  latest.filter(item => item.category === category);
     setBg(filteredItems);
@@ -74,7 +80,33 @@ const Items = () => {
         }} modules={[Autoplay]} className="py-10 px-5">
           {loading ? (
             <div className="loader w-28 h-28 mx-auto my-10"></div>
-          ) : (
+          ) : <div>{
+            bgs === "Smartphone" ? 
+            phones.map(item => (
+              <SwiperSlide key={item._id}>
+                <Link href={`/services/${item._id}`}>
+                  <div className="relative card border-2 rounded-md group overflow-hidden">
+                    <div className="relative w-full h-64">
+                      <img
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:opacity-0"
+                        src={item.image1}
+                        alt={item.title}
+                      />
+                      <img
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-in-out opacity-0 group-hover:opacity-100"
+                        src={item.image2}
+                        alt={item.title}
+                      />
+                    </div>
+                    <div className="card-body p-3 md:p-5">
+                      <h2 className="card-title text-base">{item.title}</h2>
+                      <p>${item.price}</p>
+                    </div>
+                  </div>
+                </Link>
+              </SwiperSlide>
+            )) 
+          :
             bg.map(item => (
               <SwiperSlide key={item._id}>
                 <Link href={`/services/${item._id}`}>
@@ -98,8 +130,10 @@ const Items = () => {
                   </div>
                 </Link>
               </SwiperSlide>
-            ))
-          )}
+            ))}
+          
+          </div>
+          }
         </Swiper>
       </div>
     </>
