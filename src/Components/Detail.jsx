@@ -15,6 +15,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import { useUser } from '../../context/UserContext';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 const Detail = ({ latest, paramsId }) => {
   const [selectedStorage, setSelectedStorage] = useState('');
   const [selectedRam, setSelectedRam] = useState('');
@@ -37,7 +38,7 @@ const Detail = ({ latest, paramsId }) => {
     const getData = async () => {
       //const { services } = await getServices();
       const { data } = await axios.get(
-        `https://electro-brown.vercel.app/services/api/get-all`
+        `http://localhost:3000/services/api/get-all`
       )
       setLat(data.services);
       setLoading(false);
@@ -45,7 +46,7 @@ const Detail = ({ latest, paramsId }) => {
     getData()
   }, [])
 
-console.log('latest',latest);
+
 
 
 
@@ -72,51 +73,59 @@ console.log('latest',latest);
 
   const handleStorage = (item) => {
     setStorage(item);
-    console.log(item);
+  //  console.log(item);
 
   };
   const  session  = useSession();
   const { user } = useUser(); 
-  const handleCart = async () => {
+  const router = useRouter();
 
-   // const email = user.email;
+  const userEmail = session?.data?.user?.email || user?.email;
+console.log(userEmail);
 
+
+  const handleCart = () => {
+    if (!session) {
+      // If no session, redirect to sign-in page or show a message
+      alert("You must be logged in to add items to the cart!");
+       // This redirects to the sign-in page
+      return;
+    }
+    // Prepare the info object for the API call
     const info = {
-
       title: title,
       image: image1,
       price: price,
-      email: session?.data?.user?.email || user?.email,
+      email: userEmail,
       quantity: quantity,
       ram: selectedRam,
       rom: selectedStorage,
       color: selectedColor,
-      category: category
-    }
-    // console.log(info);
+      category: category,
+    };
+  
+    //  try {
+    //   // Call the API to add the item to the cart
+    //   const resp = fetch('http://localhost:3000/cart/api', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(info),
+    //   });
+  
+    //   // Check the API response status
+    //   if (resp.status == 200 ){
+    //         alert('added to cart')   
+    //   }
+    // } catch (error) {
+    //   // Log any errors that occur during the fetch
+    //   console.error("Error adding to cart:", error);
+    //   toast.error("Failed to add to cart. Please try again.");
+    //  }
+  };
+  
 
-
-
-    const resp = await fetch('https://electro-brown.vercel.app/cart/api', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(info),
-
-
-    })
-
-    if (resp.status === 200) {
-      //alert('added');
-      toast.success("Added To Cart Successfully");
-
-    } else {
-      toast.error("Something went Wrong");
-    }
-
-
-  }
 
 
 
@@ -163,13 +172,6 @@ console.log('latest',latest);
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState('');
 
-  // const user = {
-  //   name: 'Asfaqur Rahman',
-  //   email: 'hamimhamim044@gmail.com',
-  //   address: 'Basurhat, Companigonj',
-  //   number: '01956230265',
-  // }
-
 
   const sendEmail = async (e) => {
     setRecipientEmail(user?.email || session?.data?.user?.email)
@@ -207,7 +209,7 @@ console.log('latest',latest);
 
 
   return (
-    <div>
+    <div className='bg-black'>
       <div className="flex flex-col lg:flex-row justify-around items-center lg:items-start w-[95%] gap-10 lg:gap-0 mx-auto my-10 py-10 md:pl-5 bg-[#f3f2f28c]">
 
         <div data-aos="flip-right" data-aos-duration="2000" className="w-full md:w-1/2 flex justify-center">

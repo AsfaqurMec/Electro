@@ -6,7 +6,7 @@ export const GET = async (request) => {
        // Extract the search query from the URL
   const { searchParams } = new URL(request.url);
   const search = searchParams.get('category'); // Get the 'search' query parameter
-    console.log('category', search);
+  //  console.log('category', search);
     
     const db =await connectDB()
     const servicesCollection = db.collection('items')
@@ -14,7 +14,7 @@ export const GET = async (request) => {
        
        const service = await servicesCollection.find({category : search}).toArray();
         
-        console.log(service);
+       // console.log(service);
         
         return NextResponse.json({service})
     } catch (error) {

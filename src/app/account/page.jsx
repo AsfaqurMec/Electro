@@ -13,10 +13,10 @@ import { useRouter } from 'next/navigation';
 const page = () => {
     const router = useRouter(); // Initialize the router
     const  session  = useSession();
-    console.log('session : ',session?.data?.user);
+   // console.log('session : ',session?.data?.user);
     
     const { user } = useUser(); // Access user data from context
-  console.log('USER : ',user);
+ // console.log('USER : ',user);
 
      // State to toggle edit mode
   const [isEditable, setIsEditable] = useState(false);
@@ -45,6 +45,15 @@ const handleLogout = async () => {
                 <span className="mr-2">&#128100;</span> Account Info
               </a>
             </li>
+            {
+              session?.data?.user?.role === 'admin' ?  <li className="mb-4">
+             <Link href={'/dashboard'}> <button className="flex items-center text-gray-600 hover:text-orange-500">
+                 <span className="mr-2">&#128682;</span> Dashboard
+               </button></Link>
+             </li>
+             :
+             ""
+            }
             <li className="mb-4">
               <a href="#" className="flex items-center text-gray-600 hover:text-orange-500">
                 <span className="mr-2">&#128203;</span> My Orders
@@ -65,11 +74,7 @@ const handleLogout = async () => {
                 <span className="mr-2">&#127942;</span> Reward Points
               </a>
             </li>
-            <li className="mb-4">
-              <a href="#" className="flex items-center text-gray-600 hover:text-orange-500">
-                <span className="mr-2">&#128712;</span> FAQ
-              </a>
-            </li>
+            
             {
               session?.data?.user.email || user?.email ?  <li onClick={handleLogout}>
               <button className="flex items-center text-gray-600 hover:text-orange-500">

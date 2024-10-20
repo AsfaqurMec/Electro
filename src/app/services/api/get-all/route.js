@@ -2,7 +2,7 @@ import { connectDB } from "../../../../../lib/connectDB"
 import { NextResponse } from "next/server";
 
 export const GET = async () => {
-    console.log('dbdbdb');
+  //  console.log('dbdbdb');
     
     const db =await connectDB();
     const servicesCollection = db.collection('items')

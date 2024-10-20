@@ -25,7 +25,7 @@ export default function Home() {
   
     if (res.ok) {
       const data = await res.json();
-      console.log(data);
+     // console.log(data);
       setMessage(`${data.filePath}`);
     } else {
       console.error('Upload failed', await res.json());

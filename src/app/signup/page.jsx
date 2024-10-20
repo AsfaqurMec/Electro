@@ -17,7 +17,7 @@ const SignUpPage = () => {
   const { user } = useUser(); // Access user data from context
   const { setUser } = useUser(); // Access setUser from context
  
-console.log(user?.email);
+//console.log(user?.email);
 
   const handleSignUp = async (event) => {
     event.preventDefault();
@@ -26,7 +26,7 @@ console.log(user?.email);
       email: event.target.email.value,
       password: event.target.password.value,
     };
-    const resp = await fetch("https://electro-brown.vercel.app/signup/api", {
+    const resp = await fetch("http://localhost:3000/signup/api", {
       method: "POST",
       body: JSON.stringify(newUser),
       headers: {

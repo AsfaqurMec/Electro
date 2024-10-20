@@ -29,7 +29,7 @@ const handler = NextAuth({
         }
         
         if (currentUser.email === email && currentUser.password === password) {
-         // toast.success('Login Successfully');
+        // toast.success('Login Successfully');
             return currentUser;
         }
        // return currentUser;
@@ -55,7 +55,7 @@ const handler = NextAuth({
            
            token.name = user.name;
            token.email = user.email;
-           
+           token.role = user?.role;
          }
        //  console.log(token);
          
@@ -67,9 +67,9 @@ const handler = NextAuth({
            
            name: token.name,
            email: token.email,
-           
+           role: token?.role,
          };
-         console.log(session);
+         //console.log(session);
          
          return session;
        },

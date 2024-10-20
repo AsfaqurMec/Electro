@@ -22,7 +22,7 @@ const Page = () => {
       redirect: true,
       callbackUrl: "/",
     });
-    console.log(resp);
+   // console.log(resp);
     
   };
 

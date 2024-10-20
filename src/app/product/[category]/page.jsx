@@ -15,7 +15,7 @@ const page = ({ params }) => {
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get(
-        `https://electro-brown.vercel.app/product/api?category=${params.category}`
+        `http://localhost:3000/product/api?category=${params.category}`
       )
 
       setLatest(data.service)

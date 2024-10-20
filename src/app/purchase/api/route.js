@@ -110,7 +110,7 @@ import nodemailer from 'nodemailer';
 
 export async function POST(req) {
   const { recipientEmail, selectedUsers, session, user } = await req.json();
-console.log(recipientEmail);
+//console.log(recipientEmail);
 
   // Create a transporter object using SMTP
   const transporter = nodemailer.createTransport({
@@ -138,7 +138,7 @@ console.log(recipientEmail);
     to: user?.email || session?.data?.user?.email, // Recipient address
     subject: 'Product Purchase Details', // Subject line
     html: `
-      <h1>Product Information</h1>
+      <h1>Purchase Items</h1>
       <table border="1" cellpadding="10" cellspacing="0">
         <thead>
           <tr>
@@ -152,17 +152,10 @@ console.log(recipientEmail);
         </tbody>
       </table>
       <br />
-      <h1>User Information</h1>
-      <table border="1" cellpadding="10" cellspacing="0">
-        <tr>
-          <th>Name</th>
-          <td>${user?.name || session?.data?.user?.name}</td>
-        </tr>
-        <tr>
-          <th>Email</th>
-          <td>${user?.email || session?.data?.user?.email}</td>
-        </tr>
-      </table>
+      <h1>Thank You for Order</h1>
+      <p>Happy Purchase<p>
+      <p>For more order <a href="https://electro-brown.vercel.app">Visit Website<a><p>
+      
     `,
     // Email body
   };

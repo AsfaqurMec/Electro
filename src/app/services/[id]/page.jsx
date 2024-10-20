@@ -23,7 +23,7 @@ import { useUser } from '../../../../context/UserContext';
 
 
 const page = ({params}) => {
-    console.log('grid',params.id);
+  //  console.log('grid',params.id);
     
     const  session  = useSession();
   //  console.log('session : ',session?.data?.user);
@@ -32,10 +32,12 @@ const page = ({params}) => {
   //console.log('USER : ',user);
 
     const [latest, setLatest] = useState([]);
+    const [detail, setDetail] = useState(false);
+
     useEffect(() => {
       const getData = async () => {
         const { data } = await axios.get(
-          `https://electro-brown.vercel.app/services/api/${params.id}`
+          `http://localhost:3000/services/api/${params.id}`
         )
         
         setLatest(data.service);
@@ -48,7 +50,7 @@ const page = ({params}) => {
       
     }, [params.id]);
          // const  services =await getServicesDetails(params.id);66e3d84b351e4574fdff7f1c
-         console.log('fetch data',latest);      
+        // console.log('fetch data',latest);      
     
          const [selectedStorage, setSelectedStorage] = useState('');
          const [selectedRam, setSelectedRam] = useState('');
@@ -71,7 +73,7 @@ const page = ({params}) => {
            const getData = async () => {
              //const { services } = await getServices();
              const { data } = await axios.get(
-               `https://electro-brown.vercel.app/services/api/get-all`
+               `http://localhost:3000/services/api/get-all`
              )
              setLat(data.services);
              setLoading(false);
@@ -103,15 +105,43 @@ const page = ({params}) => {
        
          const handleStorage = (item) => {
            setStorage(item);
-           console.log(item);
+          // console.log(item);
        
          };
        
        
          const handleCart = async () => {
        
+
            const email = session?.data?.user?.email || user?.email;
-       
+           
+           if (!email ) {
+            // If no session, redirect to sign-in page or show a message
+            toast.error("Please logged in to add items to cart!");
+             // This redirects to the sign-in page
+            return;
+          }
+
+          if (!selectedColor) {
+            toast.error("Add color please!");
+            // This redirects to the sign-in page
+           return;
+           }
+
+          if (category === 'Smartphone') {
+
+             if (!selectedStorage) {
+              toast.error("Add storage please!");
+              // This redirects to the sign-in page
+             return;
+             }
+             if (!selectedRam) {
+              toast.error("Add Ram please!");
+              // This redirects to the sign-in page
+             return;
+             }
+          }
+
            const info = {
        
              title: title,
@@ -128,7 +158,7 @@ const page = ({params}) => {
        
        
        
-           const resp = await fetch('https://electro-brown.vercel.app/cart/api', {
+           const resp = await fetch('http://localhost:3000/cart/api', {
              method: 'POST',
              headers: {
                'Content-Type': 'application/json',
@@ -141,6 +171,7 @@ const page = ({params}) => {
            if (resp.status === 200) {
              //alert('added');
              toast.success("Added To Cart Successfully");
+             
        
            } else {
              toast.error("Something went Wrong");
@@ -150,56 +181,145 @@ const page = ({params}) => {
          }
        
        
-       
-       
-        
-       
          const [recipientEmail, setRecipientEmail] = useState('hamimhamim044@gmail.com');
          const [subject, setSubject] = useState('Product Purchase');
          const [message, setMessage] = useState('');
          const [status, setStatus] = useState('');
-       
-        //  const user = {
-        //    name: 'Asfaqur Rahman',
-        //    email: 'hamimhamim044@gmail.com',
-        //    address: 'Basurhat, Companigonj',
-        //    number: '01956230265',
-        //  }
-       
-       
+           
+         
          const sendEmail = async (e) => {
-           e.preventDefault();
+          // e.preventDefault();
            setStatus('Sending...');
-       
+          
            try {
-             const res = await fetch('/email/api', {
+             const res = await fetch('/emails/api', {
                method: 'POST',
                headers: {
                  'Content-Type': 'application/json',
                },
                body: JSON.stringify({
-                 recipientEmail,
-                 subject,
-                 title,
-                 quantity,
-                 price,
-                 category,
-                 user,
+                 item : e,
                }),
        
              });
        
              if (res.ok) {
-               alert('Product details sent successfully!');
+               toast.success('Product details sent successfully!');
              } else {
                alert('Failed to send product details.');
              }
            } catch (error) {
              console.error(error);
-             alert('An error occurred.');
+             toast.error('An error occurred.');
            }
          };
        
+
+        
+
+        const [isModalOpen, setIsModalOpen] = useState(false);
+
+        const handleOpenModal = () => {
+
+
+          if (!selectedColor) {
+            toast.error("Add color please!");
+            // This redirects to the sign-in page
+           return;
+           }
+
+          if (category === 'Smartphone') {
+
+             if (!selectedStorage) {
+              toast.error("Add storage please!");
+              // This redirects to the sign-in page
+             return;
+             }
+             if (!selectedRam) {
+              toast.error("Add Ram please!");
+              // This redirects to the sign-in page
+             return;
+             }
+          }
+
+
+          setIsModalOpen(true);
+        };
+      
+        const handleCloseModal = () => {
+          setIsModalOpen(false);
+        };
+      
+        const handleSubmit = async (event) => {
+
+          
+
+          // Function that logs the object containing the form data
+          event.preventDefault();
+      
+          const item = {
+
+            title : title,
+            color : selectedColor,
+            size : selectedStorage,
+            ram : selectedRam,
+            quantity : quantity,
+            price : price,
+          }
+
+
+    const order = {
+      firstName: event.target.firstName.value,
+      lastName: event.target.lastName.value,
+      email: event.target.email.value,
+      phone: event.target.phone.value,
+      streetAddress: event.target.streetAddress.value,
+      apartment: event.target.apartment.value,
+      city: event.target.city.value,
+      zipCode: event.target.zipCode.value,
+      item : item,
+    };
+         
+      //console.log(order);
+
+      const resp = await fetch('http://localhost:3000/buy/api', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(order),
+  
+  
+      })
+  
+      if (resp.status === 200) {
+        //alert('added');
+        toast.success("Product Buy Successfully");
+        sendEmail(order);
+      } else {
+        toast.error("Something went Wrong");
+      }
+     
+
+
+
+
+
+          event.target.firstName.value='';
+          event.target.lastName.value='';
+          event.target.email.value='';
+          event.target.phone.value='';
+          event.target.streetAddress.value='';
+          event.target.apartment.value='';
+          event.target.city.value='';
+          event.target.zipCode.value='';
+          setIsModalOpen(false);
+
+      
+        };
+      
+       
+
 
 
     return (
@@ -207,7 +327,7 @@ const page = ({params}) => {
         {
             latest ?
         
-        <div>
+        <div className=''>
       <div className="flex flex-col lg:flex-row justify-around items-center lg:items-start w-[95%] gap-10 lg:gap-0 mx-auto my-10 py-10 md:pl-5 bg-[#f3f2f28c]">
 
         <div data-aos="flip-right" data-aos-duration="2000" className="w-full md:w-1/2 flex justify-center">
@@ -351,9 +471,153 @@ const page = ({params}) => {
           </div>
           <div className="flex flex-col mx-5 lg:mx-0 gap-5">
             <div><button onClick={handleCart} className="btn w-full bg-emerald-600 hover:bg-green-800 text-white text-xl">Add to Cart</button></div>
-            <div><button onClick={sendEmail} className="btn text-white text-xl w-full bg-cyan-400 hover:bg-cyan-700">Buy Now</button></div>
+            <div>
+
+           
+            {/* You can open the modal using document.getElementById('ID').showModal() method */}
+<button className="btn text-white text-xl w-full bg-cyan-400 hover:bg-cyan-700" onClick={handleOpenModal}>Buy Now</button>
+{isModalOpen && (
+<dialog id="my_modal_3" className="modal" open>
+  <div className="modal-box w-[1000px]">
+    <form method="dialog">
+      {/* if there is a button in form, it will close the modal */}
+      <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    
+    
+    <div className="w-full mx-auto mt-10">
+      <h2 className="text-xl font-bold mb-6">Billing details</h2>
+
+      <form onSubmit={handleSubmit}  className="space-y-4">
+        {/* First Name */}
+        <div>
+          <label className="block text-sm font-medium">First name <span className="text-red-500">*</span></label>
+          <input
+            type="text"
+            name="firstName"
+             id="firstName"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            required
+            defaultValue={session?.data?.user?.name}
+          />
+        </div>
+
+        {/* Last Name */}
+        <div>
+          <label className="block text-sm font-medium">Last name <span className="text-red-500">*</span></label>
+          <input
+            type="text"
+            name="lastName"
+            id="lastName"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            required
+            defaultValue={session?.data?.user?.name}
+          />
+        </div>
+
+       
+
+        {/* Street Address */}
+        <div>
+          <label className="block text-sm font-medium">Street address <span className="text-red-500">*</span></label>
+          <input
+            type="text"
+            name="streetAddress"
+            id="streetAddress"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            placeholder="House number and street name"
+            required
+          />
+        </div>
+
+        {/* Apartment, suite, etc. (Optional) */}
+        <div>
+          <label className="block text-sm font-medium">Apartment, suite, unit, etc. (optional)</label>
+          <input
+            type="text"
+            name="apartment"
+           id="apartment"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+          />
+        </div>
+
+        {/* City */}
+        <div>
+          <label className="block text-sm font-medium">Town / City <span className="text-red-500">*</span></label>
+          <input
+            type="text"
+            name="city"
+             id="city"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            required
+          />
+        </div>
+
+        
+        {/* ZIP Code */}
+        <div>
+          <label className="block text-sm font-medium">ZIP Code <span className="text-red-500">*</span></label>
+          <input
+            type="text"
+            name="zipCode"
+            id="zipCode" 
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            required
+          />
+        </div>
+
+        {/* Phone */}
+        <div>
+          <label className="block text-sm font-medium">Phone <span className="text-red-500">*</span></label>
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            required
+          />
+        </div>
+
+        {/* Email */}
+        <div>
+          <label className="block text-sm font-medium">Email address <span className="text-red-500">*</span></label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            required
+            defaultValue={session?.data?.user?.email || user?.email}
+          />
+        </div>
+
+        {/* Buttons */}
+        <div className="flex justify-between mt-6">
+        <form method="dialog">
+        {/* if there is a button, it will close the modal */}
+        <button className="btn btn-error">Cancel</button>
+      </form>
+          <button
+          type="submit"
+            className="px-4 py-2 bg-blue-600 text-white rounded-md"
+            
+          >
+            Place Order
+          </button>
+        </div>
+      </form>
+    </div>
+
+
+
+  </div>
+</dialog>
+)}
+
+            </div>
           </div>
-          
+          {/* <button onClick={sendEmail} className="btn text-white text-xl w-full bg-cyan-400 hover:bg-cyan-700">Buy Now</button> */}
           <div className="ml-2 lg:ml-0 space-y-5 mt-5">
 
             <h1 className="text-xl font-semibold flex gap-5">Share : <div className="flex  gap-4 ">
@@ -517,6 +781,9 @@ const page = ({params}) => {
 
         </Swiper>
       </div>
+
+       
+
       <Toaster></Toaster>
     </div>
      

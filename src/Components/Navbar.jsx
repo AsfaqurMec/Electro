@@ -52,7 +52,7 @@ const Navbar = () => {
 useEffect(() => {
   const getData = async () => {
     const { data } = await axios.get(
-      `https://electro-brown.vercel.app/mycart/api?email=${session?.data?.user?.email || user?.email}`
+      `http://localhost:3000/mycart/api?email=${session?.data?.user?.email || user?.email}`
     )
     
     setLatest(data.service)
@@ -74,9 +74,9 @@ useEffect(() => {
     
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(`https://electro-brown.vercel.app/search/api?search=${search}`);
+        const { data } = await axios.get(`http://localhost:3000/search/api?search=${search}`);
         setItems(data);
-        console.log('dataaaas :',items.service);
+       // console.log('dataaaas :',items.service);
         
       } catch (error) {
         console.error('Error fetching data:', error.message);
@@ -92,18 +92,10 @@ useEffect(() => {
   
   }, [items.service, search]);
 
-   const navLinks = <>
-       
-   <li  className="mr-3  group rounded-md hover:scale-125 transition duration-300 hover-underline shop"><Link href="/shop" >Shop</Link></li>
-   <li  className="mr-3  rounded-md hover:scale-125 transition duration-300 hover-underline"><Link href="/blog" >Blog</Link></li>
-
-
-  <li  className="mr-3  rounded-md hover:scale-125 transition duration-300 hover-underline"><Link href="/contact" >Contact Us</Link></li>
-
-   
-
-
-</>
+  const Smartphone = 'Smartphone';
+const Smartwatch = 'Smartwatch';
+const Earbuds = 'Earbuds';
+const Headphones = 'Headphones';
 
     return (
         <>
@@ -147,7 +139,7 @@ useEffect(() => {
   <div className="collapse-title text-xl font-medium"><h1>Phones</h1></div>
   <div className="collapse-content shadow-md">
     <ul className="shadow-xl border-2">
-    <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>IPhone</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Xiomi</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Google</a></li>
@@ -164,7 +156,7 @@ useEffect(() => {
   <div className="collapse-title text-xl font-medium"><h1>Tablet</h1></div>
   <div className="collapse-content shadow-md">
     <ul className="shadow-xl border-2">
-    <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
+  <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>IPhone</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Xiomi</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Google</a></li>
@@ -318,12 +310,12 @@ useEffect(() => {
         <div className="dropdown dropdown-hover">
   <div tabIndex={0} role="button" className="text-white m-1 pr-3 border-r-2 border-r-white"><GiHamburgerMenu className='w-5 h-5' /> </div>
   <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52  p-2 shadow z-50">
-    <li className="text-base font-medium hover:text-orange-500"><a>Phones</a></li>
-    <li className="text-base font-medium hover:text-orange-500"><a>Earbuds</a></li>
-    <li className="text-base font-medium hover:text-orange-500"><a>SmartWatch</a></li>
-    <li className="text-base font-medium hover:text-orange-500"><a>HeadPhone</a></li>
-    <li className="text-base font-medium hover:text-orange-500"><a>Speaker</a></li>
-    <li className="text-base font-medium hover:text-orange-500"><a>Tab</a></li>
+   <Link href={`/product/${Smartphone}`}><li className="text-base font-medium hover:text-orange-500"><a>Phones</a></li></Link>
+    <Link href={`/product/${Earbuds}`}><li className="text-base font-medium hover:text-orange-500"><a>Earbuds</a></li></Link>
+    <Link href={`/product/${Smartwatch}`}><li className="text-base font-medium hover:text-orange-500"><a>SmartWatch</a></li></Link>
+    <Link href={`/product/${Headphones}`}><li className="text-base font-medium hover:text-orange-500"><a>HeadPhone</a></li></Link>
+    <Link href={'#'}><li className="text-base font-medium hover:text-orange-500"><a>Speaker</a></li></Link>
+    <Link href={'#'}><li className="text-base font-medium hover:text-orange-500"><a>Tablet</a></li></Link>
   </ul>
 </div>
 
