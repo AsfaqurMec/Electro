@@ -26,7 +26,7 @@ const SignUpPage = () => {
       email: event.target.email.value,
       password: event.target.password.value,
     };
-    const resp = await fetch("http://localhost:3000/signup/api", {
+    const resp = await fetch("https://electro-brown.vercel.app/signup/api", {
       method: "POST",
       body: JSON.stringify(newUser),
       headers: {

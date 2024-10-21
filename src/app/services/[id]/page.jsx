@@ -37,7 +37,7 @@ const page = ({params}) => {
     useEffect(() => {
       const getData = async () => {
         const { data } = await axios.get(
-          `http://localhost:3000/services/api/${params.id}`
+          `https://electro-brown.vercel.app/services/api/${params.id}`
         )
         
         setLatest(data.service);
@@ -73,7 +73,7 @@ const page = ({params}) => {
            const getData = async () => {
              //const { services } = await getServices();
              const { data } = await axios.get(
-               `http://localhost:3000/services/api/get-all`
+               `https://electro-brown.vercel.app/services/api/get-all`
              )
              setLat(data.services);
              setLoading(false);
@@ -158,7 +158,7 @@ const page = ({params}) => {
        
        
        
-           const resp = await fetch('http://localhost:3000/cart/api', {
+           const resp = await fetch('https://electro-brown.vercel.app/cart/api', {
              method: 'POST',
              headers: {
                'Content-Type': 'application/json',
@@ -282,7 +282,7 @@ const page = ({params}) => {
          
       //console.log(order);
 
-      const resp = await fetch('http://localhost:3000/buy/api', {
+      const resp = await fetch('https://electro-brown.vercel.app/buy/api', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
