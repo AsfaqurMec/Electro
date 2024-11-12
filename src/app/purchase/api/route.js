@@ -109,7 +109,7 @@
 import nodemailer from 'nodemailer';
 
 export async function POST(req) {
-  const { recipientEmail, selectedUsers, session, user } = await req.json();
+  const { recipientEmail, selectedUsers, session, user, e } = await req.json();
 //console.log(recipientEmail);
 
   // Create a transporter object using SMTP
@@ -127,7 +127,7 @@ export async function POST(req) {
       <tr>
         <td>${product.title}</td>
         <td>${product.quantity}</td>
-        <td>$${product.price}</td>
+        <td>$${product.price * product.quantity}</td>
       </tr>
     `;
   }).join(''); // Convert array to a string
@@ -152,9 +152,33 @@ export async function POST(req) {
         </tbody>
       </table>
       <br />
+      <h1>Other Information</h1>
+      <table border="1" cellpadding="10" cellspacing="0">
+        <tr>
+          <th>Name</th>
+          <td>${e?.firstName + e?.lastName}</td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td>${e?.email}</td>
+        </tr>
+        <tr>
+          <th>Address</th>
+          <td>${e?.apartment}</td>
+        </tr>
+        <tr>
+          <th>City</th>
+          <td>${e?.city}</td>
+        </tr>
+        <tr>
+          <th>Phone</th>
+          <td>${e?.phone}</td>
+        </tr>
+      </table>
+      <br />
       <h1>Thank You for Order</h1>
       <p>Happy Purchase<p>
-      <p>For more order <a href="https://electro-brown.vercel.app">Visit Website<a><p>
+      <p>For more order <a href="http://localhost:3000">Visit Website<a><p>
       
     `,
     // Email body

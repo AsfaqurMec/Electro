@@ -52,7 +52,7 @@ const Navbar = () => {
 useEffect(() => {
   const getData = async () => {
     const { data } = await axios.get(
-      `https://electro-brown.vercel.app/mycart/api?email=${session?.data?.user?.email || user?.email}`
+      `http://localhost:3000/mycart/api?email=${session?.data?.user?.email || user?.email}`
     )
     
     setLatest(data.service)
@@ -74,7 +74,7 @@ useEffect(() => {
     
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(`https://electro-brown.vercel.app/search/api?search=${search}`);
+        const { data } = await axios.get(`http://localhost:3000/search/api?search=${search}`);
         setItems(data);
        // console.log('dataaaas :',items.service);
         
@@ -412,10 +412,11 @@ const Headphones = 'Headphones';
            <div className="flex justify-center w-full ">
             
             
-            <div className="absolute mt-2 p-10 flex flex-col items-start justify-start gap-5 max-h-[600px] overflow-y-scroll z-50 bg-white md:w-[40%] rounded-md border-2 mx-auto">
+            <div className="absolute mt-2 p-10 flex flex-col items-start justify-start gap-5 max-h-[800px] overflow-y-scroll z-50 bg-[#fffffff9] md:w-[100%] rounded-md border-2 mx-auto">
               <h1>Search Result for <span className="text-2xl text-cyan-500 font-medium">{search}</span></h1>
+              <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
               { items?.service?.map(latest => 
-             <Link href={`/services/${latest._id}`} onClick={handle} key={latest._id} className="w-full border-b-2"><div  className=" flex items-center justify-center w-full">
+             <Link href={`/services/${latest._id}`} onClick={handle} key={latest._id} className="w-full border-2 shadow-lg"><div  className=" flex items-center justify-center w-full pl-10">
               <figure className='relative'>
                 <img className='transition-transform duration-300 ease-in-out transform hover:scale-125 h-24'
                   src={latest.image1}
@@ -430,6 +431,7 @@ const Headphones = 'Headphones';
             </div> </Link> 
           )
           } 
+              </div>
             </div>  
          </div>
           : ""

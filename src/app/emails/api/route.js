@@ -2,7 +2,9 @@ import nodemailer from 'nodemailer';
 
 export async function POST(req) {
   const { item } = await req.json();
-
+  let order = item?.item[0];
+ // console.log(order);
+  
   // Create a transporter object using SMTP
   const transporter = nodemailer.createTransport({
     service: 'gmail', 
@@ -22,27 +24,27 @@ export async function POST(req) {
       <table border="1" cellpadding="10" cellspacing="0">
         <tr>
           <th>Title</th>
-          <td>${item?.item?.title}</td>
+          <td>${order?.title}</td>
         </tr>
         <tr>
           <th>Color</th>
-          <td>${item?.item?.color}</td>
+          <td>${order?.color}</td>
         </tr>
         <tr>
           <th>RAM</th>
-          <td>${item?.item?.ram}</td>
+          <td>${order?.ram}</td>
         </tr>
         <tr>
           <th>Stotage</th>
-          <td>${item?.item?.size}</td>
+          <td>${order?.size}</td>
         </tr>
         <tr>
           <th>Quantity</th>
-          <td>${item?.item?.quantity}</td>
+          <td>${order?.quantity}</td>
         </tr>
         <tr>
           <th>Price</th>
-          <td>$${item?.item?.price*item?.item?.quantity}</td>
+          <td>$${order?.price*order?.quantity}</td>
         </tr>
         
       </table>
@@ -73,7 +75,7 @@ export async function POST(req) {
       <br />
       <h1>Thank You for Ordering.</h1>
       <p>Happy Purchase<p>
-      <p>For more order <a href="https://electro-brown.vercel.app">Visit Website<a><p>
+      <p>For more order <a href="http://localhost:3000">Visit Website<a><p>
     `,
    // Email body
   };

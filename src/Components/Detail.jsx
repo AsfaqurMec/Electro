@@ -38,7 +38,7 @@ const Detail = ({ latest, paramsId }) => {
     const getData = async () => {
       //const { services } = await getServices();
       const { data } = await axios.get(
-        `https://electro-brown.vercel.app/services/api/get-all`
+        `http://localhost:3000/services/api/get-all`
       )
       setLat(data.services);
       setLoading(false);
@@ -106,7 +106,7 @@ console.log(userEmail);
   
     //  try {
     //   // Call the API to add the item to the cart
-    //   const resp = fetch('https://electro-brown.vercel.app/cart/api', {
+    //   const resp = fetch('http://localhost:3000/cart/api', {
     //     method: 'POST',
     //     headers: {
     //       'Content-Type': 'application/json',

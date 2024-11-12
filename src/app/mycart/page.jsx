@@ -8,6 +8,7 @@ import { useUser } from '../../../context/UserContext';
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 const page = () => {
   // let session;
   // setTimeout(() => {
@@ -31,7 +32,7 @@ const [latest, setLatest] = useState([]);
 useEffect(() => {
   const getData = async () => {
     const { data } = await axios.get(
-      `https://electro-brown.vercel.app/mycart/api?email=${session?.data?.user?.email || user?.email}`
+      `http://localhost:3000/mycart/api?email=${session?.data?.user?.email || user?.email}`
     )
     
     setLatest(data.service)
@@ -71,42 +72,65 @@ const [subject, setSubject] = useState('Product Purchase');
 const [message, setMessage] = useState('');
 const [status, setStatus] = useState('');
 
+const [isModalOpen, setIsModalOpen] = useState(false);
+
+        const handleOpenModal = () => {
+
+             if (selectedUsers.length == 0) {
+              toast.error("Add Item please!");
+              // This redirects to the sign-in page
+             return;
+             }
+          
+
+
+          setIsModalOpen(true);
+        };
+
+
+
 const handlePurchase = () => {
-    const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: "btn btn-success text-white font-semibold",
-          cancelButton: "btn btn-error mr-5 text-white font-semibold"
-        },
-        buttonsStyling: false
-      });
-      swalWithBootstrapButtons.fire({
-        title: "Are you ready to procced?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Yes, Purchase!",
-        cancelButtonText: "No, cancel!",
-        reverseButtons: true
-      }).then((result) => {
-        if (result.isConfirmed) {
-            sendEmail();
-          swalWithBootstrapButtons.fire({
-            title: "Successfull!",
-            text: "We will contact you, Soon.",
-            // html: `<h3>Happy Purchase.</h3>`,
-            icon: "success"
-          });
-        } else if (
-          /* Read more about handling dismissals below */
-          result.dismiss === Swal.DismissReason.cancel
-        ) {
-          swalWithBootstrapButtons.fire({
-            title: "Cancelled",
-            text: "Your imaginary file is safe :)",
-            icon: "error"
-          });
-        }
-      });
+
+
+
+    // const swalWithBootstrapButtons = Swal.mixin({
+    //     customClass: {
+    //       confirmButton: "btn btn-success text-white font-semibold",
+    //       cancelButton: "btn btn-error mr-5 text-white font-semibold"
+    //     },
+    //     buttonsStyling: false
+    //   });
+    //   swalWithBootstrapButtons.fire({
+    //     title: "Are you ready to procced?",
+    //     text: "You won't be able to revert this!",
+    //     icon: "warning",
+    //     showCancelButton: true,
+    //     confirmButtonText: "Yes, Purchase!",
+    //     cancelButtonText: "No, cancel!",
+    //     reverseButtons: true
+    //   }).then((result) => {
+    //     if (result.isConfirmed) {
+    //         //sendEmail();
+
+
+
+    //       swalWithBootstrapButtons.fire({
+    //         title: "Successfull!",
+    //         text: "We will contact you, Soon.",
+    //         // html: `<h3>Happy Purchase.</h3>`,
+    //         icon: "success"
+    //       });
+    //     } else if (
+    //       /* Read more about handling dismissals below */
+    //       result.dismiss === Swal.DismissReason.cancel
+    //     ) {
+    //       swalWithBootstrapButtons.fire({
+    //         title: "Cancelled",
+    //         text: "Your imaginary file is safe :)",
+    //         icon: "error"
+    //       });
+    //     }
+    //   });
 }
 
 
@@ -126,6 +150,7 @@ const sendEmail = async (e) => {
         subject,
         selectedUsers,
         user,
+        e,
         session,
       }),
     
@@ -154,6 +179,77 @@ const handleDelete = async () => {
       setMessage('Error deleting products');
     }
   };
+
+  const [currentDate, setCurrentDate] = useState('');
+
+  useEffect(() => {
+    const date = new Date();
+    const formattedDate = date.toLocaleDateString('en-US', {
+     
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric',
+    });
+    setCurrentDate(formattedDate);
+  }, []);
+
+
+  const handleSubmit = async (event) => {
+  // Function that logs the object containing the form data
+    event.preventDefault();
+
+ 
+
+const order = {
+firstName: event.target.firstName.value,
+lastName: event.target.lastName.value,
+email: event.target.email.value,
+phone: event.target.phone.value,
+streetAddress: event.target.streetAddress.value,
+apartment: event.target.apartment.value,
+city: event.target.city.value,
+zipCode: event.target.zipCode.value,
+status : 'pending',
+date : currentDate,
+item : selectedUsers,
+};
+   
+//console.log(order);
+
+const resp = await fetch('/buy/api', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(order),
+
+
+})
+
+if (resp.status === 200) {
+  //alert('added');
+  toast.success("Product Buy Successfully");
+  sendEmail(order);
+} else {
+  toast.error("Something went Wrong");
+}
+
+
+    event.target.firstName.value='';
+    event.target.lastName.value='';
+    event.target.email.value='';
+    event.target.phone.value='';
+    event.target.streetAddress.value='';
+    event.target.apartment.value='';
+    event.target.city.value='';
+    event.target.zipCode.value='';
+    setIsModalOpen(false);
+
+
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  }
 
 
     return (
@@ -250,8 +346,149 @@ const handleDelete = async () => {
     <h1 className="font-medium text-lg">${total}</h1>
 </div>
 
-<button onClick={handlePurchase} className="btn w-full mt-5 bg-black hover:bg-sky-600 text-white">PROCEED TO CHECKOUT ({selectedUsers.length})</button>
+<button onClick={handleOpenModal} className="btn w-full mt-5 bg-black hover:bg-sky-600 text-white">PROCEED TO CHECKOUT ({selectedUsers.length})</button>
 {/* //onClick={handlePurchase} */}
+
+{isModalOpen && (
+<dialog id="my_modal_3" className="modal" open>
+  <div className="modal-box w-[1000px]">
+    <form method="dialog">
+      {/* if there is a button in form, it will close the modal */}
+      <button onClick={handleCloseModal} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    
+    
+    <div className="w-full mx-auto mt-10">
+      <h2 className="text-xl font-bold mb-6">Billing details</h2>
+
+      <form onSubmit={handleSubmit}  className="space-y-4">
+        {/* First Name */}
+        <div>
+          <label className="block text-sm font-medium">First name <span className="text-red-500">*</span></label>
+          <input
+            type="text"
+            name="firstName"
+             id="firstName"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            required
+            defaultValue={session?.data?.user?.name}
+          />
+        </div>
+
+        {/* Last Name */}
+        <div>
+          <label className="block text-sm font-medium">Last name <span className="text-red-500">*</span></label>
+          <input
+            type="text"
+            name="lastName"
+            id="lastName"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            required
+            defaultValue={session?.data?.user?.name}
+          />
+        </div>
+
+       
+
+        {/* Street Address */}
+        <div>
+          <label className="block text-sm font-medium">Street address <span className="text-red-500">*</span></label>
+          <input
+            type="text"
+            name="streetAddress"
+            id="streetAddress"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            placeholder="House number and street name"
+            required
+          />
+        </div>
+
+        {/* Apartment, suite, etc. (Optional) */}
+        <div>
+          <label className="block text-sm font-medium">Apartment, suite, unit, etc. (optional)</label>
+          <input
+            type="text"
+            name="apartment"
+           id="apartment"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+          />
+        </div>
+
+        {/* City */}
+        <div>
+          <label className="block text-sm font-medium">Town / City <span className="text-red-500">*</span></label>
+          <input
+            type="text"
+            name="city"
+             id="city"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            required
+          />
+        </div>
+
+        
+        {/* ZIP Code */}
+        <div>
+          <label className="block text-sm font-medium">ZIP Code <span className="text-red-500">*</span></label>
+          <input
+            type="text"
+            name="zipCode"
+            id="zipCode" 
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            required
+          />
+        </div>
+
+        {/* Phone */}
+        <div>
+          <label className="block text-sm font-medium">Phone <span className="text-red-500">*</span></label>
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            required
+          />
+        </div>
+
+        {/* Email */}
+        <div>
+          <label className="block text-sm font-medium">Email address <span className="text-red-500">*</span></label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            required
+            defaultValue={session?.data?.user?.email || user?.email}
+          />
+        </div>
+
+        {/* Buttons */}
+        <div className="flex justify-between mt-6">
+        <form method="dialog">
+        {/* if there is a button, it will close the modal */}
+        <button onClick={handleCloseModal} className="btn btn-error">Cancel</button>
+      </form>
+          <button
+          type="submit"
+            className="px-4 py-2 bg-blue-600 text-white rounded-md"
+            
+          >
+            Place Order
+          </button>
+        </div>
+      </form>
+    </div>
+
+
+
+  </div>
+</dialog>
+)}
+
+
 
 </div>
 

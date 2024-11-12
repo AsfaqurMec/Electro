@@ -37,7 +37,7 @@ const page = ({params}) => {
     useEffect(() => {
       const getData = async () => {
         const { data } = await axios.get(
-          `https://electro-brown.vercel.app/services/api/${params.id}`
+          `http://localhost:3000/services/api/${params.id}`
         )
         
         setLatest(data.service);
@@ -49,8 +49,7 @@ const page = ({params}) => {
       
       
     }, [params.id]);
-         // const  services =await getServicesDetails(params.id);66e3d84b351e4574fdff7f1c
-        // console.log('fetch data',latest);      
+          
     
          const [selectedStorage, setSelectedStorage] = useState('');
          const [selectedRam, setSelectedRam] = useState('');
@@ -73,7 +72,7 @@ const page = ({params}) => {
            const getData = async () => {
              //const { services } = await getServices();
              const { data } = await axios.get(
-               `https://electro-brown.vercel.app/services/api/get-all`
+               `http://localhost:3000/services/api/get-all`
              )
              setLat(data.services);
              setLoading(false);
@@ -158,7 +157,7 @@ const page = ({params}) => {
        
        
        
-           const resp = await fetch('https://electro-brown.vercel.app/cart/api', {
+           const resp = await fetch('http://localhost:3000/cart/api', {
              method: 'POST',
              headers: {
                'Content-Type': 'application/json',
@@ -216,7 +215,7 @@ const page = ({params}) => {
        
 
         
-
+         const [orders, setOrders] = useState([]);
         const [isModalOpen, setIsModalOpen] = useState(false);
 
         const handleOpenModal = () => {
@@ -242,32 +241,44 @@ const page = ({params}) => {
              }
           }
 
-
+          setOrders([item]);
           setIsModalOpen(true);
         };
       
         const handleCloseModal = () => {
           setIsModalOpen(false);
-        };
+        }
+
+        const item = {
+
+          title : title,
+          color : selectedColor,
+          size : selectedStorage,
+          ram : selectedRam,
+          quantity : quantity,
+          price : price,
+        }
       
+        const [currentDate, setCurrentDate] = useState('');
+
+        useEffect(() => {
+          const date = new Date();
+          const formattedDate = date.toLocaleDateString('en-US', {
+           
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+          });
+          setCurrentDate(formattedDate);
+        }, []);
+
+
+
         const handleSubmit = async (event) => {
 
-          
-
-          // Function that logs the object containing the form data
+        // Function that logs the object containing the form data
           event.preventDefault();
       
-          const item = {
-
-            title : title,
-            color : selectedColor,
-            size : selectedStorage,
-            ram : selectedRam,
-            quantity : quantity,
-            price : price,
-          }
-
-
     const order = {
       firstName: event.target.firstName.value,
       lastName: event.target.lastName.value,
@@ -277,12 +288,14 @@ const page = ({params}) => {
       apartment: event.target.apartment.value,
       city: event.target.city.value,
       zipCode: event.target.zipCode.value,
-      item : item,
+      status : 'pending',
+      date : currentDate,
+      item : orders,
     };
          
       //console.log(order);
 
-      const resp = await fetch('https://electro-brown.vercel.app/buy/api', {
+      const resp = await fetch('http://localhost:3000/buy/api', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -300,10 +313,6 @@ const page = ({params}) => {
         toast.error("Something went Wrong");
       }
      
-
-
-
-
 
           event.target.firstName.value='';
           event.target.lastName.value='';
@@ -481,7 +490,7 @@ const page = ({params}) => {
   <div className="modal-box w-[1000px]">
     <form method="dialog">
       {/* if there is a button in form, it will close the modal */}
-      <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+      <button onClick={handleCloseModal} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
     </form>
     
     
@@ -596,7 +605,7 @@ const page = ({params}) => {
         <div className="flex justify-between mt-6">
         <form method="dialog">
         {/* if there is a button, it will close the modal */}
-        <button className="btn btn-error">Cancel</button>
+        <button onClick={handleCloseModal} className="btn btn-error">Cancel</button>
       </form>
           <button
           type="submit"
