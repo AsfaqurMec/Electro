@@ -52,7 +52,7 @@ const Navbar = () => {
 useEffect(() => {
   const getData = async () => {
     const { data } = await axios.get(
-      `http://localhost:3000/mycart/api?email=${session?.data?.user?.email || user?.email}`
+      `https://electro-brown.vercel.app/mycart/api?email=${session?.data?.user?.email || user?.email}`
     )
     
     setLatest(data.service)
@@ -74,7 +74,7 @@ useEffect(() => {
     
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:3000/search/api?search=${search}`);
+        const { data } = await axios.get(`https://electro-brown.vercel.app/search/api?search=${search}`);
         setItems(data);
        // console.log('dataaaas :',items.service);
         
@@ -287,7 +287,7 @@ const Headphones = 'Headphones';
                 } */}
 
                 { user || session?.data?.user?
-                  <Link href='/mycart'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">{latest.length}</span><IoCartOutline className="h-8 w-8"/></h1></Link>
+                  <Link href='/mycart'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">{latest?.length}</span><IoCartOutline className="h-8 w-8"/></h1></Link>
                   : 
                   <Link href='/mycart'> <h1 className="indicator hidden lg:flex"><span className="indicator-item badge mt-1 w-6 text-lg  bg-black text-white">0</span><IoCartOutline className="h-8 w-8"/></h1></Link>
                 }

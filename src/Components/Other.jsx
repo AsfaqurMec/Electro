@@ -19,7 +19,7 @@ const [latest, setLatest] = useState([]);
 useEffect(() => {
   const getData = async () => {
     const { data } = await axios.get(
-      `http://localhost:3000/services/api/get-all`
+      `https://electro-brown.vercel.app/services/api/get-all`
     )
     
     setLatest(data.services)
@@ -92,7 +92,7 @@ useEffect(() => {
         <div className='space-y-3'>
            <h1 className='text-cyan-500 tracking-widest font-medium'>New Arrival</h1>
            <h1 className='text-xl font-semibold'>Drone Series</h1>
-           <h1 className='pt-3 font-bold'>Shop Now ?</h1>
+           <Link href={'/shop'}><h1 className='pt-3 font-bold hover:text-blue-500 underline'>Shop Now</h1></Link>
            </div>
            <Image src={drone} className='h-52 w-64' alt='image'></Image>
          </div>
@@ -101,7 +101,7 @@ useEffect(() => {
         <div className='space-y-3'>
            <h1 className='text-cyan-500 tracking-widest font-medium'>New Arrival</h1>
            <h1 className='text-xl font-semibold'>Complete PC</h1>
-           <h1 className='pt-3 font-bold'>Shop Now ?</h1>
+           <Link href={'/shop'}><h1 className='pt-3 font-bold hover:text-blue-500 underline'>Shop Now</h1></Link>
            </div>
            <Image src={pc} className='h-52 w-64' alt='image'></Image>
          </div>

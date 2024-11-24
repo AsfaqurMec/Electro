@@ -8,8 +8,6 @@ import { useRouter } from "next/navigation";
 
 const Page = () => {
   const router = useRouter();
- // const session = useSession();
-
 
 
   const handleLogin = async (event) => {
@@ -27,50 +25,61 @@ const Page = () => {
   };
 
   return (
-      <div className=" w-full  px-5 lg:px-24 mx-auto py-24">
-        <div className="grid grid-cols-1 gap-12 items-center px-0 md:px-28  rounded-md border-[#2e2e2e65]">
-        {/* bg-[#07332f] */}
-          <div className="bg-[#07332f] p-12 shadow-2xl rounded-md ">
-            <h6 className="text-4xl font-semibold text-[#d38303] text-center mb-12">
-              Sign In
-            </h6>
-            <form onSubmit={handleLogin} action="">
-              <label className="text-[#d38303]" htmlFor="email">Email</label> <br />
-              <input
-                type="text"
-                name="email"
-                placeholder="your email"
-                className="w-full px-3 py-2 border-b-[#090a11] rounded-md border-b-[3px] focus:border-b-2 focus:border-b-[#e2b29d] focus:outline-none bg-transparent text-xl text-white"
-              />
-              <br /> <br />
-              <label className="text-[#d38303]" htmlFor="password">Password</label> <br />
-              <input
-                type="password"
-                name="password"
-                placeholder="your password"
-                className="w-full px-3 py-2 border-b-[#000000] rounded-md border-b-[3px] focus:border-b-2 focus:border-b-[#e2b29d] focus:outline-none bg-transparent text-xl text-white"
-              />
-              <br />
-              <button
-                type="submit"
-                className="w-full btn btn-primary border-none bg-[#551a01] mt-12 text-lg"
-              >
-                Sign In
-              </button>
-            </form>
-            <div>
-           
-             
-              <h6 className="my-12 text-center text-white">
-                not have account ?{" "}
-                <Link className="text-[#47cbe5] font-semibold" href={"/signup"}>
-                  Sign Up
-                </Link>
-              </h6>
-            </div>
-          </div>
-        </div>
-      </div>
+
+<div className='hero h-full rounded-lg bg-white '>
+                  <div className="w-full hero-content flex-col gap-14 lg:gap-28 lg:flex-row-reverse">
+                      <div className="text-center flex flex-col justify-center items-center gap-5">
+                          <h1 className="text-6xl mt-5 text-black text-center font-bold pb-1">Register!</h1>
+                          <p>Registering for this site allows you to access your order status and history. Just fill in the fields below, and weâll get a new account set up for you in no time. We will only ask you for information necessary to make the purchase process faster and easier.</p>
+                          <Link href={"/signup"}><button className="btn hover:bg-white hover:text-black hover:border-2  bg-black text-white font-semibold text-xl">Register</button></Link>
+                          
+                      </div>
+                      <div data-aos="zoom-out-up" data-aos-duration="1000" className="card flex-shrink-0 w-full lg:w-1/2 rounded-none bg-[#ffffff] lg:border-r-2 border-r-black">
+                        
+                        
+                          <form  onSubmit={handleLogin} className="card-body gap-1">
+                          <div className='w-full flex flex-col justify-center items-center gap-2'>
+                          <h1 className='font-semibold text-teal-900 text-3xl'>Login to your <span className='text-purple-500'>account</span></h1>
+                          
+                              </div> 
+
+                  <div className="form-control mt-16">
+                              <label className="text-xl text-[#d38303]" htmlFor="email">Email</label> <br />
+               <input
+                 type="text"
+                 name="email"
+                 placeholder="your email"
+                 className="w-full px-3 py-3  border-[#090a11] rounded-md border-[3px] focus:border-b-2 focus:border-b-[#e2b29d] focus:outline-none bg-transparent text-xl text-black"
+               />
+               </div>
+               <div className="form-control mt-5">
+               <label className="text-[#d38303] text-xl" htmlFor="password">Password</label> <br />
+               <input
+                 type="password"
+                 name="password"
+                 placeholder="your password"
+                 className="w-full px-3 py-3 border-[#000000] rounded-md border-[3px] focus:border-b-2 focus:border-b-[#e2b29d] focus:outline-none bg-transparent text-xl text-black"
+               />
+                </div>
+
+
+               <div className="form-control mt-2 p-0">
+               <button
+                 type="submit"
+                 className="w-full btn btn-primary border-none bg-[#551a01] mt-12 text-lg"
+               >
+                 Sign In
+               </button>
+               </div>
+    
+                          </form>
+                          
+                              
+                      </div>
+                  </div>
+                  
+              </div>
+
   );
 };
 

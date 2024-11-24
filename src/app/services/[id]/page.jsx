@@ -37,7 +37,7 @@ const page = ({params}) => {
     useEffect(() => {
       const getData = async () => {
         const { data } = await axios.get(
-          `http://localhost:3000/services/api/${params.id}`
+          `https://electro-brown.vercel.app/services/api/${params.id}`
         )
         
         setLatest(data.service);
@@ -72,7 +72,7 @@ const page = ({params}) => {
            const getData = async () => {
              //const { services } = await getServices();
              const { data } = await axios.get(
-               `http://localhost:3000/services/api/get-all`
+               `https://electro-brown.vercel.app/services/api/get-all`
              )
              setLat(data.services);
              setLoading(false);
@@ -157,7 +157,7 @@ const page = ({params}) => {
        
        
        
-           const resp = await fetch('http://localhost:3000/cart/api', {
+           const resp = await fetch('https://electro-brown.vercel.app/cart/api', {
              method: 'POST',
              headers: {
                'Content-Type': 'application/json',
@@ -213,6 +213,36 @@ const page = ({params}) => {
            }
          };
        
+
+
+         const sendEmailToAdmin = async (e) => {
+          // e.preventDefault();
+           setStatus('Sending...');
+          
+           try {
+             const res = await fetch('/email/api', {
+               method: 'POST',
+               headers: {
+                 'Content-Type': 'application/json',
+               },
+               body: JSON.stringify({
+                 item : e,
+               }),
+       
+             });
+       
+             if (res.ok) {
+               //toast.success('Product details sent successfully!');
+             } else {
+               //alert('Failed to send product details.');
+             }
+           } catch (error) {
+             console.error(error);
+             //toast.error('An error occurred.');
+           }
+         };
+       
+
 
         
          const [orders, setOrders] = useState([]);
@@ -295,7 +325,7 @@ const page = ({params}) => {
          
       //console.log(order);
 
-      const resp = await fetch('http://localhost:3000/buy/api', {
+      const resp = await fetch('https://electro-brown.vercel.app/buy/api', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -309,6 +339,7 @@ const page = ({params}) => {
         //alert('added');
         toast.success("Product Buy Successfully");
         sendEmail(order);
+        sendEmailToAdmin(order);
       } else {
         toast.error("Something went Wrong");
       }

@@ -34,11 +34,91 @@
 // }
 // app/api/sendEmail/route.js
 
+// import nodemailer from 'nodemailer';
+
+// export async function POST(req) {
+//   const { recipientEmail, subject, title, quantity, price, category, user } = await req.json();
+
+//   // Create a transporter object using SMTP
+//   const transporter = nodemailer.createTransport({
+//     service: 'gmail', 
+//     auth: {
+//       user: process.env.EMAIL_USER, 
+//       pass: process.env.EMAIL_PASS, 
+//     },
+//   });
+
+//   // Define the email options
+//   const mailOptions = {
+//     from: 'Electro <process.env.EMAIL_USER>' , // Sender address
+//     to: recipientEmail, // Recipient address
+//     subject: subject, // Subject line
+//     html: `
+//       <h1>Product Information</h1>
+//       <table border="1" cellpadding="10" cellspacing="0">
+//         <tr>
+//           <th>Title</th>
+//           <td>${title}</td>
+//         </tr>
+//         <tr>
+//           <th>Quantity</th>
+//           <td>${quantity}</td>
+//         </tr>
+//         <tr>
+//           <th>Price</th>
+//           <td>$${price}</td>
+//         </tr>
+//         <tr>
+//           <th>Category</th>
+//           <td>${category}</td>
+//         </tr>
+//       </table>
+//       <br />
+//       <h1>User Information</h1>
+//       <table border="1" cellpadding="10" cellspacing="0">
+//         <tr>
+//           <th>Name</th>
+//           <td>${user.name}</td>
+//         </tr>
+//         <tr>
+//           <th>Email</th>
+//           <td>${user.email}</td>
+//         </tr>
+//         <tr>
+//           <th>Address</th>
+//           <td>${user.address}</td>
+//         </tr>
+//         <tr>
+//           <th>Phone</th>
+//           <td>${user.number}</td>
+//         </tr>
+//       </table>
+//     `,
+//    // Email body
+//   };
+
+//   try {
+//     // Send email
+//     await transporter.sendMail(mailOptions);
+//     return new Response(JSON.stringify({ message: 'Email sent successfully!' }), {
+//       status: 200,
+//     });
+//   } catch (error) {
+//     console.log(error);
+    
+//     return new Response(JSON.stringify({ message: 'Error sending email', error }), {
+//       status: 500,
+//     });
+//   }
+// }
+
 import nodemailer from 'nodemailer';
 
 export async function POST(req) {
-  const { recipientEmail, subject, title, quantity, price, category, user } = await req.json();
-
+  const { item } = await req.json();
+  let order = item?.item[0];
+ // console.log(order);
+  
   // Create a transporter object using SMTP
   const transporter = nodemailer.createTransport({
     service: 'gmail', 
@@ -51,48 +131,65 @@ export async function POST(req) {
   // Define the email options
   const mailOptions = {
     from: 'Electro <process.env.EMAIL_USER>' , // Sender address
-    to: recipientEmail, // Recipient address
-    subject: subject, // Subject line
+    to: 'hamimhamim044@gmail.com', // Recipient address
+    subject: 'Product Purchase', // Subject line
     html: `
       <h1>Product Information</h1>
       <table border="1" cellpadding="10" cellspacing="0">
         <tr>
           <th>Title</th>
-          <td>${title}</td>
+          <td>${order?.title}</td>
+        </tr>
+        <tr>
+          <th>Color</th>
+          <td>${order?.color}</td>
+        </tr>
+        <tr>
+          <th>RAM</th>
+          <td>${order?.ram}</td>
+        </tr>
+        <tr>
+          <th>Stotage</th>
+          <td>${order?.size}</td>
         </tr>
         <tr>
           <th>Quantity</th>
-          <td>${quantity}</td>
+          <td>${order?.quantity}</td>
         </tr>
         <tr>
           <th>Price</th>
-          <td>$${price}</td>
+          <td>$${order?.price*order?.quantity}</td>
         </tr>
-        <tr>
-          <th>Category</th>
-          <td>${category}</td>
-        </tr>
+        
       </table>
       <br />
-      <h1>User Information</h1>
+      <h1>Order Information</h1>
       <table border="1" cellpadding="10" cellspacing="0">
         <tr>
           <th>Name</th>
-          <td>${user.name}</td>
+          <td>${item?.firstName +' '+item?.lastName}</td>
         </tr>
         <tr>
           <th>Email</th>
-          <td>${user.email}</td>
+          <td>${item?.email}</td>
         </tr>
         <tr>
           <th>Address</th>
-          <td>${user.address}</td>
+          <td>${item?.apartment}</td>
+        </tr>
+        <tr>
+          <th>City</th>
+          <td>${item?.city}</td>
         </tr>
         <tr>
           <th>Phone</th>
-          <td>${user.number}</td>
+          <td>${item?.phone}</td>
         </tr>
       </table>
+      <br />
+      <h1>Thank You for Ordering.</h1>
+      <p>Happy Purchase<p>
+      <p>For more order <a href="https://electro-brown.vercel.app">Visit Website<a><p>
     `,
    // Email body
   };

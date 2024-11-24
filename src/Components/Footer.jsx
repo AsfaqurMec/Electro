@@ -89,12 +89,12 @@ const Footer = () => {
   </nav>
   <nav className='space-y-1 mb-3'>
     <h6 className="footer-title font-medium text-xl  text-[#d9d8d8] opacity-100">Store Location :</h6>
-   <p className='font-medium text-xl text-[#5e8cf8]'>15 West 21th Street, Miami FL, USA</p> 
+   <p className='font-medium text-xl text-[#5e8cf8]'>Mymensingh, Bangladesh</p> 
     
   </nav>
-  <nav className='space-y-1 mb-3'> 
-  <h6 className="footer-title font-medium  text-xl text-[#d9d8d8] opacity-100">  Call Us Now +123-456-789</h6>
-<p className='font-medium text-xl text-[#5e8cf8]'>Email: info@example.com</p>
+  <nav className='space-y-1 mb-3'>
+  <h6 className="footer-title font-medium  text-xl text-[#d9d8d8] opacity-100">  Call Us Now <h1 className='text-[#5e8cf8]'>+8801956230265</h1></h6>
+<p className='font-medium text-xl text-[#5e8cf8]'>Email: asfaqurrahman055@gmail.com</p>
 </nav>
 </footer>
 

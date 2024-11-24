@@ -156,7 +156,7 @@ export async function POST(req) {
       <table border="1" cellpadding="10" cellspacing="0">
         <tr>
           <th>Name</th>
-          <td>${e?.firstName + e?.lastName}</td>
+          <td>${e?.firstName +" " +e?.lastName}</td>
         </tr>
         <tr>
           <th>Email</th>
@@ -178,7 +178,7 @@ export async function POST(req) {
       <br />
       <h1>Thank You for Order</h1>
       <p>Happy Purchase<p>
-      <p>For more order <a href="http://localhost:3000">Visit Website<a><p>
+      <p>For more order <a href="https://electro-brown.vercel.app">Visit Website<a><p>
       
     `,
     // Email body

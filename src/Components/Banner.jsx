@@ -9,6 +9,7 @@ import iphone from '../../images/iPhone-15-Plus-_4_-7443-removebg-preview.png'
 import Image from 'next/image';
 import samsung from '../../images/Samsung-S24-Ultra-Titanium-Grey-removebg-preview.png'
 import ear from '../../images/J66-7-removebg.png'
+import Link from 'next/link';
 
 const Banner = () => {
     return (
@@ -28,7 +29,7 @@ const Banner = () => {
             <h1 className='text-center md:text-left  text-white font-medium tracking-[.12em] text-4xl md:text-5xl'>Earbuds </h1>
             <div className='flex flex-col gap-3 md:flex-row'>
             
-            <button className='btn bg-black text-white px-8 text-xl w-52'>Shop Now</button>
+            <Link href={'/shop'}><button className='btn bg-black text-white px-8 text-xl w-52'>Shop Now</button></Link>
             </div>
             </div>
 
@@ -43,7 +44,7 @@ const Banner = () => {
             <h1 className='text-center md:text-left  text-white font-medium tracking-[.12em] text-xl md:text-2xl'>Galaxy Ai Is Here</h1>
             <div className='flex flex-col  items-center gap-3 md:flex-row'>
             
-            <button className='btn bg-black text-white px-8 text-xl w-52'>Shop Now</button>
+            <Link href={'/shop'}> <button className='btn bg-black text-white px-8 text-xl w-52'>Shop Now</button></Link>
             </div>
             </div>
 
@@ -58,7 +59,7 @@ const Banner = () => {
             <h1 className='text-center md:text-left  text-white font-medium tracking-[.12em] text-xl md:text-2xl'>Everything You Need To Know </h1>
             <div className='flex flex-col items-center gap-3 md:flex-row'>
             
-            <button className='btn bg-black text-white px-8 text-xl w-52'>Shop Now</button>
+            <Link href={'/shop'}> <button className='btn bg-black text-white px-8 text-xl w-52'>Shop Now</button></Link>
             </div>
             </div>
 
@@ -72,12 +73,12 @@ const Banner = () => {
         <div className='h-[40vh] md:h-[45vh] banner4 rounded-md w-full flex flex-col justify-center pl-10 text-white'>
            <h1 className='text-3xl md:text-5xl font-semibold'>HeadPhones</h1>
            <p className='text-2xl my-2 font-semibold'>starting from $100</p>
-           <div className='mt-3'><button className='btn hover:bg-white hover:text-black text-white bg-black font-semibold border-none text-lg'>Shop Now</button></div>
+           <div className='mt-3'><Link href={'/shop'}><button className='btn hover:bg-white hover:text-black text-white bg-black font-semibold border-none text-lg'>Shop Now</button></Link></div>
         </div>
         <div className='h-[40vh] md:h-[45vh] banner5 rounded-md w-full flex flex-col justify-center pl-10 text-white'>
            <h1 className='text-3xl md:text-5xl font-semibold'>Smart Watch</h1>
            <p className='text-2xl my-2 font-semibold'>starting from $150</p>
-           <div className='mt-3'><button className='btn hover:bg-black hover:text-white font-semibold border-none text-lg'>Shop Now</button></div>
+           <div className='mt-3'><Link href={'/shop'}><button className='btn hover:bg-black hover:text-white font-semibold border-none text-lg'>Shop Now</button></Link></div>
         </div>
       </div>
       </div>
@@ -89,7 +90,7 @@ const Banner = () => {
         <div className='space-y-3'>
            <h1 className='text-cyan-500 tracking-widest font-medium'>New Arrival</h1>
            <h1 className='text-xl font-semibold'>Galaxy S24 Series</h1>
-           <h1 className='pt-3 font-bold'>Shop Now ?</h1>
+           <Link href={'/shop'}><h1 className='pt-3 font-bold hover:text-blue-500 underline'>Shop Now</h1></Link>
            </div>
            <Image src={samsung} className='h-52 w-56' alt='image'></Image>
          </div>
@@ -98,7 +99,7 @@ const Banner = () => {
         <div className='space-y-3'>
            <h1 className='text-cyan-500 tracking-widest font-medium'>New Arrival</h1>
            <h1 className='text-xl font-semibold'>iPhone 15 Series</h1>
-           <h1 className='pt-3 font-bold'>Shop Now ?</h1>
+           <Link href={'/shop'}><h1 className='pt-3 font-bold hover:text-blue-500 underline'>Shop Now</h1></Link>
            </div>
            <Image src={iphone} className='h-52 w-56' alt='image'></Image>
          </div>
@@ -107,7 +108,7 @@ const Banner = () => {
         <div className='space-y-3'>
            <h1 className='text-cyan-500 tracking-widest font-medium'>New Arrival</h1>
            <h1 className='text-xl font-semibold'>EarBuds</h1>
-           <h1 className='pt-3 font-bold'>Shop Now ?</h1>
+           <Link href={'/shop'}><h1 className='pt-3 font-bold hover:text-blue-500 underline'>Shop Now</h1></Link>
            </div>
            <Image src={ear} className='h-52 w-56' alt='image'></Image>
          </div>
