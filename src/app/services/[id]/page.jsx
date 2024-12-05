@@ -24,7 +24,7 @@ import { useUser } from '../../../../context/UserContext';
 
 const page = ({params}) => {
   //  console.log('grid',params.id);
-    
+  const [invoiceId, setInvoiceId] = useState(0);
     const  session  = useSession();
   //  console.log('session : ',session?.data?.user);
     
@@ -37,7 +37,7 @@ const page = ({params}) => {
     useEffect(() => {
       const getData = async () => {
         const { data } = await axios.get(
-          `https://electro-brown.vercel.app/services/api/${params.id}`
+          `http://localhost:3000/services/api/${params.id}`
         )
         
         setLatest(data.service);
@@ -72,7 +72,7 @@ const page = ({params}) => {
            const getData = async () => {
              //const { services } = await getServices();
              const { data } = await axios.get(
-               `https://electro-brown.vercel.app/services/api/get-all`
+               `http://localhost:3000/services/api/get-all`
              )
              setLat(data.services);
              setLoading(false);
@@ -157,7 +157,7 @@ const page = ({params}) => {
        
        
        
-           const resp = await fetch('https://electro-brown.vercel.app/cart/api', {
+           const resp = await fetch('http://localhost:3000/cart/api', {
              method: 'POST',
              headers: {
                'Content-Type': 'application/json',
@@ -184,10 +184,12 @@ const page = ({params}) => {
          const [subject, setSubject] = useState('Product Purchase');
          const [message, setMessage] = useState('');
          const [status, setStatus] = useState('');
-           
+          
          
          const sendEmail = async (e) => {
           // e.preventDefault();
+          
+          
            setStatus('Sending...');
           
            try {
@@ -305,10 +307,11 @@ const page = ({params}) => {
 
 
         const handleSubmit = async (event) => {
-
+         // invoiceId = invoiceId + 1;
         // Function that logs the object containing the form data
           event.preventDefault();
-      
+          const newInvoiceId = invoiceId + 1; 
+          setInvoiceId(newInvoiceId);
     const order = {
       firstName: event.target.firstName.value,
       lastName: event.target.lastName.value,
@@ -321,11 +324,12 @@ const page = ({params}) => {
       status : 'pending',
       date : currentDate,
       item : orders,
+      invoiceId: newInvoiceId,
     };
          
       //console.log(order);
-
-      const resp = await fetch('https://electro-brown.vercel.app/buy/api', {
+      
+      const resp = await fetch('http://localhost:3000/buy/api', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -339,6 +343,8 @@ const page = ({params}) => {
         //alert('added');
         toast.success("Product Buy Successfully");
         sendEmail(order);
+        //console.log(order);
+        
         sendEmailToAdmin(order);
       } else {
         toast.error("Something went Wrong");

@@ -32,7 +32,7 @@ const [latest, setLatest] = useState([]);
 useEffect(() => {
   const getData = async () => {
     const { data } = await axios.get(
-      `https://electro-brown.vercel.app/mycart/api?email=${session?.data?.user?.email || user?.email}`
+      `http://localhost:3000/mycart/api?email=${session?.data?.user?.email || user?.email}`
     )
     
     setLatest(data.service)

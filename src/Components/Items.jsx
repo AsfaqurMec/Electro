@@ -51,7 +51,7 @@ const Items = () => {
     // Define the async function inside useEffect
     const getData = async () => {
       const { data } = await axios.get(
-        `https://electro-brown.vercel.app/services/api/get-all`
+        `http://localhost:3000/services/api/get-all`
       )
        // const { services } = await getServices(); // Ensure getServices is async and returns a promise
         setLatest(data.services);

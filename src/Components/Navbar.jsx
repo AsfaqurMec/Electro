@@ -52,7 +52,7 @@ const Navbar = () => {
 useEffect(() => {
   const getData = async () => {
     const { data } = await axios.get(
-      `https://electro-brown.vercel.app/mycart/api?email=${session?.data?.user?.email || user?.email}`
+      `http://localhost:3000/mycart/api?email=${session?.data?.user?.email || user?.email}`
     )
     
     setLatest(data.service)
@@ -74,7 +74,7 @@ useEffect(() => {
     
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(`https://electro-brown.vercel.app/search/api?search=${search}`);
+        const { data } = await axios.get(`http://localhost:3000/search/api?search=${search}`);
         setItems(data);
        // console.log('dataaaas :',items.service);
         

@@ -189,7 +189,7 @@ export async function POST(req) {
       <br />
       <h1>Thank You for Ordering.</h1>
       <p>Happy Purchase<p>
-      <p>For more order <a href="https://electro-brown.vercel.app">Visit Website<a><p>
+      <p>For more order <a href="http://localhost:3000">Visit Website<a><p>
     `,
    // Email body
   };
