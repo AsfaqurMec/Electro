@@ -132,7 +132,7 @@ export async function POST(req) {
   const mailOptions = {
     from: 'Electro <process.env.EMAIL_USER>' , // Sender address
     to: 'hamimhamim044@gmail.com', // Recipient address
-    subject: 'Product Purchase', // Subject line
+    subject: 'Product Purchase Admin copy', // Subject line
     html: `
       <h1>Product Information</h1>
       <table border="1" cellpadding="10" cellspacing="0">
@@ -189,7 +189,7 @@ export async function POST(req) {
       <br />
       <h1>Thank You for Ordering.</h1>
       <p>Happy Purchase<p>
-      <p>For more order <a href="http://localhost:3000">Visit Website<a><p>
+      <p>For more order <a href="https://electro-brown.vercel.app">Visit Website<a><p>
     `,
    // Email body
   };

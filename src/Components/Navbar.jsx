@@ -18,18 +18,12 @@ import axios from "axios";
 import { MdCall } from "react-icons/md";
 
 const Navbar = () => {
-  // let session;
-  // setTimeout(() => {
-  //    session  = useSession();
-  // }, 1000);
+  
   const  session  = useSession();
- // console.log('session : ',session?.data?.user);
-//  let user;
-//  setTimeout(() => {
-//     user  = useUser();
-//  }, 1000);
+ //console.log(session);
+ 
   const { user } = useUser(); // Access user data from context
-//console.log('USER : ',user);
+
 
   const pathname = usePathname();
   const [search, setSearch] = useState('')
@@ -52,7 +46,7 @@ const Navbar = () => {
 useEffect(() => {
   const getData = async () => {
     const { data } = await axios.get(
-      `http://localhost:3000/mycart/api?email=${session?.data?.user?.email || user?.email}`
+      `https://electro-brown.vercel.app/mycart/api?email=${session?.data?.user?.email || user?.email}`
     )
     
     setLatest(data.service)
@@ -74,7 +68,7 @@ useEffect(() => {
     
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:3000/search/api?search=${search}`);
+        const { data } = await axios.get(`https://electro-brown.vercel.app/search/api?search=${search}`);
         setItems(data);
        // console.log('dataaaas :',items.service);
         
@@ -269,13 +263,13 @@ const Headphones = 'Headphones';
                           
                            <Link href='/account'>
                                {/* <button className="text-white text-white-sm bg-green-500 hover:bg-blue-500 text-white mr-2  text-white-ghost">Login</button> */}
-                               <h1 className="flex gap-1 items-center uppercase font-medium"> <img className="w-6 rounded-full" src={ "https://i.ibb.co/8xzVgxd/pngtree-user-icon-png-image-1796659.jpg" } />  My Account</h1>
+                               <h1 className="flex gap-1 items-center uppercase font-medium"> <img className="w-6 rounded-full" src={user?.image ||session?.data?.user?.image } /> <span className="text-black text-base hover:text-sky-700 hover:shadow-lg">{ user?.name || session?.data?.user?.name}</span> </h1>
                            </Link>
                            :
-                           <Link href='/login'>
+                               <div>
                                {/* <button className="text-white text-white-sm bg-green-500 hover:bg-blue-500 text-white mr-2  text-white-ghost">Login</button> */}
-                               <h1 className="flex gap-1 items-center uppercase font-medium"> <img className="w-6 rounded-full" src={ "https://i.ibb.co/8xzVgxd/pngtree-user-icon-png-image-1796659.jpg" } />  My Account</h1>
-                           </Link>
+                               <h1 className="flex gap-1 items-center uppercase font-medium"> <img className="w-6 rounded-full" src={ "https://i.ibb.co/8xzVgxd/pngtree-user-icon-png-image-1796659.jpg" } /> <span className="text-black  "><Link href='/login' className="hover:text-sky-700 hover:font-semibold">Login</Link> / <Link href='/signup' className="hover:text-amber-600 hover:font-semibold">Register</Link></span> </h1>
+                               </div>
                             } 
                        </div>
                  

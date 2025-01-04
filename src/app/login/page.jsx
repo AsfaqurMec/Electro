@@ -30,7 +30,8 @@ const Page = () => {
                   <div className="w-full hero-content flex-col gap-14 lg:gap-28 lg:flex-row-reverse">
                       <div className="text-center flex flex-col justify-center items-center gap-5">
                           <h1 className="text-6xl mt-5 text-black text-center font-bold pb-1">Register!</h1>
-                          <p>Registering for this site allows you to access your order status and history. Just fill in the fields below, and weâll get a new account set up for you in no time. We will only ask you for information necessary to make the purchase process faster and easier.</p>
+                          <p>Welcome to <strong>Electro!</strong>. A reliable and authenticate platform for all kind of electronic devices. Here we have all the latest and top brands products.
+                          </p>
                           <Link href={"/signup"}><button className="btn hover:bg-white hover:text-black hover:border-2  bg-black text-white font-semibold text-xl">Register</button></Link>
                           
                       </div>

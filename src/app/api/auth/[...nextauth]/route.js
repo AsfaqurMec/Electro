@@ -56,6 +56,7 @@ const handler = NextAuth({
            token.name = user.name;
            token.email = user.email;
            token.role = user?.role;
+           token.image = user?.image;
          }
        //  console.log(token);
          
@@ -68,6 +69,7 @@ const handler = NextAuth({
            name: token.name,
            email: token.email,
            role: token?.role,
+           image: token?.image
          };
          //console.log(session);
          
