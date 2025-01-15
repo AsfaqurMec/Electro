@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client"
 import Image from "next/image";
-import lofo from '../../images/Screenshot 2024-09-09 192439.png'
+import lofo from '../../images/Screenshot 2025-01-14 150156.png'
 import lofo1 from '../../images/Samsung-S24-Ultra-Titanium-Grey-removebg-preview.png'
 import drone from '../../images/Screenshot 2024-09-11 015109.png'
 import pc from '../../images/Screenshot 2024-09-11 015123.png'
@@ -19,7 +19,7 @@ const [latest, setLatest] = useState([]);
 useEffect(() => {
   const getData = async () => {
     const { data } = await axios.get(
-      `https://electro-brown.vercel.app/services/api/get-all`
+      ` https://electro-brown.vercel.app/services/api/get-all`
     )
     
     setLatest(data.services)
@@ -70,7 +70,7 @@ useEffect(() => {
         <div className='my-10 px-5'>
             <div className='flex flex-col lg:flex-row'>
                 <div className='w-full lg:w-1/2'>
-                <Image src={lofo} alt='lofo'></Image>
+                <Image src={lofo} className="w-full" alt='lofo'></Image>
                 </div>
                 <div className='w-full lg:w-1/2 flex flex-col justify-center items-center gap-4 px-3 md:px-10 py-10 bg-slate-100'> 
                     <h3 className="text-xl tracking-widest text-sky-600 font-medium">Trending now</h3>

@@ -41,7 +41,7 @@ const handleLogout = async () => {
           <div className="text-xl font-bold mb-8">My Account</div>
           <ul>
             <li className="mb-4">
-              <a href="#" className="flex items-center text-orange-500 font-semibold">
+              <a href="" className="flex items-center text-orange-500 font-semibold">
                 <span className="mr-2">&#128100;</span> Account Info
               </a>
             </li>
@@ -55,23 +55,8 @@ const handleLogout = async () => {
              ""
             }
             <li className="mb-4">
-              <a href="#" className="flex items-center text-gray-600 hover:text-orange-500">
+              <a href="/myorder" className="flex items-center text-gray-600 hover:text-orange-500">
                 <span className="mr-2">&#128203;</span> My Orders
-              </a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="flex items-center text-gray-600 hover:text-orange-500">
-                <span className="mr-2">&#128221;</span> My Reviews
-              </a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="flex items-center text-gray-600 hover:text-orange-500">
-                <span className="mr-2">&#128232;</span> Manage Address
-              </a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="flex items-center text-gray-600 hover:text-orange-500">
-                <span className="mr-2">&#127942;</span> Reward Points
               </a>
             </li>
             

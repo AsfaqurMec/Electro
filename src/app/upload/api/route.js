@@ -83,7 +83,7 @@
 // //console.log(`${file.name}`);
 
 //     //const filePath = await saveFile(buffer, file.name); // Save the file and get the path
-//     const filePath = `https://electro-brown.vercel.app/public/uploads/${file.name}`;
+//     const filePath = ` https://electro-brown.vercel.app/public/uploads/${file.name}`;
 //     console.log(filePath);
     
 //     return NextResponse.json({ filePath }, { status: 200 }); // Return the file path

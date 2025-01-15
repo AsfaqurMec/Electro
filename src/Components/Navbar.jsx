@@ -46,7 +46,7 @@ const Navbar = () => {
 useEffect(() => {
   const getData = async () => {
     const { data } = await axios.get(
-      `https://electro-brown.vercel.app/mycart/api?email=${session?.data?.user?.email || user?.email}`
+      ` https://electro-brown.vercel.app/mycart/api?email=${session?.data?.user?.email || user?.email}`
     )
     
     setLatest(data.service)
@@ -68,7 +68,7 @@ useEffect(() => {
     
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(`https://electro-brown.vercel.app/search/api?search=${search}`);
+        const { data } = await axios.get(` https://electro-brown.vercel.app/search/api?search=${search}`);
         setItems(data);
        // console.log('dataaaas :',items.service);
         
@@ -131,7 +131,7 @@ const Headphones = 'Headphones';
       <div className="collapse collapse-plus shadow-md rounded-sm">
       <input type="checkbox" />   
   <div className="collapse-title text-xl font-medium"><h1>Phones</h1></div>
-  <div className="collapse-content shadow-md">
+  {/* <div className="collapse-content shadow-md">
     <ul className="shadow-xl border-2">
   <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>IPhone</a></li>
@@ -142,13 +142,13 @@ const Headphones = 'Headphones';
   <li className="text-base font-medium hover:text-orange-500"><a>Realme</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Honor</a></li>
     </ul>
-  </div>
+  </div> */}
 </div>
 
 <div className="collapse collapse-plus shadow-md rounded-sm">
       <input type="checkbox" />   
   <div className="collapse-title text-xl font-medium"><h1>Tablet</h1></div>
-  <div className="collapse-content shadow-md">
+  {/* <div className="collapse-content shadow-md">
     <ul className="shadow-xl border-2">
   <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>IPhone</a></li>
@@ -159,13 +159,13 @@ const Headphones = 'Headphones';
   <li className="text-base font-medium hover:text-orange-500"><a>Realme</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Honor</a></li>
     </ul>
-  </div>
+  </div> */}
 </div>
 
 <div className="collapse collapse-plus shadow-md rounded-sm">
       <input type="checkbox" />   
   <div className="collapse-title text-xl font-medium"><h1>EarBuds</h1></div>
-  <div className="collapse-content shadow-md">
+  {/* <div className="collapse-content shadow-md">
     <ul className="shadow-xl border-2">
     <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>IPhone</a></li>
@@ -176,13 +176,13 @@ const Headphones = 'Headphones';
   <li className="text-base font-medium hover:text-orange-500"><a>Realme</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Honor</a></li>
     </ul>
-  </div>
+  </div> */}
 </div>
 
 <div className="collapse collapse-plus shadow-md rounded-sm">
       <input type="checkbox" />   
   <div className="collapse-title text-xl font-medium"><h1>SmartWatch</h1></div>
-  <div className="collapse-content shadow-md">
+  {/* <div className="collapse-content shadow-md">
     <ul className="shadow-xl border-2">
     <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>IPhone</a></li>
@@ -193,13 +193,13 @@ const Headphones = 'Headphones';
   <li className="text-base font-medium hover:text-orange-500"><a>Realme</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Honor</a></li>
     </ul>
-  </div>
+  </div> */}
 </div>
 
 <div className="collapse collapse-plus shadow-md rounded-sm">
       <input type="checkbox" />   
   <div className="collapse-title text-xl font-medium"><h1>HeadPhones</h1></div>
-  <div className="collapse-content shadow-md">
+  {/* <div className="collapse-content shadow-md">
     <ul className="shadow-xl border-2">
     <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>IPhone</a></li>
@@ -210,7 +210,7 @@ const Headphones = 'Headphones';
   <li className="text-base font-medium hover:text-orange-500"><a>Realme</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Honor</a></li>
     </ul>
-  </div>
+  </div> */}
 </div>
 
 
@@ -303,19 +303,19 @@ const Headphones = 'Headphones';
 
         <div className="dropdown dropdown-hover">
   <div tabIndex={0} role="button" className="text-white m-1 pr-3 border-r-2 border-r-white"><GiHamburgerMenu className='w-5 h-5' /> </div>
-  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52  p-2 shadow z-50">
+  {/* <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52  p-2 shadow z-50">
    <Link href={`/product/${Smartphone}`}><li className="text-base font-medium hover:text-orange-500"><a>Phones</a></li></Link>
     <Link href={`/product/${Earbuds}`}><li className="text-base font-medium hover:text-orange-500"><a>Earbuds</a></li></Link>
     <Link href={`/product/${Smartwatch}`}><li className="text-base font-medium hover:text-orange-500"><a>SmartWatch</a></li></Link>
     <Link href={`/product/${Headphones}`}><li className="text-base font-medium hover:text-orange-500"><a>HeadPhone</a></li></Link>
     <Link href={'#'}><li className="text-base font-medium hover:text-orange-500"><a>Speaker</a></li></Link>
     <Link href={'#'}><li className="text-base font-medium hover:text-orange-500"><a>Tablet</a></li></Link>
-  </ul>
+  </ul> */}
 </div>
 
 <div className="dropdown dropdown-hover">
   <div tabIndex={0} role="button" className="text-white m-1">Phones</div>
-  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
+  {/* <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
   <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>IPhone</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Xiomi</a></li>
@@ -324,12 +324,12 @@ const Headphones = 'Headphones';
   <li className="text-base font-medium hover:text-orange-500"><a>OnePlus</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Realme</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Honor</a></li>
-  </ul>
+  </ul> */}
 </div>
 
 <div className="dropdown dropdown-hover">
   <div tabIndex={0} role="button" className="text-white m-1">EarBuds</div>
-  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
+  {/* <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
   <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>IPhone</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Xiomi</a></li>
@@ -338,12 +338,12 @@ const Headphones = 'Headphones';
   <li className="text-base font-medium hover:text-orange-500"><a>OnePlus</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Realme</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Honor</a></li>
-  </ul>
+  </ul> */}
 </div>
 
 <div className="dropdown dropdown-hover">
   <div tabIndex={0} role="button" className="text-white m-1">SmartWatch</div>
-  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
+  {/* <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
   <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>IPhone</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Xiomi</a></li>
@@ -352,12 +352,12 @@ const Headphones = 'Headphones';
   <li className="text-base font-medium hover:text-orange-500"><a>OnePlus</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Realme</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Honor</a></li>
-  </ul>
+  </ul> */}
 </div>
 
 <div className="dropdown dropdown-hover">
   <div tabIndex={0} role="button" className="text-white m-1">HeadPhones</div>
-  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
+  {/* <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
   <li className="text-base font-medium hover:text-orange-500"><a>Samsung</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>IPhone</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Xiomi</a></li>
@@ -366,12 +366,12 @@ const Headphones = 'Headphones';
   <li className="text-base font-medium hover:text-orange-500"><a>OnePlus</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Realme</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Honor</a></li>
-  </ul>
+  </ul> */}
 </div>
 
 <div className="dropdown dropdown-hover">
   <div tabIndex={0} role="button" className="text-white m-1">Accessories</div>
-  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
+  {/* <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-sm  w-52 p-2 shadow z-50">
   <li className="text-base font-medium hover:text-orange-500"><a>Screen Protector</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Charger & Adapter</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Router</a></li>
@@ -379,7 +379,7 @@ const Headphones = 'Headphones';
   <li className="text-base font-medium hover:text-orange-500"><a>Phone Cases</a></li>
   <li className="text-base font-medium hover:text-orange-500"><a>Power Bank</a></li>
   
-  </ul>
+  </ul> */}
 </div>
 
 <div className="dropdown dropdown-hover">

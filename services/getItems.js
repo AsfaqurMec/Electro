@@ -5,7 +5,7 @@ export const getServices = async () => {
     
   try {
     const res = await axios.get(
-      `https://electro-brown.vercel.app/services/api/get-all`
+      ` https://electro-brown.vercel.app/services/api/get-all`
     );
     //console.log(res.data);
     

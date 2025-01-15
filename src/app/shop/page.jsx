@@ -50,7 +50,7 @@ const Shop = () => {
     return (
         <div className='px-2 md:px-5 py-10 min-h-[80vh] flex flex-col md:flex-row gap-10'>
             {/* side bar */}
-            <div className='w-full md:w-[20%] shadow-md shadow-blue-200 rounded-md'>
+            <div className='w-full md:w-[20%] shadow-md shadow-blue-200 border-2 rounded-md flex flex-col items-center'>
                 <select
                     className="select select-bordered text-lg font-medium shadow-lg my-5"
                     value={selectedcategory}

@@ -44,7 +44,7 @@ const SignUpPage = () => {
   //   formData.append('image', image); // Ensure 'image' is the file object
   // console.log(formData);
   
-  //   const res = await fetch('https://electro-brown.vercel.app/upload/api', {
+  //   const res = await fetch(' https://electro-brown.vercel.app/upload/api', {
   //     method: 'POST',
   //     body: formData, // FormData should be sent directly, no need to JSON.stringify it
   //   });
@@ -73,7 +73,7 @@ const SignUpPage = () => {
     formData.append('image', file); // Use the file directly
   
     try {
-      const res = await fetch('https://electro-brown.vercel.app/upload/api', {
+      const res = await fetch(' https://electro-brown.vercel.app/upload/api', {
         method: 'POST',
         body: formData, // Send the FormData directly
       });
@@ -108,7 +108,7 @@ const SignUpPage = () => {
       password: event.target.password.value,
       image: imageUrl
     };
-    const resp = await fetch("https://electro-brown.vercel.app/signup/api", {
+    const resp = await fetch(" https://electro-brown.vercel.app/signup/api", {
       method: "POST",
       body: JSON.stringify(newUser),
       headers: {
