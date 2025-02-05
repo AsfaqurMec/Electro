@@ -35,13 +35,13 @@ useEffect(() => {
         <>
 
         <section className='pt-14'>
-            <h2 className='text-center font-semibold text-2xl '>Best Selers</h2>
+            <h2 className='text-center font-semibold text-2xl '>Best Sellers</h2>
             <h1 className='text-center font-semibold text-4xl mb-5'>Top Best sellers of This Week</h1>
 
             <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 px-2 md:px-5 py-10'>
            
           {flagship?.map(latest => (
-
+          
 <Link key={latest._id} href={`/services/${latest._id}`}>
   <div className="relative card shadow-2xl rounded-md group overflow-hidden">
     <div className="relative w-full h-60 md:h-60">
@@ -58,7 +58,7 @@ useEffect(() => {
     </div>
     <div className="card-body p-3 md:p-5">
       <h2 className="card-title text-sm md:text-base">{latest.title}</h2>
-      <p className="bottom-0">${latest.price}</p>
+      <p className="bottom-0">৳{latest.price}</p>
     </div>
   </div>
 </Link>
@@ -82,19 +82,19 @@ useEffect(() => {
                             <h2>Galaxy S24 Ultra</h2>
                             <h4>Samsung</h4>
                         </div>
-                        <h1>$990.00</h1>
+                        <h1>৳1,50,000.00</h1>
                     </div>
                 </div>
             </div>
 
-            <div className='w-full flex flex-col lg:flex-row gap-10  py-10'>
+            <div className='w-full flex flex-row lg:flex-row gap-5 md:gap-10  py-10'>
       <div className='w-full lg:w-1/2 shadow-2xl flex flex-col md:flex-row bg-[#f6f5f8] justify-around items-center gap-1 md:gap-5 px-5 py-8  rounded-md'>
         <div className='space-y-3'>
            <h1 className='text-cyan-500 tracking-widest font-medium'>New Arrival</h1>
            <h1 className='text-xl font-semibold'>Drone Series</h1>
            <Link href={'/shop'}><h1 className='pt-3 font-bold hover:text-blue-500 underline'>Shop Now</h1></Link>
            </div>
-           <Image src={drone} className='h-52 w-64' alt='image'></Image>
+           <Image src={drone} className='h-24 md:h-52 w-32 md:w-64' alt='image'></Image>
          </div>
 
          <div className='w-full lg:w-1/2 shadow-2xl flex flex-col md:flex-row bg-[#f6f5f8] justify-around items-center gap-1 md:gap-5 px-5 py-8  rounded-md'>
@@ -103,7 +103,7 @@ useEffect(() => {
            <h1 className='text-xl font-semibold'>Complete PC</h1>
            <Link href={'/shop'}><h1 className='pt-3 font-bold hover:text-blue-500 underline'>Shop Now</h1></Link>
            </div>
-           <Image src={pc} className='h-52 w-64' alt='image'></Image>
+           <Image src={pc} className='h-24 md:h-52 w-32 md:w-64' alt='image'></Image>
          </div>
 
         

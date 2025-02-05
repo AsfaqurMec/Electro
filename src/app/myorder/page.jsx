@@ -126,7 +126,7 @@ const handleLogout = async () => {
                                 <h4>Ram : {order.ram}</h4>
                                 <h4>Rom : {order.size}</h4>
                                 <h4>Quantity : {order.quantity}</h4>
-                                <h4>Price : ${order.price}</h4>
+                                <h4>Price : ৳{order.price}</h4>
                                 </div>
                                </div>  
                             ))

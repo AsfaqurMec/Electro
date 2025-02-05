@@ -124,6 +124,20 @@
 //   }
 // }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import nodemailer from 'nodemailer';
 
 export async function POST(req) {
@@ -224,3 +238,256 @@ export async function POST(req) {
     });
   }
 }
+
+
+// import { NextResponse } from "next/server";
+// import chromium from "chrome-aws-lambda"; // ✅ Use this instead of Puppeteer
+// import cloudinary from "cloudinary";
+// import nodemailer from "nodemailer";
+// import fs from "fs-extra";
+// import path from "path";
+// import dotenv from "dotenv";
+
+// dotenv.config();
+
+// // Cloudinary Config
+// cloudinary.v2.config({
+//   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+//   api_key: process.env.CLOUDINARY_API_KEY,
+//   api_secret: process.env.CLOUDINARY_API_SECRET,
+// });
+
+// export async function POST(req) {
+//   try {
+//     const { item } = await req.json();
+//     let order = item?.item[0];
+//     if (!item) {
+//       return NextResponse.json({ success: false, message: "Invalid data" });
+//     }
+
+//     // Invoice HTML Template
+//     const htmlContent = `
+//       <html>
+//       <head>
+//         <title>Invoice</title>
+//         <style>
+//           body { font-family: Arial, sans-serif; }
+//           .container { max-width: 800px; margin: auto; padding: 20px; }
+//           .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+//           .table th, .table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+//           .table th { background-color: #f2f2f2; }
+//           .footer { margin-top: 40px; text-align: center; font-size: 14px; color: gray; }
+//         </style>
+//       </head>
+//       <body>
+//         <div class="container">
+//           <h1>INVOICE</h1>
+//           <h3>Invoice ID: #${item?.invoiceId}</h3>
+//           <p>Bill To: ${item?.firstName} ${item?.lastName}, ${item?.city}</p>
+//           <table class="table">
+//             <thead>
+//               <tr>
+//                 <th>QTY</th>
+//                 <th>Description</th>
+//                 <th>Unit Price</th>
+//                 <th>Amount</th>
+//               </tr>
+//             </thead>
+//             <tbody>
+//               <tr>
+//                 <td>${data?.quantity}</td>
+//                 <td>${data?.title}</td>
+//                 <td>$${data?.price}</td>
+//                 <td>$${data?.price * data?.quantity}</td>
+//               </tr>
+//             </tbody>
+//           </table>
+//           <div class="footer">
+//             <h1>Thank You for Your Purchase</h1>
+//           </div>
+//         </div>
+//       </body>
+//       </html>
+//     `;
+
+//     // ✅ Use `chrome-aws-lambda` for Puppeteer in Vercel
+//     const browser = await chromium.puppeteer.launch({
+//       args: chromium.args,
+//       defaultViewport: chromium.defaultViewport,
+//       executablePath: await chromium.executablePath,
+//       headless: true,
+//     });
+
+//     const page = await browser.newPage();
+//     await page.setContent(htmlContent);
+//     const pdfBuffer = await page.pdf({ format: "A4" });
+//     await browser.close();
+
+//     // Upload PDF to Cloudinary
+//     const uploadResponse = await cloudinary.v2.uploader.upload_stream(
+//       { resource_type: "raw", folder: "invoices" },
+//       (error, result) => {
+//         if (error) throw error;
+//       }
+//     ).end(pdfBuffer);
+
+//     const invoiceUrl = uploadResponse.secure_url;
+
+//     // Send Email
+//     const transporter = nodemailer.createTransport({
+//       service: "gmail",
+//       auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
+//     });
+
+//     await transporter.sendMail({
+//       from: process.env.EMAIL_USER,
+//       to: item?.email,
+//       subject: "Your Invoice",
+//       html: `<p>Download your invoice: <a href="${invoiceUrl}">${invoiceUrl}</a></p>`,
+//     });
+
+//     return NextResponse.json({ success: true, invoiceUrl });
+//   } catch (error) {
+//     console.error(error);
+//     return NextResponse.json({ success: false, message: "Failed to generate invoice" });
+//   }
+// }
+
+
+
+
+// import { NextResponse } from "next/server";
+// import playwright from "playwright"; // ✅ Use Playwright instead of Puppeteer
+// import cloudinary from "cloudinary";
+// import nodemailer from "nodemailer";
+// import dotenv from "dotenv";
+
+// dotenv.config();
+
+// // Cloudinary Config
+// cloudinary.v2.config({
+//   cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+//   api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+//   api_secret: process.env.CLOUDINARY_API_SECRET,
+// });
+
+// export async function POST(req) {
+//   try {
+//     const { item } = await req.json();
+//     let order = item?.item[0];
+//     //console.log(order);
+    
+//     if (!item) {
+//       return NextResponse.json({ success: false, message: "Invalid data" });
+//     }
+
+//     // Invoice HTML Template
+//     const htmlContent = `
+//       <html>
+//       <head>
+//         <title>Invoice</title>
+//         <style>
+//           body { font-family: Arial, sans-serif; }
+//           .container { max-width: 800px; margin: auto; padding: 20px; }
+//           .table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+//           .table th, .table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+//           .table th { background-color: #f2f2f2; }
+//           .footer { margin-top: 40px; text-align: center; font-size: 14px; color: gray; }
+//         </style>
+//       </head>
+//       <body>
+//         <div class="container">
+//           <h1>INVOICE</h1>
+//           <h3>Invoice ID: #${item?.invoiceId}</h3>
+//           <p class="header1">Asfaqur Rahman</br>
+//            CEO, Electro.</br>
+//            Mymensingh, Bangladesh</p>            
+//          <div class="header">
+//          <div>
+//            <strong>Bill To:</strong>
+//            <p>${item?.firstName + " " + item?.lastName}</p>
+//          </div>
+//          <div>
+//            <strong>Ship To:</strong>
+//            <p>${item?.firstName + " " + item?.lastName}</p>
+//          </div>
+//          <div>
+//            <strong>Shipping Address:</strong>
+//            <p>${item.apartment + " ," + item?.city}</p>
+//          </div>
+//          </div>
+
+//           <p class="header3">Purchase Date :</br>
+      
+//           ${item?.date}</p>
+
+//           <table class="table">
+//             <thead>
+//               <tr>
+//                 <th>QTY</th>
+//                 <th>Description</th>
+//                 <th>Unit Price</th>
+//                 <th>Amount</th>
+//               </tr>
+//             </thead>
+//             <tbody>
+//               <tr>
+//                 <td>${order?.quantity}</td>
+//                 <td>${order?.title}</td>
+//                 <td>৳${order?.price}</td>
+//                 <td>৳${order?.price * order?.quantity}</td>
+//               </tr>
+//             </tbody>
+//           </table>
+//           <div class="footer">
+//             <h1>Thank You for Your Purchase</h1>
+//             <p>Happy Purchase<p>
+//             <p>For more order <a href=" https://electro-brown.vercel.app">Visit Website<a><p>
+//           </div>
+//         </div>
+//       </body>
+//       </html>
+//     `;
+
+//     // ✅ Use Playwright instead of Puppeteer
+//     const browser = await playwright.chromium.launch();
+//     const page = await browser.newPage();
+//     await page.setContent(htmlContent);
+//     const pdfBuffer = await page.pdf({ format: "A4", printBackground: true  });
+//     await browser.close();
+//     //console.log('PDF Buffer Size:', pdfBuffer.length);
+//     // Upload PDF to Cloudinary
+//     const uploadResponse = await new Promise((resolve, reject) => {
+//       const uploadStream = cloudinary.v2.uploader.upload_stream(
+//         {  type: "upload", resource_type: "auto", folder: "invoices", public_id: item.invoiceId },
+//         (error, result) => {
+//           if (error) reject(error);
+//           else resolve(result);
+//         }
+//       );
+//       uploadStream.end(pdfBuffer);
+//     });
+
+//     const invoiceUrl = uploadResponse.secure_url;
+
+//     // Send Email
+//     const transporter = nodemailer.createTransport({
+//       service: "gmail",
+//       auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
+//     });
+
+//     await transporter.sendMail({
+//       from: process.env.EMAIL_USER,
+//       to: item?.email,
+//       subject: "Your Invoice",
+//       html: `<h1>Your Invoice :</h1> </br>
+//       <p>Download your invoice: <a href="${invoiceUrl}" target="_blank">Click here</a></p>`,
+//     });
+
+//     return NextResponse.json({ success: true, invoiceUrl });
+//   } catch (error) {
+//     console.error(error);
+//     return NextResponse.json({ success: false, message: "Failed to generate invoice" });
+//   }
+// }
+

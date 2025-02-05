@@ -28,6 +28,7 @@ const Category = () => {
     return (
         <>
         <div >
+          <h1 className='text-center text-3xl mb-8 font-semibold'>Category</h1>
         <Swiper 
          pagination={{ clickable: true }}
          breakpoints={{

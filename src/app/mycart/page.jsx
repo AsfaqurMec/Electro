@@ -45,7 +45,23 @@ useEffect(() => {
 
 }, [latest, session?.data?.user?.email, user?.email])
 
+const [orderd, setOrderd] = useState([]);
 
+useEffect(() => {
+  const getData = async () => {
+    const { data } = await axios.get(
+      ` https://electro-brown.vercel.app/orders/api`
+    )
+    
+    setOrderd(data.service);
+     
+  }
+
+    getData();
+  
+  
+  
+}, []);
 
 const [selectedUsers, setSelectedUsers] = useState([]);
 
@@ -212,6 +228,7 @@ zipCode: event.target.zipCode.value,
 status : 'pending',
 date : currentDate,
 item : selectedUsers,
+invoiceId : orderd.length + 1,
 };
    
 //console.log(order);
@@ -294,9 +311,9 @@ if (resp.status === 200) {
                 <div className="flex gap-5 items-center">
                   <img className="w-16 h-16" src={user.image} alt="" />
                   <div className="flex flex-col gap-3">
-                    <h1 className="text-lg md:text-xl lg:text-2xl">{user.title}</h1>
-                    <p className="text-base md:text-xl">Category : {user?.category}</p>
-                    <div className="flex flex-col md:flex-row gap-2 text-base md:text-xl">
+                    <h1 className="text-sm md:text-xl lg:text-2xl">{user.title}</h1>
+                    <p className="text-xs md:text-xl">Category : {user?.category}</p>
+                    <div className="flex flex-col md:flex-row gap-2 text-xs md:text-xl">
                       {user?.rom && <h1>Rom : {user?.rom}</h1>}
                       {user?.ram && <h1>Ram : {user?.ram}</h1>}
                     </div>
@@ -306,11 +323,11 @@ if (resp.status === 200) {
                   </button>
                 </div>
               </td>
-              <td className="px-[5px] md:px-3 font-bold text-base md:text-lg flex flex-col md:flex-row">
-                <h1 className="flex">
+              <td className="px-[5px] md:px-3 font-bold text-xs md:text-lg flex flex-col md:flex-row">
+                <h1 className="flex flex-row">
                   {user.quantity} X {user.price}
                 </h1>
-                <h1>= ${user.quantity * user.price}</h1>
+                <h1>= ৳{user.quantity * user.price}</h1>
               </td>
             </tr>
           ))}
@@ -333,17 +350,17 @@ if (resp.status === 200) {
 <h1  className="font-medium text-2xl my-3">Order Summery</h1>
 <div className="flex justify-between mb-3">
     <h1 className="font-medium text-lg">Subtotal({totalQuantity} items )</h1>
-    <h1 className="font-medium text-lg">${totalPrice}</h1>
+    <h1 className="font-medium text-lg">৳{totalPrice}</h1>
 </div>
 
 <div className="pb-5 border-b-2 flex justify-between">
     <h1 className="font-medium text-lg">Shipping Fee</h1>
-    <h1 className="font-medium text-lg">${totalQuantity*50}</h1>
+    <h1 className="font-medium text-lg">৳{totalQuantity*50}</h1>
 </div>
 
 <div className="pb-5 border-b-2 flex justify-between mt-3">
     <h1 className="font-medium text-lg">Total</h1>
-    <h1 className="font-medium text-lg">${total}</h1>
+    <h1 className="font-medium text-lg">৳{total}</h1>
 </div>
 
 <button onClick={handleOpenModal} className="btn w-full mt-5 bg-black hover:bg-sky-600 text-white">PROCEED TO CHECKOUT ({selectedUsers.length})</button>
@@ -351,7 +368,7 @@ if (resp.status === 200) {
 
 {isModalOpen && (
 <dialog id="my_modal_3" className="modal" open>
-  <div className="modal-box w-[1000px]">
+  <div className="modal-box w-[400px] md:w-[1000px]">
     <form method="dialog">
       {/* if there is a button in form, it will close the modal */}
       <button onClick={handleCloseModal} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -502,17 +519,17 @@ if (resp.status === 200) {
 <h1  className="font-medium text-2xl my-3">Order Summery</h1>
 <div className="flex justify-between mb-3">
     <h1 className="font-medium text-lg">Subtotal( 0 items )</h1>
-    <h1 className="font-medium text-lg">$0</h1>
+    <h1 className="font-medium text-lg">৳0</h1>
 </div>
 
 <div className="pb-5 border-b-2 flex justify-between">
     <h1 className="font-medium text-lg">Shipping Fee</h1>
-    <h1 className="font-medium text-lg">$0</h1>
+    <h1 className="font-medium text-lg">৳0</h1>
 </div>
 
 <div className="pb-5 border-b-2 flex justify-between mt-3">
     <h1 className="font-medium text-lg">Total</h1>
-    <h1 className="font-medium text-lg">$0</h1>
+    <h1 className="font-medium text-lg">৳0</h1>
 </div>
 
 <button className="btn w-full mt-5 bg-black text-white">PROCEED TO CHECKOUT ( 0 )</button>

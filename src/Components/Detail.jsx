@@ -254,7 +254,7 @@ console.log(userEmail);
         </div>
         <div data-aos="fade-left" data-aos-delay="500" data-aos-duration="1000" className="flex flex-col w-full md:w-1/2 gap-5 pl-5 md:pl-0">
           <h2 className="text-4xl font-bold primary-font">{title}</h2>
-          <h3 className='text-4xl ml-1 font-medium'><span className="font-normal ml-1"> ${price}</span></h3>
+          <h3 className='text-4xl ml-1 font-medium'><span className="font-normal ml-1"> ৳{price}</span></h3>
 
           <section>
             <div className="flex space-x-4 mb-5">
@@ -383,7 +383,7 @@ console.log(userEmail);
 
           <div className="flex flex-row justify-between">
 
-            <h3 className='text-3xl font-medium'>Price : <span className="text-sky-600 ml-1"> ${price}</span></h3>
+            <h3 className='text-3xl font-medium'>Price : <span className="text-sky-600 ml-1"> ৳{price}</span></h3>
 
           </div>
           <div className="flex flex-col mx-5 lg:mx-0 gap-5">
@@ -542,7 +542,7 @@ console.log(userEmail);
                         </div>
                         <div className="card-body p-3 md:p-5">
                           <h2 className="card-title text-base">{latest.title}</h2>
-                          <p>${latest.price}</p>
+                          <p>৳{latest.price}</p>
                         </div>
                       </div>
                     </Link>

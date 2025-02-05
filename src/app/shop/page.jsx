@@ -90,7 +90,7 @@ const Shop = () => {
                                 </div>
                                 <div className="card-body p-3 md:p-5">
                                     <h2 className="card-title text-sm md:text-base">{latest.title}</h2>
-                                    <p className="bottom-0">${latest.price}</p>
+                                    <p className="bottom-0">৳{latest.price}</p>
                                 </div>
                             </div>
                         </Link>

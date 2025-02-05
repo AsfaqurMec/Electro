@@ -158,7 +158,7 @@ export async function POST(req) {
         </tr>
         <tr>
           <th>Price</th>
-          <td>$${order?.price*order?.quantity}</td>
+          <td>৳${order?.price*order?.quantity}</td>
         </tr>
         
       </table>
@@ -187,10 +187,7 @@ export async function POST(req) {
         </tr>
       </table>
       <br />
-      <h1>Thank You for Ordering.</h1>
-      <p>Happy Purchase<p>
-      <p>For more order <a href=" https://electro-brown.vercel.app">Visit Website<a><p>
-    `,
+     `,
    // Email body
   };
 

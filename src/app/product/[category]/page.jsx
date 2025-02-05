@@ -56,7 +56,7 @@ const page = ({ params }) => {
                   </div>
                   <div className="card-body p-3 md:p-5">
                     <h2 className="card-title text-base">{latest.title}</h2>
-                    <p>${latest.price}</p>
+                    <p>৳{latest.price}</p>
                   </div>
                 </div>
               </Link>

@@ -32,6 +32,7 @@ const page = ({params}) => {
   //console.log('USER : ',user);
 
     const [latest, setLatest] = useState([]);
+    const [orderd, setOrderd] = useState([]);
     const [detail, setDetail] = useState(false);
 
     useEffect(() => {
@@ -50,7 +51,24 @@ const page = ({params}) => {
       
     }, [params.id]);
           
+    useEffect(() => {
+      const getData = async () => {
+        const { data } = await axios.get(
+          ` https://electro-brown.vercel.app/orders/api`
+        )
+        
+        setOrderd(data.service);
+         
+      }
     
+        getData();
+      
+      
+      
+    }, []);
+
+//console.log(order);
+
          const [selectedStorage, setSelectedStorage] = useState('');
          const [selectedRam, setSelectedRam] = useState('');
        
@@ -142,7 +160,7 @@ const page = ({params}) => {
           }
 
            const info = {
-       
+        
              title: title,
              image: image1,
              price: price,
@@ -310,8 +328,7 @@ const page = ({params}) => {
          // invoiceId = invoiceId + 1;
         // Function that logs the object containing the form data
           event.preventDefault();
-          const newInvoiceId = invoiceId + 1; 
-          setInvoiceId(invoiceId + 1);
+         
     const order = {
       firstName: event.target.firstName.value,
       lastName: event.target.lastName.value,
@@ -324,7 +341,7 @@ const page = ({params}) => {
       status : 'pending',
       date : currentDate,
       item : orders,
-      invoiceId: invoiceId,
+      invoiceId: orderd.length+1,
     };
          
       //console.log(order);
@@ -374,14 +391,14 @@ const page = ({params}) => {
             latest ?
         
         <div className=''>
-      <div className="flex flex-col lg:flex-row justify-around items-center lg:items-start w-[95%] gap-10 lg:gap-0 mx-auto my-10 py-10 md:pl-5 bg-[#f3f2f28c]">
+      <div className="flex flex-col lg:flex-row justify-around items-center lg:items-start w-[98%] gap-5 md:gap-10 lg:gap-0 mx-auto my-2 md:my-10 py-2 md:py-10 md:pl-5 bg-[#f3f2f28c]">
 
         <div data-aos="flip-right" data-aos-duration="2000" className="w-full md:w-1/2 flex justify-center">
 
 
 
-          <div className="carousel w-[95%] md:w-[90%] flex">
-            <div className="flex w-[25%] md:w-[15%] flex-col gap-2 py-1">
+          <div className="carousel w-[95%] md:w-[90%] flex flex-row justify-center  md:flex-row">
+            <div className="flex w-[20%] md:w-[15%] flex-col md:flex-col gap-2 py-1 ">
               <a className=""><img onClick={handleToggle}
                 src={image1}
                 className="h-20 w-20 rounded-md shadow-lg border-2" /></a>
@@ -393,7 +410,7 @@ const page = ({params}) => {
               }
 
             </div>
-            <div className='w-[80%] rounded-md shadow-xl border-2'>
+            <div className='w-[70%] md:w-[80%] rounded-md shadow-xl border-2'>
               {
                 !toggle ?
                   <div id="item1" className="carousel-item w-full">
@@ -416,12 +433,12 @@ const page = ({params}) => {
 
 
         </div>
-        <div data-aos="fade-left" data-aos-delay="500" data-aos-duration="1000" className="flex flex-col w-full md:w-1/2 gap-5 pl-5 md:pl-0">
-          <h2 className="text-4xl font-bold primary-font">{title}</h2>
-          <h3 className='text-4xl ml-1 font-medium'><span className="font-normal ml-1"> ${price}</span></h3>
+        <div data-aos="fade-left" data-aos-delay="500" data-aos-duration="1000" className="flex flex-col w-full md:w-1/2 gap-2 md:gap-5 pl-5 md:pl-0">
+          <h2 className="text-2xl md:text-4xl font-bold primary-font">{title}</h2>
+          <h3 className='text-2xl md:text-4xl ml-1 font-medium'><span className="font-normal ml-1"> ৳{price}</span></h3>
 
           <section>
-            <div className="flex space-x-4 mb-5">
+            <div className="flex space-x-4 mb-2 md:mb-5">
               <h1 className='text-lg font-semibold'>Color :</h1>
               <div
                 className={`w-8 h-8 rounded-full  transition-transform`}
@@ -454,7 +471,7 @@ const page = ({params}) => {
             latest?.storage ?
 
 
-              <div className='flex flex-col md:flex-row gap-3'>
+              <div className='flex flex-row md:flex-row gap-3 mb-2 md:mb-0'>
                
 
                 
@@ -512,19 +529,18 @@ const page = ({params}) => {
 
           <div className="flex flex-row justify-between">
 
-            <h3 className='text-3xl font-medium'>Price : <span className="text-sky-600 ml-1"> ${price}</span></h3>
+            <h3 className='text-xl md:text-3xl font-medium'>Price : <span className="text-sky-600 ml-1"> ৳{price}</span></h3>
 
           </div>
-          <div className="flex flex-col mx-5 lg:mx-0 gap-5">
-            <div><button onClick={handleCart} className="btn w-full bg-emerald-600 hover:bg-green-800 text-white text-xl">Add to Cart</button></div>
-            <div>
-
-           
-            {/* You can open the modal using document.getElementById('ID').showModal() method */}
-<button className="btn text-white text-xl w-full bg-cyan-400 hover:bg-cyan-700" onClick={handleOpenModal}>Buy Now</button>
+          <div className="flex flex-row md:flex-col mx-5 lg:mx-0 gap-5">
+            <div className='w-1/2 md:w-full'><button onClick={handleCart} className="btn w-full bg-emerald-600 hover:bg-green-800 text-white text-xl">Add to Cart</button></div>
+            
+            <div className='w-1/2 md:w-full'>
+{/* You can open the modal using document.getElementById('ID').showModal() method */}
+<button className="btn text-white text-xl w-full bg-cyan-500 hover:bg-cyan-700" onClick={handleOpenModal}>Buy Now</button>
 {isModalOpen && (
 <dialog id="my_modal_3" className="modal" open>
-  <div className="modal-box w-[1000px]">
+  <div className="modal-box w-[400px] md:w-[1000px]">
     <form method="dialog">
       {/* if there is a button in form, it will close the modal */}
       <button onClick={handleCloseModal} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -712,28 +728,28 @@ const page = ({params}) => {
       <div className='w-full lg:w-2/3 mx-0 md:mx-5 lg:mx-auto my-5'>
         <div role="tablist" className="tabs tabs-lifted ">
 
-          <input type="radio" name="my_tabs_2" role="tab" className="tab text-2xl font-medium" aria-label="Specification" defaultChecked />
+          <input type="radio" name="my_tabs_2" role="tab" className="tab text-lg md:text-2xl font-medium" aria-label="Specification" defaultChecked />
           <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-lg p-6">
 
             {
               latest?.processor ?
-                <h1 className='text-2xl font-semibold flex justify-between items-center pb-2 border-b-2 pt-2'> <span>Processor :</span> <span className="text-xl text-gray-500">{latest?.processor}</span></h1>
+                <h1 className=' text-base md:text-2xl font-semibold flex justify-between items-center pb-2 border-b-2 pt-2'> <span>Processor :</span> <span className="text-base md:text-xl text-gray-500">{latest?.processor}</span></h1>
                 : ""
             }
             {
               latest?.display || latest?.screen_size ?
-                <h1 className='text-2xl font-semibold flex justify-between items-center pb-2 border-b-2 pt-2'> <span>Display :  </span> <span className="text-xl text-gray-500">{latest?.screen_size || latest?.display}</span></h1>
+                <h1 className='text-base md:text-2xl font-semibold flex justify-between items-center pb-2 border-b-2 pt-2'> <span>Display :  </span> <span className="text-base md:text-xl text-gray-500">{latest?.screen_size || latest?.display}</span></h1>
                 : ""}
             {
               latest?.camera ?
-                <h1 className='text-2xl font-semibold flex justify-between items-center pb-2 border-b-2 pt-2'> <span>Camera :   </span> <span className="text-xl text-gray-500">{latest?.camera}</span></h1>
+                <h1 className='text-base md:text-2xl font-semibold flex justify-between items-center pb-2 border-b-2 pt-2'> <span>Camera :   </span> <span className="text-base md:text-xl text-gray-500">{latest?.camera}</span></h1>
                 : ""}
-            <h1 className='text-2xl font-semibold flex justify-between items-center pb-2 border-b-2 pt-2'> <span>Battery :  </span> <span className="text-xl text-gray-500">{latest?.battery || latest?.battery_life}</span></h1>
+            <h1 className='text-base md:text-2xl font-semibold flex justify-between items-center pb-2 border-b-2 pt-2'> <span>Battery :  </span> <span className="text-base md:text-xl text-gray-500">{latest?.battery || latest?.battery_life}</span></h1>
             {
               latest?.features ?
-                <h1 className='text-2xl font-semibold flex flex-col lg:flex-row justify-start lg:justify-between items-start lg:items-center pb-2 border-b-2 pt-2'> <span>Features :  </span> <span className="text-xl text-gray-500">{latest?.features}</span></h1>
+                <h1 className='text-base md:text-2xl font-semibold flex flex-col lg:flex-row justify-start lg:justify-between items-start lg:items-center pb-2 border-b-2 pt-2'> <span>Features :  </span> <span className="text-base md:text-xl text-gray-500">{latest?.features}</span></h1>
                 : ""}
-            <h1 className='text-2xl font-semibold flex justify-between items-center pb-2 border-b-2 pt-2'> <span>Type :  </span> <span className="text-xl text-gray-500">{latest?.type}</span></h1>
+            <h1 className='text-base md:text-2xl font-semibold flex justify-between items-center pb-2 border-b-2 pt-2'> <span>Type :  </span> <span className="text-base md:text-xl text-gray-500">{latest?.type}</span></h1>
             <h1 className="text-xl font-semibold pt-3">Category : <span className="text-xl text-gray-500">{category}</span></h1>
             <h1 className="text-xl font-semibold mt-2">SKU : <span className="text-xl text-gray-500">N/A</span></h1>
 
@@ -746,7 +762,7 @@ const page = ({params}) => {
             type="radio"
             name="my_tabs_2"
             role="tab"
-            className="tab text-2xl font-medium"
+            className="tab text-lg md:text-2xl font-medium"
             aria-label="Reviews"
           />
           <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-lg p-6">
@@ -757,7 +773,7 @@ const page = ({params}) => {
         </div>
       </div>
 
-      <h1 className='text-5xl font-medium text-center my-10'>Related Products</h1>
+      <h1 className='text-3xl md:text-5xl font-medium text-center my-10'>Related Products</h1>
       <div className='py-10 px-2 md:px-5'>
         <Swiper autoplay={{
           delay: 1500,
@@ -815,7 +831,7 @@ const page = ({params}) => {
                         </div>
                         <div className="card-body p-3 md:p-5">
                           <h2 className="card-title text-base">{latest.title}</h2>
-                          <p>${latest.price}</p>
+                          <p>৳{latest.price}</p>
                         </div>
                       </div>
                     </Link>

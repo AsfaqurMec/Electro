@@ -129,7 +129,7 @@ const Items = () => {
                     </div>
                     <div className="card-body p-3 md:p-5">
                       <h2 className="card-title text-base">{item.title}</h2>
-                      <p>${item.price}</p>
+                      <p>৳{item.price}</p>
                     </div>
                   </div>
                 </Link>
@@ -154,7 +154,7 @@ const Items = () => {
                     </div>
                     <div className="card-body p-3 md:p-5">
                       <h2 className="card-title text-base">{item.title}</h2>
-                      <p>${item.price}</p>
+                      <p>৳{item.price}</p>
                     </div>
                   </div>
                 </Link>
@@ -170,7 +170,7 @@ const Items = () => {
 
       <div className="wrapper">
   <div className="item item1 flex items-center gap-2 justify-center  text-lg font-semibold">
-     <Image src={samsung} className='w-16 h-12' alt=''></Image>
+     <Image src={samsung} className='w-8 md:w-16 h-6 md:h-12' alt=''></Image>
      <h1>Samsung</h1>
   </div>
   <div className="item item2 flex items-center justify-center  text-lg font-semibold  ">
@@ -205,7 +205,7 @@ const Items = () => {
 
 <div className="bg-gray-100 py-10 px-5">
       {/* What Client Says Section */}
-      <section className="mb-10 mx-20">
+      <section className="mb-10 mx-2 md:mx-20">
         <h2 className="text-2xl font-bold mb-6 text-center">What Client Says</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Testimonial 1 */}
@@ -245,7 +245,7 @@ const Items = () => {
               />
               <div>
                 <p className="font-bold">BRUCE JONES</p>
-                <p className="text-gray-500">Boston, LA</p>
+                <p className="text-gray-500">Dhaka, Bangladesh</p>
               </div>
             </div>
           </div>
@@ -267,7 +267,7 @@ const Items = () => {
               />
               <div>
                 <p className="font-bold">JOHN MATTHEWS</p>
-                <p className="text-gray-500">Boston, LA</p>
+                <p className="text-gray-500">Borisal, Bangladesh</p>
               </div>
             </div>
           </div>
@@ -276,11 +276,11 @@ const Items = () => {
 
       {/* Latest Posts Section */}
       <section>
-        <div className="flex justify-between items-center mb-6 mx-20">
+        <div className="flex justify-between items-center mb-6 mx-0 md:mx-20">
           <h2 className="text-2xl font-bold">Latest Posts</h2>
           <a href="#" className="text-blue-500">View All</a>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mx-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mx-0 md:mx-20">
           {/* Post 1 */}
           <div className="bg-white shadow-lg rounded-lg overflow-hidden">
             <Image

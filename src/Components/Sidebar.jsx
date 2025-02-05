@@ -15,11 +15,12 @@ const Sidebar = () => {
           <Link href="/dashboard/products">Products</Link>
         </li>
         <li className="p-4 hover:bg-gray-700">
-          <Link href="/dashboard/orders">Orders</Link>
+          <Link href="/dashboard/addProduct">Add Product</Link>
         </li>
         <li className="p-4 hover:bg-gray-700">
-          <Link href="/dashboard/settings">Settings</Link>
+          <Link href="/dashboard/orders">Orders</Link>
         </li>
+        
       </ul>
       <div className="p-4 text-center bg-gray-900">Logout</div>
     </div>
